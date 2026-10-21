@@ -26,14 +26,35 @@ export function hasChineseVoice(): boolean {
 export type SpeakResult = "ok" | "no-voice" | "unsupported";
 
 /** Speaks Mandarin text with the device's own voice. Returns whether a Chinese voice was available. */
-export function speak(text: string, rate = 0.8): SpeakResult {
+export function speak(text: string, rate = 0.8, onEnd?: () => void): SpeakResult {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return "unsupported";
   if (!voice) pickVoice();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "zh-CN";
   u.rate = rate;
   if (voice) u.voice = voice;
+  if (onEnd) u.onend = () => onEnd();
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(u);
   return voice ? "ok" : "no-voice";
+}
+
+/** Plays text `times` times with a pause between, the way exam recordings repeat. Returns a cancel function. */
+export function speakTimes(text: string, times: number, rate = 0.8, onDone?: () => void): () => void {
+  let cancelled = false;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const play = (left: number) => {
+    if (cancelled) return;
+    const r = speak(text, rate, () => {
+      if (left > 1) timer = setTimeout(() => play(left - 1), 1500);
+      else onDone?.();
+    });
+    if (r === "unsupported") onDone?.();
+  };
+  play(times);
+  return () => {
+    cancelled = true;
+    clearTimeout(timer);
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  };
 }

@@ -5,6 +5,7 @@ import { levelSummary } from "@/lib/data";
 import { Crumbs } from "@/components/Crumbs";
 import { LevelProgress } from "@/components/LevelProgress";
 import { WritingCount } from "@/components/WritingCount";
+import { Readiness } from "@/components/Readiness";
 import type { Locale } from "@/lib/types";
 import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
@@ -17,10 +18,11 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
 }
 
 const MODULES = [
-  { key: "lessons", glyph: "课", ready: true },
-  { key: "listening", glyph: "听", ready: false },
-  { key: "writing", glyph: "写", ready: true },
-  { key: "speaking", glyph: "说", ready: false },
+  { key: "lessons", glyph: "课" },
+  { key: "listening", glyph: "听" },
+  { key: "reading", glyph: "读" },
+  { key: "writing", glyph: "写" },
+  { key: "speaking", glyph: "说" },
 ] as const;
 
 export default async function LevelHub({ params }: P) {
@@ -48,16 +50,25 @@ export default async function LevelHub({ params }: P) {
           <WritingCount level={level} />
         </div>
       </div>
-      <Link
-        href={`/${locale}/hsk/${slug}/practice`}
-        className="group flex items-center gap-4 rounded-xl border border-accent/60 bg-surface p-5 transition-colors hover:border-accent"
-      >
-        <span aria-hidden="true" className="han grid h-14 w-14 shrink-0 place-items-center border-2 border-grid text-3xl text-accent">练</span>
-        <span className="flex min-w-0 flex-col gap-1">
-          <span className="text-lg font-semibold">{t.practice.hubTitle}</span>
-          <span className="text-sm text-muted">{fmt(t.practice.hubBody, { n: s.words.toLocaleString(locale) })}</span>
-        </span>
-      </Link>
+      <Readiness level={level} words={s.words} />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {([
+          { href: "exam", glyph: "考", title: t.exam.hubTitle, body: t.exam.hubBody },
+          { href: "practice", glyph: "练", title: t.practice.hubTitle, body: fmt(t.practice.hubBody, { n: s.words.toLocaleString(locale) }) },
+        ] as const).map((c) => (
+          <Link
+            key={c.href}
+            href={`/${locale}/hsk/${slug}/${c.href}`}
+            className="group flex items-center gap-4 rounded-xl border border-accent/60 bg-surface p-5 transition-colors hover:border-accent"
+          >
+            <span aria-hidden="true" className="han grid h-14 w-14 shrink-0 place-items-center border-2 border-grid text-3xl text-accent">{c.glyph}</span>
+            <span className="flex min-w-0 flex-col gap-1">
+              <span className="text-lg font-semibold">{c.title}</span>
+              <span className="text-sm text-muted">{c.body}</span>
+            </span>
+          </Link>
+        ))}
+      </div>
       <ol className="grid gap-3 sm:grid-cols-2">
         {MODULES.map((m, i) => {
           const mod = t.hub.modules[m.key];
@@ -74,7 +85,6 @@ export default async function LevelHub({ params }: P) {
                   <span className="flex flex-wrap items-center gap-2">
                     <span className="text-xs font-semibold text-muted tabular-nums">{i + 1}</span>
                     <span className="text-lg font-semibold">{mod.title}</span>
-                    {!m.ready && <span className="rounded-full border border-line px-2 py-0.5 text-xs text-muted">{t.common.inDevelopment}</span>}
                   </span>
                   <span className="text-sm text-muted">{mod.body}</span>
                   {m.key === "lessons" && <span className="text-sm text-muted tabular-nums">{count(t.common.lessons, s.lessons, locale)}</span>}

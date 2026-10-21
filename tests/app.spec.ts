@@ -53,9 +53,10 @@ test("language switch keeps the current page", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Подготовка к HSK 2");
 });
 
-test("level hub links to the four modules", async ({ page }) => {
+test("level hub links to the modules, mock exam and practice, with a readiness overview", async ({ page }) => {
   await page.goto("/en/hsk/1");
-  for (const name of ["Lessons & grammar", "Listening", "Characters & pinyin", "Speaking & HSKK coach"]) {
+  await expect(page.getByRole("heading", { name: "Exam readiness" })).toBeVisible();
+  for (const name of ["Mock exam", "Random practice", "Lessons & grammar", "Listening", "Reading & writing", "Characters & pinyin", "Speaking & HSKK coach"]) {
     await expect(page.getByRole("link", { name: new RegExp(name.replace(/[&]/g, "\\&")) })).toBeVisible();
   }
   await noOverflow(page);
@@ -256,4 +257,92 @@ test("random practice works for HSK 7–9 and filters by studied words", async (
   await expect(page.getByText(/Whole level · 5,622/)).toBeVisible();
   await page.getByText(/Words I've studied · 0/).click();
   await expect(page.getByText(/No words match this choice yet/)).toBeVisible();
+});
+
+async function answerPractice(page: Page, n: number) {
+  for (let i = 0; i < n; i++) {
+    const tiles = page.locator("[data-tile]");
+    if (await tiles.count()) {
+      for (let k = 0; k < (await tiles.count()); k++) await tiles.nth(k).click();
+      await page.getByRole("button", { name: "Check" }).click();
+    } else if (await page.getByLabel("Missing character").count()) {
+      await page.getByLabel("Missing character").fill("我");
+      await page.getByRole("button", { name: "Check" }).click();
+    } else {
+      await page.locator('[data-option="0"]').click();
+    }
+    await page.getByRole("button", { name: i === n - 1 ? /See results/ : /Next/ }).click();
+  }
+}
+
+test("listening: exam-style questions with transcript feedback and results", async ({ page }) => {
+  await page.goto("/en/hsk/1/listening");
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByText("Question 1 of 10")).toBeVisible();
+  await page.locator('[data-option="0"]').click();
+  await expect(page.getByRole("status").getByText(/^(Correct|Incorrect)\.$/)).toBeVisible();
+  await expect(page.locator('[lang="zh-Latn-pinyin"]').first()).toBeVisible();
+  await noOverflow(page);
+  await axe(page);
+  await page.getByRole("button", { name: /Next/ }).click();
+  await answerPractice(page, 9);
+  await expect(page.getByTestId("drill-result")).toHaveText(/\d+ out of 10/);
+  await expect(page.getByText("By question type")).toBeVisible();
+  await axe(page);
+  await page.goto("/en/hsk/1");
+  await expect(page.locator("#readiness + ul li").nth(1)).toContainText(/best \d+%/);
+});
+
+test("reading and writing: gap, word order, arranging words and typing characters", async ({ page }) => {
+  await page.goto("/en/hsk/2/reading");
+  await page.getByRole("button", { name: "Start" }).click();
+  await answerPractice(page, 10);
+  await expect(page.getByTestId("drill-result")).toHaveText(/\d+ out of 10/);
+  await page.getByRole("button", { name: "Change settings" }).click();
+  await page.getByText("Writing", { exact: true }).click();
+  await page.getByText("Arrange words", { exact: true }).click();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.locator("[data-tile]").first()).toBeVisible();
+  await noOverflow(page);
+  await axe(page);
+  await answerPractice(page, 10);
+  await expect(page.getByTestId("drill-result")).toHaveText(/\d+ out of 10/);
+});
+
+test("mock exam: timed sections, no feedback, section and total scores", async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.goto("/ru/hsk/1/exam");
+  await expect(page.getByText("40 вопр. · 32 мин")).toBeVisible();
+  await page.getByRole("button", { name: "Начать экзамен" }).click();
+  await expect(page.getByRole("timer")).toContainText("15:00");
+  for (let i = 0; i < 20; i++) {
+    await page.locator('[data-option="1"]').click();
+    await expect(page.getByText(/^(Верно|Неверно)\.$/)).toHaveCount(0);
+    await page.keyboard.press("Enter");
+  }
+  await page.getByRole("button", { name: "Начать: Чтение" }).click();
+  for (let i = 0; i < 20; i++) {
+    await page.locator('[data-option="0"]').click();
+    await page.keyboard.press("Enter");
+  }
+  await expect(page.getByTestId("mock-total")).toHaveText(/\d+%/);
+  await expect(page.getByText("Проходной балл: 60%")).toBeVisible();
+  await noOverflow(page);
+  await axe(page);
+  await page.goto("/ru/hsk/1");
+  await expect(page.getByText(/лучший \d+%/).last()).toBeVisible();
+});
+
+test("speaking: a sentence to read, model audio and a speak or record button", async ({ page }) => {
+  await page.goto("/en/hsk/3/speaking");
+  await expect(page.getByTestId("speak-target")).not.toBeEmpty();
+  await expect(page.getByRole("button", { name: "Model audio" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^(Speak|Record)$/ })).toBeVisible();
+  const first = await page.getByTestId("speak-target").textContent();
+  await page.getByRole("button", { name: "Next sentence" }).click();
+  await expect(page.getByTestId("speak-target")).not.toHaveText(first!);
+  await page.getByText("Listen and repeat", { exact: true }).click();
+  await expect(page.getByRole("button", { name: "Show the text" })).toBeVisible();
+  await noOverflow(page);
+  await axe(page);
 });

@@ -23,8 +23,13 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 | Grammar | Official grammar list for every level (593 items); detailed notes for HSK 1 (14 points) |
 | Writing on a 田字格 grid: stroke-order animation, stroke-by-stroke checking (touch, pen, mouse) | Done for all 3,088 characters |
 | Pinyin tone exercise with pitch contours | Done |
-| Listening (exam formats) | Planned, page describes the formats |
-| Speaking & HSKK coach (AI) | Planned |
+| Random practice per level (flashcards and tests, recent words held back) | Done |
+| Graded sentence bank (Tatoeba): 1,200–3,000 sentences per level | Done |
+| Listening: true/false, sentence heard, word heard, with sound-alike options and transcripts | Done (device text-to-speech) |
+| Reading & writing: fill the gap, word order, sentence meaning, arrange words, type the missing character | Done |
+| Speaking: read aloud and listen-and-repeat, checked per character by speech recognition (recorder fallback) | Done; AI coach for tones and grammar planned |
+| Timed mock exam per level with section scores and mistake review | Done (essays, translation and the HSKK oral test are not scored) |
+| Exam readiness overview on each level page | Done |
 | Accounts and sync (Supabase) | Planned; progress is stored on the device in a sync-ready shape |
 | Offline / installable (PWA) | Done (manifest + service worker) |
 
@@ -61,5 +66,6 @@ python3 scripts/build-vocab.py <folder>
 - Pinyin, dictionary senses, traditional forms, measure words: [CC-CEDICT](https://cc-cedict.org) (CC BY-SA 4.0); readings checked against [pypinyin](https://github.com/mozillazg/python-pinyin) (MIT)
 - Frequency ranks for lesson order: [drkameleon/complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT)
 - Stroke data: [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) via [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) (Arphic Public License); engine [Hanzi Writer](https://github.com/chanind/hanzi-writer) (MIT)
+- Example sentences: [Tatoeba](https://tatoeba.org) (CC BY 2.0 FR) via the npm package `tatoeba-sentence-pairs-in-mandarin-chinese-english`, graded by `scripts/build-sentences.py` so each level uses only its own and lower-level words
 - Grammar explanations, example sentences and curated meanings: written for this project.
 - Past HSK papers and recordings are copyrighted by CTI and are not included. Listening questions will be original, in the official formats.

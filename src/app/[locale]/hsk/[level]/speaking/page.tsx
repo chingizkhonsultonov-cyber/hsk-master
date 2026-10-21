@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getDictionary, fmt } from "@/lib/i18n";
 import { Crumbs } from "@/components/Crumbs";
+import { ToneScope } from "@/components/ToneScope";
+import { Speaking as SpeakingDrill } from "@/components/drill/Speaking";
 import type { Locale } from "@/lib/types";
 import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
@@ -18,16 +20,15 @@ export default async function Speaking({ params }: P) {
   const slug = levelSlug(level);
   const t = getDictionary(locale);
   return (
-    <div className="flex max-w-2xl flex-col gap-6">
-      <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${slug}`, label: levelName(level) }, { label: t.hub.modules.speaking.title }]} />
-      <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.speaking.title, { n: levelNumber(level) })}</h1>
-      <span className="self-start rounded-full border border-line px-3 py-1 text-sm text-muted">{t.common.inDevelopment}</span>
-      <p>{t.speaking.body}</p>
-      <ul className="flex flex-col divide-y divide-line rounded-xl border border-line bg-surface">
-        {t.speaking.points.map((p) => (
-          <li key={p} className="px-4 py-3">{p}</li>
-        ))}
-      </ul>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-3">
+        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${slug}`, label: levelName(level) }, { label: t.hub.modules.speaking.title }]} />
+        <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.speaking.title, { n: levelNumber(level) })}</h1>
+        <p className="max-w-2xl text-muted">{t.speaking.intro}</p>
+      </div>
+      <ToneScope>
+        <SpeakingDrill level={level} slug={slug} />
+      </ToneScope>
     </div>
   );
 }
