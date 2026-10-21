@@ -1,5 +1,5 @@
 /* HSK Master service worker: offline app shell, cached pages and stroke data. */
-const VERSION = "v1";
+const VERSION = "v2";
 const STATIC = `static-${VERSION}`;
 const PAGES = `pages-${VERSION}`;
 const HANZI = `hanzi-${VERSION}`;
@@ -33,7 +33,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Pages: network first, fall back to the last copy when offline.
-  if (req.mode === "navigate" || req.headers.get("RSC") === "1") {
+  if (req.mode === "navigate" || req.headers.get("RSC") === "1" || url.pathname.startsWith("/data/")) {
     event.respondWith(
       fetch(req)
         .then((res) => {

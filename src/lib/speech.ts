@@ -16,6 +16,13 @@ if (typeof window !== "undefined" && "speechSynthesis" in window) {
   window.speechSynthesis.addEventListener?.("voiceschanged", pickVoice);
 }
 
+/** True when the device has a Mandarin voice, so listening questions can be asked. */
+export function hasChineseVoice(): boolean {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return false;
+  if (!voice) pickVoice();
+  return !!voice;
+}
+
 export type SpeakResult = "ok" | "no-voice" | "unsupported";
 
 /** Speaks Mandarin text with the device's own voice. Returns whether a Chinese voice was available. */

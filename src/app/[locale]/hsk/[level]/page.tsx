@@ -48,6 +48,16 @@ export default async function LevelHub({ params }: P) {
           <WritingCount level={level} />
         </div>
       </div>
+      <Link
+        href={`/${locale}/hsk/${slug}/practice`}
+        className="group flex items-center gap-4 rounded-xl border border-accent/60 bg-surface p-5 transition-colors hover:border-accent"
+      >
+        <span aria-hidden="true" className="han grid h-14 w-14 shrink-0 place-items-center border-2 border-grid text-3xl text-accent">练</span>
+        <span className="flex min-w-0 flex-col gap-1">
+          <span className="text-lg font-semibold">{t.practice.hubTitle}</span>
+          <span className="text-sm text-muted">{fmt(t.practice.hubBody, { n: s.words.toLocaleString(locale) })}</span>
+        </span>
+      </Link>
       <ol className="grid gap-3 sm:grid-cols-2">
         {MODULES.map((m, i) => {
           const mod = t.hub.modules[m.key];

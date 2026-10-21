@@ -5,23 +5,16 @@ import { useI18n } from "@/lib/i18n/client";
 import { fmt } from "@/lib/i18n";
 import { recordAnswer, recordTest } from "@/lib/progress";
 import { markSyllable, stripTones, syllables, type Tone } from "@/lib/pinyin";
+import { hasChineseVoice, speak } from "@/lib/speech";
+import { shuffle } from "@/lib/random";
 import type { Word } from "@/lib/types";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { meaningText } from "../Meaning";
 
 export type PoolWord = Pick<Word, "id" | "h" | "p" | "en" | "ru">;
-type Kind = "meaning" | "hanzi" | "pinyin";
+type Kind = "meaning" | "hanzi" | "pinyin" | "fromPinyin" | "listen";
 interface Option { label: string; right: boolean }
 interface Question { w: PoolWord; kind: Kind; options: Option[]; pick: number | null }
-
-function shuffle<T>(a: T[]): T[] {
-  const b = a.slice();
-  for (let i = b.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [b[i], b[j]] = [b[j], b[i]];
-  }
-  return b;
-}
 
 /** Wrong pinyin options keep the syllables and change tones, the way the exam tests tone knowledge. */
 function pinyinOptions(p: string, others: PoolWord[]): string[] {
@@ -37,11 +30,20 @@ function pinyinOptions(p: string, others: PoolWord[]): string[] {
   return shuffle([...set]);
 }
 
+/** Question types are dealt at random, so the same words come back in a different form each time. */
+function dealKinds(n: number): Kind[] {
+  const kinds: Kind[] = ["meaning", "hanzi", "pinyin", "fromPinyin"];
+  if (hasChineseVoice()) kinds.push("listen");
+  const out: Kind[] = [];
+  while (out.length < n) out.push(...shuffle(kinds));
+  return out.slice(0, n);
+}
+
 function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] {
   const all = [...words, ...pool];
-  const kinds: Kind[] = ["meaning", "hanzi", "pinyin"];
+  const kinds = dealKinds(words.length);
   return shuffle(words).map((w, i) => {
-    const kind = kinds[i % 3];
+    const kind = kinds[i];
     if (kind === "pinyin") return { w, kind, pick: null, options: pinyinOptions(w.p, all.filter((o) => o.id !== w.id)).map((label) => ({ label, right: label === w.p })) };
     const right = kind === "meaning" ? meaningText(w, locale) : w.h;
     const seen = new Set([right]);
@@ -49,7 +51,9 @@ function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] 
     for (const o of shuffle(all)) {
       if (wrong.length >= 3) break;
       const label = kind === "meaning" ? meaningText(o, locale) : o.h;
-      if (o.id === w.id || seen.has(label)) continue;
+      // When the prompt is a sound, a homophone would also be a correct answer.
+      const homophone = (kind === "fromPinyin" || kind === "listen") && stripTones(o.p) === stripTones(w.p);
+      if (o.id === w.id || seen.has(label) || homophone) continue;
       seen.add(label);
       wrong.push(label);
     }
@@ -57,7 +61,10 @@ function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] 
   });
 }
 
-export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: PoolWord[]; testKey: string }) {
+const CHAR_OPTIONS: Kind[] = ["hanzi", "fromPinyin", "listen"];
+
+/** `onNewSet` replaces "New test" with a fresh random set (used by random practice). */
+export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord[]; pool: PoolWord[]; testKey: string; onNewSet?: () => void }) {
   const { t, locale } = useI18n();
   const [qs, setQs] = useState<Question[] | null>(null);
   const [i, setI] = useState(0);
@@ -72,6 +79,10 @@ export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: 
 
   const q = qs?.[i];
   const answered = q?.pick != null;
+
+  useEffect(() => {
+    if (q?.kind === "listen") speak(q.w.h);
+  }, [q?.kind, q?.w.h, i]);
 
   const pick = (k: number) => {
     if (!qs || !q || answered) return;
@@ -129,14 +140,14 @@ export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: 
             );
           })}
         </ul>
-        <button type="button" onClick={() => { setQs(build(words, pool, locale)); setI(0); }} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
-          {t.test.retry}
+        <button type="button" onClick={() => { if (onNewSet) onNewSet(); else { setQs(build(words, pool, locale)); setI(0); } }} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
+          {onNewSet ? t.practice.newSet : t.test.retry}
         </button>
       </div>
     );
   }
 
-  const ask = q.kind === "meaning" ? t.test.askMeaning : q.kind === "hanzi" ? t.test.askHanzi : t.test.askPinyin;
+  const ask = { meaning: t.test.askMeaning, hanzi: t.test.askHanzi, pinyin: t.test.askPinyin, fromPinyin: t.test.askFromPinyin, listen: t.test.askListen }[q.kind];
   return (
     <div className="flex max-w-2xl flex-col gap-5">
       {dots}
@@ -144,6 +155,16 @@ export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: 
         <span className="eyebrow">{fmt(t.test.question, { i: i + 1, n: qs.length })} · {ask}</span>
         {q.kind === "hanzi" ? (
           <span className="text-2xl font-semibold">{meaningText(q.w, locale)}</span>
+        ) : q.kind === "fromPinyin" ? (
+          <Pinyin p={q.w.p} className="text-4xl" />
+        ) : q.kind === "listen" ? (
+          <button type="button" onClick={() => speak(q.w.h)} className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-full border border-line px-5 font-semibold hover:border-muted">
+            <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+              <path d="M3 6h2.5L9 3v10L5.5 10H3z" />
+              <path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6 6 0 0 1 0 9" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            {t.test.play}
+          </button>
         ) : (
           <span lang="zh-CN" className="han text-6xl">{q.w.h}</span>
         )}
@@ -162,7 +183,7 @@ export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: 
               className={`flex min-h-14 items-center gap-3 rounded-lg border border-line bg-surface px-4 text-left hover:border-muted disabled:cursor-default ${state}`}
             >
               <span className="min-w-0 flex-1">
-                {q.kind === "hanzi" ? <span lang="zh-CN" className="han text-2xl">{o.label}</span> : q.kind === "pinyin" ? <Pinyin p={o.label} className="text-lg" /> : o.label}
+                {CHAR_OPTIONS.includes(q.kind) ? <span lang="zh-CN" className="han text-2xl">{o.label}</span> : q.kind === "pinyin" ? <Pinyin p={o.label} className="text-lg" /> : o.label}
               </span>
               <kbd className="text-xs text-muted">{k + 1}</kbd>
             </button>

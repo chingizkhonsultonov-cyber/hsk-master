@@ -6,6 +6,7 @@ import { fmt } from "@/lib/i18n";
 import { getProgress, intervalDays, rateWord, type Grade } from "@/lib/progress";
 import { updateSettings, useSettings } from "@/lib/settings";
 import type { Word } from "@/lib/types";
+import { shuffle } from "@/lib/random";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { Meaning } from "../Meaning";
 import { SpeakButton } from "../SpeakButton";
@@ -13,25 +14,36 @@ import { Tianzige } from "../Tianzige";
 
 const GRADES: Grade[] = ["again", "hard", "good", "easy"];
 
+export type CardWord = Pick<Word, "id" | "h" | "p" | "en" | "ru">;
+/** Which side is shown first: the characters, the meaning, or a random mix per card. */
+export type CardFront = "hanzi" | "meaning" | "mixed";
+
 /** Due and new words first, then the rest of the lesson; Again puts a card back three places later. */
-function buildQueue(words: Word[]) {
+function buildQueue(words: CardWord[], order: "smart" | "random") {
+  if (order === "random") return shuffle(words).map((w) => w.id);
   const p = getProgress().words;
   const now = Date.now();
-  const rank = (w: Word) => (p[w.id] ? (p[w.id].due <= now ? 0 : 2) : 1);
+  const rank = (w: CardWord) => (p[w.id] ? (p[w.id].due <= now ? 0 : 2) : 1);
   return [...words].sort((a, b) => rank(a) - rank(b)).map((w) => w.id);
 }
 
-export function Flashcards({ words }: { words: Word[] }) {
+function dealFronts(words: CardWord[], front: CardFront): Record<string, "hanzi" | "meaning"> {
+  return Object.fromEntries(words.map((w) => [w.id, front === "mixed" ? (Math.random() < 0.5 ? "hanzi" : "meaning") : front]));
+}
+
+export function Flashcards({ words, order = "smart", front = "hanzi", onNewSet }: { words: CardWord[]; order?: "smart" | "random"; front?: CardFront; onNewSet?: () => void }) {
   const { t } = useI18n();
   const { pinyinFront } = useSettings();
   const byId = useMemo(() => Object.fromEntries(words.map((w) => [w.id, w])), [words]);
-  const [queue, setQueue] = useState<string[]>(() => buildQueue(words));
+  const [queue, setQueue] = useState<string[]>(() => buildQueue(words, order));
+  const [fronts] = useState(() => dealFronts(words, front));
   const [revealed, setRevealed] = useState(false);
   const [done, setDone] = useState(0);
   const showRef = useRef<HTMLButtonElement>(null);
   const goodRef = useRef<HTMLButtonElement>(null);
   const w = queue.length ? byId[queue[0]] : null;
   const prog = w ? getProgress().words[w.id] : undefined;
+  const meaningFirst = !!w && fronts[w.id] === "meaning";
 
   const reveal = () => setRevealed(true);
   const rate = (g: Grade) => {
@@ -76,14 +88,14 @@ export function Flashcards({ words }: { words: Word[] }) {
     return (
       <div className="flex flex-col items-center gap-4 rounded-xl border border-line bg-surface px-5 py-12 text-center">
         <span aria-hidden="true" className="han text-5xl text-accent">好</span>
-        <h2 className="text-xl font-semibold">{t.cards.done}</h2>
-        <p className="max-w-md text-muted">{t.cards.doneBody}</p>
+        <h2 className="text-xl font-semibold">{onNewSet ? t.practice.done : t.cards.done}</h2>
+        <p className="max-w-md text-muted">{onNewSet ? t.practice.doneBody : t.cards.doneBody}</p>
         <button
           type="button"
-          onClick={() => { setQueue(buildQueue(words)); setDone(0); }}
+          onClick={() => { if (onNewSet) onNewSet(); else { setQueue(buildQueue(words, order)); setDone(0); } }}
           className="min-h-11 rounded-lg bg-accent px-5 font-semibold text-paper"
         >
-          {t.cards.restart}
+          {onNewSet ? t.practice.newSet : t.cards.restart}
         </button>
       </div>
     );
@@ -97,19 +109,25 @@ export function Flashcards({ words }: { words: Word[] }) {
           <span data-testid="remaining">{fmt(t.cards.remaining, { n: queue.length })}</span>
         </div>
         <div className="flex flex-col items-center gap-4 text-center" aria-live="polite">
-          <Tianzige className="grid w-44 place-items-center sm:w-52">
-            {revealed ? <Hanzi h={w.h} p={w.p} className={`relative ${[...w.h].length > 2 ? "text-4xl" : [...w.h].length > 1 ? "text-6xl" : "text-8xl"}`} /> : (
-              <span lang="zh-CN" className={`han relative ${[...w.h].length > 2 ? "text-4xl" : [...w.h].length > 1 ? "text-6xl" : "text-8xl"}`}>{w.h}</span>
-            )}
-          </Tianzige>
-          {(revealed || pinyinFront) && <Pinyin p={w.p} className="text-2xl" />}
+          {meaningFirst && !revealed ? (
+            <div className="flex min-h-44 items-center sm:min-h-52">
+              <Meaning w={w} className="max-w-md text-2xl font-semibold" />
+            </div>
+          ) : (
+            <Tianzige className="grid w-44 place-items-center sm:w-52">
+              {revealed ? <Hanzi h={w.h} p={w.p} className={`relative ${[...w.h].length > 2 ? "text-4xl" : [...w.h].length > 1 ? "text-6xl" : "text-8xl"}`} /> : (
+                <span lang="zh-CN" className={`han relative ${[...w.h].length > 2 ? "text-4xl" : [...w.h].length > 1 ? "text-6xl" : "text-8xl"}`}>{w.h}</span>
+              )}
+            </Tianzige>
+          )}
+          {(revealed || (pinyinFront && !meaningFirst)) && <Pinyin p={w.p} className="text-2xl" />}
           {revealed ? (
             <>
               <Meaning w={w} className="max-w-md text-lg" />
               <SpeakButton text={w.h} />
             </>
           ) : (
-            <p className="text-sm text-muted">{t.cards.prompt}</p>
+            <p className="text-sm text-muted">{meaningFirst ? t.cards.promptMeaning : t.cards.prompt}</p>
           )}
         </div>
         {revealed ? (

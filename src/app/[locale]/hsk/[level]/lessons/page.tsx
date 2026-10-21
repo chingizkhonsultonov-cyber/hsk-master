@@ -43,6 +43,13 @@ export default async function Lessons({ params }: P) {
         </span>
         <span aria-hidden="true" className="han text-3xl text-muted">语法</span>
       </Link>
+      <Link href={`/${locale}/hsk/${slug}/practice`} className="flex items-center justify-between gap-4 rounded-xl border border-line bg-surface p-5 hover:border-accent">
+        <span className="flex flex-col gap-1">
+          <span className="text-lg font-semibold">{t.practice.hubTitle}</span>
+          <span className="text-sm text-muted">{fmt(t.practice.hubBody, { n: words.length.toLocaleString(locale) })}</span>
+        </span>
+        <span aria-hidden="true" className="han text-3xl text-muted">练习</span>
+      </Link>
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {lessons.map((l) => (
           <li key={l.n}>

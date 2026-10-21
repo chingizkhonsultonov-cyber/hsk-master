@@ -209,3 +209,51 @@ test("syllabus spelling is shown for words like 没（有）", async ({ page }) 
   }
   throw new Error("没（有） not found in HSK 1 lessons");
 });
+
+test("random practice: flashcard sets change every time and avoid recent words", async ({ page }) => {
+  await page.goto("/en/hsk/1");
+  await page.getByRole("link", { name: /Random practice/ }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("HSK 1 random practice");
+  await page.getByText("Flashcards", { exact: true }).click();
+  await page.getByText("10", { exact: true }).click();
+  await page.getByText("Characters", { exact: true }).click();
+  await page.getByRole("button", { name: "Start" }).click();
+  await expect(page.getByTestId("remaining")).toHaveText("10 left");
+  const firstSet = await page.evaluate(() => JSON.parse(localStorage.getItem("hsk-master:practice-recent:v1")!)["1"] as string[]);
+  expect(firstSet).toHaveLength(10);
+  await page.getByRole("button", { name: "New random set" }).click();
+  await expect(page.getByTestId("remaining")).toHaveText("10 left");
+  const both = await page.evaluate(() => JSON.parse(localStorage.getItem("hsk-master:practice-recent:v1")!)["1"] as string[]);
+  expect(both).toHaveLength(20);
+  expect(new Set(both).size, "second set repeats none of the first").toBe(20);
+  await noOverflow(page);
+  await axe(page);
+});
+
+test("random practice: meaning-first cards and a mixed-format test", async ({ page }) => {
+  await page.goto("/ru/hsk/2/practice");
+  await page.getByText("Значение", { exact: true }).click();
+  await page.getByText("10", { exact: true }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await expect(page.getByText("Вспомните иероглифы и произношение")).toBeVisible();
+  await page.getByRole("button", { name: "Изменить настройки" }).click();
+  await page.getByText("Тест", { exact: true }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  const asks = new Set<string>();
+  for (let i = 0; i < 10; i++) {
+    asks.add((await page.locator(".eyebrow").first().textContent())!.split("·")[1].trim());
+    await page.keyboard.press("1");
+    await page.keyboard.press("Enter");
+  }
+  await expect(page.getByTestId("test-result")).toContainText("из 10");
+  expect(asks.size, `question types: ${[...asks].join(", ")}`).toBeGreaterThanOrEqual(3);
+  await noOverflow(page);
+  await axe(page);
+});
+
+test("random practice works for HSK 7–9 and filters by studied words", async ({ page }) => {
+  await page.goto("/en/hsk/7-9/practice");
+  await expect(page.getByText(/Whole level · 5,622/)).toBeVisible();
+  await page.getByText(/Words I've studied · 0/).click();
+  await expect(page.getByText(/No words match this choice yet/)).toBeVisible();
+});
