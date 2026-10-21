@@ -6,12 +6,14 @@ import { Crumbs } from "@/components/Crumbs";
 import { LevelProgress } from "@/components/LevelProgress";
 import { WritingCount } from "@/components/WritingCount";
 import type { Locale } from "@/lib/types";
+import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
 type P = { params: Promise<{ locale: Locale; level: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const { locale, level } = await params;
-  return { title: fmt(getDictionary(locale).hub.title, { n: level }) };
+  const { locale, level: raw } = await params;
+  const level = parseLevel(raw) ?? 1;
+  return { title: fmt(getDictionary(locale).hub.title, { n: levelNumber(level) }) };
 }
 
 const MODULES = [
@@ -23,14 +25,15 @@ const MODULES = [
 
 export default async function LevelHub({ params }: P) {
   const { locale, level: raw } = await params;
-  const level = Number(raw);
+  const level = parseLevel(raw)!;
+  const slug = levelSlug(level);
   const t = getDictionary(locale);
   const s = levelSummary(level);
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { label: fmt(t.common.level, { n: level }) }]} />
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{fmt(t.hub.title, { n: level })}</h1>
+        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { label: levelName(level) }]} />
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{fmt(t.hub.title, { n: levelNumber(level) })}</h1>
         <p className="text-muted">
           {fmt(t.hub.intro, { words: s.words.toLocaleString(locale), lessons: s.lessons })}
         </p>
@@ -51,7 +54,7 @@ export default async function LevelHub({ params }: P) {
           return (
             <li key={m.key}>
               <Link
-                href={`/${locale}/hsk/${level}/${m.key}`}
+                href={`/${locale}/hsk/${slug}/${m.key}`}
                 className="group flex h-full gap-4 rounded-xl border border-line bg-surface p-5 transition-colors hover:border-accent"
               >
                 <span aria-hidden="true" className="han grid h-14 w-14 shrink-0 place-items-center border-2 border-grid text-3xl group-hover:text-accent">

@@ -20,6 +20,7 @@ export function WordList({ words }: { words: Word[] }) {
             <span className="flex flex-wrap gap-x-3 text-xs text-muted">
               {w.cl.length > 0 && <span>{fmt(t.lesson.measure, { m: w.cl.join("、") })}</span>}
               {w.t !== w.h && <span lang="zh-TW">{fmt(t.lesson.traditional, { t: w.t })}</span>}
+              {w.label && <span lang="zh-CN">{fmt(t.lesson.syllabusForm, { f: w.label })}</span>}
             </span>
             {w.dict.length > 0 && (
               <details className="text-xs text-muted">

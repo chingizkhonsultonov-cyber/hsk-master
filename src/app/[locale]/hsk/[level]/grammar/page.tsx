@@ -1,27 +1,42 @@
 import type { Metadata } from "next";
 import { getDictionary, fmt } from "@/lib/i18n";
-import { getGrammar } from "@/data/grammar";
+import { getGrammar, getSyllabusGrammar } from "@/data/grammar";
+import { grammarLabel } from "@/data/grammar/labels";
 import { Crumbs } from "@/components/Crumbs";
 import type { Locale } from "@/lib/types";
+import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
 type P = { params: Promise<{ locale: Locale; level: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const { locale, level } = await params;
-  return { title: fmt(getDictionary(locale).grammar.title, { n: level }) };
+  const { locale, level: raw } = await params;
+  const level = parseLevel(raw) ?? 1;
+  return { title: fmt(getDictionary(locale).grammar.title, { n: levelNumber(level) }) };
 }
 
 export default async function Grammar({ params }: P) {
   const { locale, level: raw } = await params;
-  const level = Number(raw);
+  const level = parseLevel(raw)!;
+  const slug = levelSlug(level);
   const t = getDictionary(locale);
   const points = getGrammar(level);
+  const syllabus = getSyllabusGrammar(level);
+  const groups: { c: string; items: typeof syllabus }[] = [];
+  for (const it of syllabus) {
+    const g = groups[groups.length - 1];
+    if (g && g.c === it.c) g.items.push(it);
+    else groups.push({ c: it.c, items: [it] });
+  }
+  const label = (zh: string) => grammarLabel(zh, locale);
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${level}`, label: fmt(t.common.level, { n: level }) }, { href: `/${locale}/hsk/${level}/lessons`, label: t.hub.modules.lessons.title }, { label: t.lessons.grammar }]} />
-        <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.grammar.title, { n: level })}</h1>
-        <p className="max-w-2xl text-muted">{points.length ? t.grammar.intro : t.lessons.grammarPending}</p>
+        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${slug}`, label: levelName(level) }, { href: `/${locale}/hsk/${slug}/lessons`, label: t.hub.modules.lessons.title }, { label: t.lessons.grammar }]} />
+        <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.grammar.title, { n: levelNumber(level) })}</h1>
+        <p className="max-w-2xl text-muted">{t.grammar.intro}</p>
+        <p className="text-sm text-muted">
+          {fmt(t.grammar.counts, { n: syllabus.length, m: points.length })}
+        </p>
       </div>
       {points.length > 0 && (
         <nav aria-label={t.lessons.grammar} className="flex flex-wrap gap-2">
@@ -68,6 +83,35 @@ export default async function Grammar({ params }: P) {
           </li>
         ))}
       </ol>
+      <section aria-labelledby="syllabus-h" className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <h2 id="syllabus-h" className="text-2xl font-semibold">{t.grammar.syllabusTitle}</h2>
+          <p className="max-w-2xl text-sm text-muted">{t.grammar.syllabusIntro}</p>
+        </div>
+        {groups.map((g) => (
+          <details key={g.c} open={level <= 2} className="rounded-xl border border-line bg-surface">
+            <summary className="flex cursor-pointer flex-wrap items-baseline gap-x-3 px-5 py-4 font-semibold">
+              <span>{label(g.c) ?? g.c}</span>
+              <span lang="zh-CN" className="han text-sm font-normal text-muted">{g.c}</span>
+              <span className="ml-auto text-sm font-normal text-muted tabular-nums">{g.items.length}</span>
+            </summary>
+            <ul className="divide-y divide-line border-t border-line">
+              {g.items.map((it, i) => (
+                <li key={i} className="grid gap-1 px-5 py-3 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-4">
+                  <span className="flex flex-col text-sm">
+                    {[it.n, it.s].filter(Boolean).map((x) => (
+                      <span key={x}>
+                        {label(x) ?? x} <span lang="zh-CN" className="han text-muted">{x}</span>
+                      </span>
+                    ))}
+                  </span>
+                  <span lang="zh-CN" className="han min-w-0 break-words">{it.v || "—"}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </section>
     </div>
   );
 }

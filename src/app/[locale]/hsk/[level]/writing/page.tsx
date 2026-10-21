@@ -5,17 +5,20 @@ import { Crumbs } from "@/components/Crumbs";
 import { WritingClient, type CharEntry } from "@/components/writing/WritingClient";
 import { alignHanzi } from "@/lib/pinyin";
 import type { Locale } from "@/lib/types";
+import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
 type P = { params: Promise<{ locale: Locale; level: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const { locale, level } = await params;
-  return { title: fmt(getDictionary(locale).writing.title, { n: level }) };
+  const { locale, level: raw } = await params;
+  const level = parseLevel(raw) ?? 1;
+  return { title: fmt(getDictionary(locale).writing.title, { n: levelNumber(level) }) };
 }
 
 export default async function Writing({ params }: P) {
   const { locale, level: raw } = await params;
-  const level = Number(raw);
+  const level = parseLevel(raw)!;
+  const slug = levelSlug(level);
   const t = getDictionary(locale);
   // Each character once, with the first lesson word that teaches it.
   const seen = new Set<string>();
@@ -30,8 +33,8 @@ export default async function Writing({ params }: P) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3">
-        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${level}`, label: fmt(t.common.level, { n: level }) }, { label: t.hub.modules.writing.title }]} />
-        <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.writing.title, { n: level })}</h1>
+        <Crumbs items={[{ href: `/${locale}`, label: t.common.appName }, { href: `/${locale}/hsk/${slug}`, label: levelName(level) }, { label: t.hub.modules.writing.title }]} />
+        <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.writing.title, { n: levelNumber(level) })}</h1>
         <p className="max-w-2xl text-muted">{t.writing.intro}</p>
       </div>
       <WritingClient chars={chars} lessons={lessonCount(level)} />

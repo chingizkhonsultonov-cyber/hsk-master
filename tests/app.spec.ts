@@ -33,12 +33,13 @@ test("first visit asks for the explanation language and remembers it", async ({ 
   await expect(page).toHaveURL(/\/ru$/);
 });
 
-test("dashboard shows six HSK levels with official word counts", async ({ page }) => {
+test("dashboard shows HSK 1–6 and 7–9 with the 2025 syllabus word counts", async ({ page }) => {
   await page.goto("/en");
   const levels = page.locator("main ul > li a");
-  await expect(levels).toHaveCount(6);
-  for (const [i, words] of ["150 words", "150 words", "299 words", "601 words", "1,300 words", "2,500 words"].entries()) {
-    await expect(levels.nth(i)).toContainText(`HSK ${i + 1}`);
+  await expect(levels).toHaveCount(7);
+  const counts = ["300 words", "204 words", "507 words", "1,019 words", "1,638 words", "1,815 words", "5,622 words"];
+  for (const [i, words] of counts.entries()) {
+    await expect(levels.nth(i)).toContainText(i === 6 ? "HSK 7–9" : `HSK ${i + 1}`);
     await expect(levels.nth(i)).toContainText(words);
   }
   await noOverflow(page);
@@ -64,7 +65,7 @@ test("level hub links to the four modules", async ({ page }) => {
 test("lesson word list shows hanzi, pinyin and Russian meanings", async ({ page }) => {
   await page.goto("/ru/hsk/1/lessons/1");
   const rows = page.locator('[role="tabpanel"] li');
-  await expect(rows).toHaveCount(10);
+  await expect(rows).toHaveCount(15);
   await expect(page.getByText("притяжательная частица")).toBeVisible();
   await noOverflow(page);
   await axe(page);
@@ -73,13 +74,13 @@ test("lesson word list shows hanzi, pinyin and Russian meanings", async ({ page 
 test("flashcards: reveal, rate, requeue and save progress", async ({ page }) => {
   await page.goto("/en/hsk/1/lessons/2");
   await page.getByRole("tab", { name: "Flashcards" }).click();
-  await expect(page.getByTestId("remaining")).toHaveText("10 left");
+  await expect(page.getByTestId("remaining")).toHaveText("15 left");
   await page.getByRole("button", { name: /Show answer/ }).click();
   await page.locator('[data-grade="good"]').click();
-  await expect(page.getByTestId("remaining")).toHaveText("9 left");
+  await expect(page.getByTestId("remaining")).toHaveText("14 left");
   await page.getByRole("button", { name: /Show answer/ }).click();
   await page.locator('[data-grade="again"]').click();
-  await expect(page.getByTestId("remaining")).toHaveText("9 left");
+  await expect(page.getByTestId("remaining")).toHaveText("14 left");
   const stored = await page.evaluate(() => JSON.parse(localStorage.getItem("hsk-master:progress:v1")!));
   expect(Object.keys(stored.words)).toHaveLength(2);
   await noOverflow(page);
@@ -87,25 +88,28 @@ test("flashcards: reveal, rate, requeue and save progress", async ({ page }) => 
   // keyboard path
   await page.keyboard.press("Space");
   await page.keyboard.press("4");
-  await expect(page.getByTestId("remaining")).toHaveText("8 left");
+  await expect(page.getByTestId("remaining")).toHaveText("13 left");
 });
 
 test("lesson test scores answers and records the best result", async ({ page }) => {
   await page.goto("/en/hsk/1/lessons/3");
   await page.getByRole("tab", { name: "Test" }).click();
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 15; i++) {
     await page.locator('[data-option="0"]').click();
-    await page.getByRole("button", { name: i === 9 ? /See results/ : /Next/ }).click();
+    await page.getByRole("button", { name: i === 14 ? /See results/ : /Next/ }).click();
   }
-  await expect(page.getByTestId("test-result")).toHaveText(/\d+ out of 10/);
+  await expect(page.getByTestId("test-result")).toHaveText(/\d+ out of 15/);
   await page.goto("/en/hsk/1/lessons");
-  await expect(page.getByText(/Best test: \d+\/10/)).toBeVisible();
+  await expect(page.getByText(/Best test: \d+\/15/)).toBeVisible();
   await noOverflow(page);
 });
 
-test("grammar page lists HSK 1 points in both languages", async ({ page }) => {
+test("grammar page has explained HSK 1 points and the official list", async ({ page }) => {
   await page.goto("/en/hsk/1/grammar");
   await expect(page.locator("article")).toHaveCount(14);
+  await expect(page.getByRole("heading", { name: "Official grammar list" })).toBeVisible();
+  await expect(page.getByText("70 items in the official list")).toBeVisible();
+  await expect(page.getByText("Modal verbs").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "Yes/no questions with 吗" })).toBeVisible();
   await page.goto("/ru/hsk/1/grammar");
   await expect(page.getByRole("heading", { name: "Общий вопрос с 吗" })).toBeVisible();
@@ -116,7 +120,7 @@ test("grammar page lists HSK 1 points in both languages", async ({ page }) => {
 test("writing: stroke animation, stroke checking and saved result", async ({ page }) => {
   await page.goto("/en/hsk/1/writing");
   // pick 人 (2 strokes) from whichever lesson has it
-  for (let l = 1; l <= 15; l++) {
+  for (let l = 1; l <= 20; l++) {
     await page.selectOption("#lesson-select", String(l));
     if (await page.locator('[data-char="人"]').count()) break;
   }
@@ -184,4 +188,24 @@ test("PWA manifest and service worker are served", async ({ page, request }) => 
   expect((await request.get("/sw.js")).ok()).toBe(true);
   await page.goto("/en");
   await expect.poll(() => page.evaluate(async () => !!(await navigator.serviceWorker.getRegistration())), { timeout: 10_000 }).toBe(true);
+});
+
+test("HSK 7–9 has its own hub, lessons and official grammar", async ({ page }) => {
+  await page.goto("/en/hsk/7-9");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("HSK 7–9 preparation");
+  await page.getByRole("link", { name: /Lessons & grammar/ }).click();
+  await expect(page).toHaveURL(/\/en\/hsk\/7-9\/lessons$/);
+  await expect(page.getByText("141 lessons").or(page.locator("main ol > li")).first()).toBeVisible();
+  await page.goto("/ru/hsk/7-9/grammar");
+  await expect(page.getByText("Пунктов в официальном списке: 134")).toBeVisible();
+  await noOverflow(page);
+  await axe(page);
+});
+
+test("syllabus spelling is shown for words like 没（有）", async ({ page }) => {
+  for (let l = 1; l <= 20; l++) {
+    await page.goto(`/en/hsk/1/lessons/${l}`);
+    if (await page.getByText("Syllabus form: 没（有）").count()) return;
+  }
+  throw new Error("没（有） not found in HSK 1 lessons");
 });

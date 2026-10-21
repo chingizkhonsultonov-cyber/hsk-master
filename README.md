@@ -1,6 +1,6 @@
 # HSK Master
 
-Exam preparation for HSK 1–6 (HSK 2.0 standard) as an installable web app. English and Russian explanations.
+Exam preparation for the 2025 HSK 3.0 syllabus (新版HSK考试大纲): HSK 1–6 and 7–9, as an installable web app with English and Russian explanations.
 
 ## Run it
 
@@ -16,19 +16,19 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 | Module | Status |
 | --- | --- |
 | Language choice (English / Russian), switchable on every page | Done |
-| Dashboard with HSK 1–6 | Done |
-| Lessons: official words with hanzi, pinyin, audio, meanings, measure words, traditional forms | Done for all 6 levels (5,000 words, 233 lessons) |
+| Dashboard with HSK 1–6 and 7–9 | Done |
+| Lessons: official words with hanzi, pinyin, audio, meanings, measure words, traditional forms | Done for all levels (11,105 entries, 358 lessons) |
 | Flashcards with spaced review (Leitner boxes) | Done |
 | Lesson tests (meaning, characters, pinyin with tone distractors) | Done |
-| Grammar | HSK 1 done (14 points); HSK 2–6 to write |
-| Writing on a 田字格 grid: stroke-order animation, stroke-by-stroke checking (touch, pen, mouse) | Done for all 2,632 characters |
+| Grammar | Official grammar list for every level (593 items); detailed notes for HSK 1 (14 points) |
+| Writing on a 田字格 grid: stroke-order animation, stroke-by-stroke checking (touch, pen, mouse) | Done for all 3,088 characters |
 | Pinyin tone exercise with pitch contours | Done |
 | Listening (exam formats) | Planned, page describes the formats |
 | Speaking & HSKK coach (AI) | Planned |
 | Accounts and sync (Supabase) | Planned; progress is stored on the device in a sync-ready shape |
 | Offline / installable (PWA) | Done (manifest + service worker) |
 
-Russian meanings are written for HSK 1–2. HSK 3–6 show English meanings marked "EN" until translations are added.
+English and Russian meanings and pinyin are hand-checked for HSK 1–2 (504 entries). Higher levels use CC-CEDICT English senses (marked "EN" in Russian mode) and dictionary pinyin chosen to agree with pypinyin; both still need review.
 
 ## Project layout
 
@@ -38,26 +38,28 @@ src/components/                 UI; lesson/ (word list, flashcards, test), writi
 src/lib/i18n/en.ts, ru.ts       every UI string, typed so both languages stay complete
 src/lib/progress.ts             on-device progress (spaced review, tests, writing), records carry updatedAt for sync
 src/lib/settings.ts             language, theme, tone colours
-src/data/hsk2/level-N.json      generated vocabulary
-src/data/grammar/               grammar points (en + ru)
+src/data/hsk3/level-N.json      generated vocabulary (7 = levels 7–9)
+src/data/grammar/               detailed notes (en + ru) and the official syllabus grammar lists
 public/hanzi/<codepoint>.json   stroke data for Hanzi Writer
 scripts/build-vocab.py          rebuilds src/data from the source word lists
-scripts/glosses/hsk2-N.tsv      curated English + Russian meanings
+scripts/glosses/hsk3-N.tsv      curated pinyin, English and Russian meanings
 tests/app.spec.ts               Playwright + axe-core tests
 ```
 
 ## Rebuilding the vocabulary
 
-Download the source lists into one folder (`clem-N.json` from clem109/hsk-vocabulary `hsk-vocab-json/hsk-level-N.json`, `old-N.json` from drkameleon/complete-hsk-vocabulary `wordlists/exclusive/old/N.json`), then:
+Put these in one folder: `k25/w{1..6,7-9}.txt` (krmanik/HSK-3.0-words-list, `New HSK (2025)/HSK Words`), `ced/package/cedict.json` (npm `cedict-json`), `complete.json` (drkameleon/complete-hsk-vocabulary, frequency ranks). Then:
 
 ```bash
+pip install pypinyin
 python3 scripts/build-vocab.py <folder>
 ```
 
 ## Sources and licences
 
-- HSK 2.0 word lists with syllabus pinyin: [clem109/hsk-vocabulary](https://github.com/clem109/hsk-vocabulary) (MIT)
-- Dictionary senses, traditional forms, measure words: [drkameleon/complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT), built on CC-CEDICT (CC BY-SA 4.0)
+- Word and grammar lists: official 2025 HSK syllabus (新版HSK考试大纲), as transcribed in [krmanik/HSK-3.0-words-list](https://github.com/krmanik/HSK-3.0-words-list)
+- Pinyin, dictionary senses, traditional forms, measure words: [CC-CEDICT](https://cc-cedict.org) (CC BY-SA 4.0); readings checked against [pypinyin](https://github.com/mozillazg/python-pinyin) (MIT)
+- Frequency ranks for lesson order: [drkameleon/complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT)
 - Stroke data: [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) via [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) (Arphic Public License); engine [Hanzi Writer](https://github.com/chanind/hanzi-writer) (MIT)
 - Grammar explanations, example sentences and curated meanings: written for this project.
 - Past HSK papers and recordings are copyrighted by CTI and are not included. Listening questions will be original, in the official formats.

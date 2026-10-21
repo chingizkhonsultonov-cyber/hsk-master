@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { levelParams, parseLevel } from "@/lib/data";
+import { levelParams } from "@/lib/data";
+import { parseLevel } from "@/lib/levels";
 
 export function generateStaticParams() {
   return levelParams();

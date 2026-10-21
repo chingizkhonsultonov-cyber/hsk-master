@@ -4,6 +4,10 @@ export interface Word {
   id: string;
   /** simplified hanzi */
   h: string;
+  /** the syllabus spelling when it differs, e.g. 没（有） */
+  label?: string;
+  /** homograph number in the syllabus (打1, 打2) */
+  sense?: number;
   /** pinyin with tone marks, one syllable per character */
   p: string;
   /** traditional form */
@@ -13,7 +17,6 @@ export interface Word {
   /** further dictionary senses (CC-CEDICT) */
   dict: string[];
   cl: string[];
-  pos: string[];
   freq: number;
   lesson: number;
 }

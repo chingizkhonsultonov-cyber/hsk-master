@@ -38,9 +38,8 @@ const en = {
     title: "Choose your HSK level",
     intro: "Each level follows the official HSK word list and has four modules: lessons and grammar, listening, writing, and speaking.",
     reviewDue: "{n} words due for review",
-    standard: "HSK 2.0 standard · 6 levels · 5,000 words",
-    levelLabels: ["Beginner", "Elementary", "Intermediate", "Upper intermediate", "Advanced", "Proficient"],
-    cefr: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    standard: "HSK 3.0 · 2025 syllabus · levels 1–9 · 11,000 words",
+    levelLabels: ["Beginner", "Elementary", "Pre-intermediate", "Intermediate", "Upper intermediate", "Advanced", "Advanced: one exam for levels 7–9"],
   },
   hub: {
     title: "HSK {n} preparation",
@@ -58,8 +57,6 @@ const en = {
     title: "HSK {n} lessons",
     intro: "Lessons are ordered by how often words appear in real Chinese, so you learn the most useful words first.",
     grammar: "Grammar points",
-    grammarCount: "{n} grammar points for this level",
-    grammarPending: "Grammar notes for this level are in preparation.",
     test: "Best test: {n}/{total}",
   },
   lesson: {
@@ -69,6 +66,7 @@ const en = {
     colMeaning: "Meaning",
     measure: "Measure word: {m}",
     traditional: "Traditional: {t}",
+    syllabusForm: "Syllabus form: {f}",
     prev: "Previous lesson",
     next: "Next lesson",
     more: "Dictionary senses",
@@ -113,6 +111,9 @@ const en = {
     structure: "Structure",
     examples: "Examples",
     warning: "Exam note",
+    syllabusTitle: "Official grammar list",
+    syllabusIntro: "Every grammar item the 2025 HSK syllabus requires at this level, as published. Category names are translated; the items themselves are given in Chinese, as in the syllabus.",
+    counts: "{n} items in the official list · {m} explained in detail",
   },
   writing: {
     title: "HSK {n} characters",
@@ -144,16 +145,14 @@ const en = {
   },
   listening: {
     title: "HSK {n} listening",
-    body: "This module is being built next. It will follow the official listening sections for HSK {n}:",
+    body: "This module is being built next. HSK {n} listening practice will cover:",
     formats: {
-      1: ["Picture true/false", "Dialogue to picture", "Short passage questions", "Sentence to answer"],
-      2: ["Picture true/false", "Dialogue to picture", "Short dialogue questions", "Longer dialogue questions"],
-      3: ["Dialogue to picture", "Sentence true/false", "Short dialogue questions", "Longer dialogue questions"],
-      4: ["Sentence true/false", "Short dialogue questions", "Long dialogue and passage questions"],
-      5: ["Short dialogue questions", "Long dialogue and passage questions"],
-      6: ["Passage to matching sentence", "Interview questions", "Long passage questions"],
+      1: ["Listen and judge a picture: true or false", "Choose the picture that matches a short dialogue", "Answer questions on short dialogues"],
+      3: ["Short dialogues with one question", "Longer dialogues and short passages", "Choose the matching sentence or answer"],
+      5: ["Long dialogues and interviews", "Passages: announcements, stories, reports", "Several questions per recording"],
+      7: ["Lectures, news reports and interviews", "Detailed and inferential questions", "Listening tasks that feed into speaking and writing"],
     } as Record<number, string[]>,
-    note: "Questions are written for this app in the official formats. Past exam papers and their recordings are copyrighted and are not reproduced.",
+    note: "Questions are written for this app, using only the vocabulary and grammar of the 2025 syllabus for this level. Past exam papers and their recordings are copyrighted and are not reproduced.",
   },
   speaking: {
     title: "HSK {n} speaking",
@@ -175,7 +174,7 @@ const en = {
     resetNo: "Cancel",
     resetDone: "Progress deleted.",
     sources: "Sources",
-    sourcesBody: "Word lists: official HSK 2.0 syllabus (via clem109/hsk-vocabulary, MIT). Dictionary senses: CC-CEDICT (CC BY-SA 4.0) via drkameleon/complete-hsk-vocabulary (MIT). Stroke data: Make Me a Hanzi / Hanzi Writer (Arphic Public License).",
+    sourcesBody: "Word and grammar lists: official 2025 HSK 3.0 syllabus (新版HSK考试大纲), via krmanik/HSK-3.0-words-list. Pinyin and dictionary senses: CC-CEDICT (CC BY-SA 4.0). Stroke data: Make Me a Hanzi / Hanzi Writer (Arphic Public License). Meanings for HSK 1–2, grammar notes and example sentences are written for this app.",
   },
 };
 
