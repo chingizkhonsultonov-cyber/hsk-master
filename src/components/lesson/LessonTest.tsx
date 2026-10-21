@@ -1,0 +1,186 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useI18n } from "@/lib/i18n/client";
+import { fmt } from "@/lib/i18n";
+import { recordAnswer, recordTest } from "@/lib/progress";
+import { markSyllable, stripTones, syllables, type Tone } from "@/lib/pinyin";
+import type { Word } from "@/lib/types";
+import { Hanzi, Pinyin } from "../Hanzi";
+import { meaningText } from "../Meaning";
+
+export type PoolWord = Pick<Word, "id" | "h" | "p" | "en" | "ru">;
+type Kind = "meaning" | "hanzi" | "pinyin";
+interface Option { label: string; right: boolean }
+interface Question { w: PoolWord; kind: Kind; options: Option[]; pick: number | null }
+
+function shuffle<T>(a: T[]): T[] {
+  const b = a.slice();
+  for (let i = b.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [b[i], b[j]] = [b[j], b[i]];
+  }
+  return b;
+}
+
+/** Wrong pinyin options keep the syllables and change tones, the way the exam tests tone knowledge. */
+function pinyinOptions(p: string, others: PoolWord[]): string[] {
+  const set = new Set([p]);
+  const syl = syllables(p).map(stripTones);
+  for (let guard = 0; set.size < 4 && guard < 80; guard++) {
+    set.add(syl.map((s) => markSyllable(s, (1 + Math.floor(Math.random() * 4)) as Tone)).join(" "));
+  }
+  for (const o of shuffle(others)) {
+    if (set.size >= 4) break;
+    set.add(o.p);
+  }
+  return shuffle([...set]);
+}
+
+function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] {
+  const all = [...words, ...pool];
+  const kinds: Kind[] = ["meaning", "hanzi", "pinyin"];
+  return shuffle(words).map((w, i) => {
+    const kind = kinds[i % 3];
+    if (kind === "pinyin") return { w, kind, pick: null, options: pinyinOptions(w.p, all.filter((o) => o.id !== w.id)).map((label) => ({ label, right: label === w.p })) };
+    const right = kind === "meaning" ? meaningText(w, locale) : w.h;
+    const seen = new Set([right]);
+    const wrong: string[] = [];
+    for (const o of shuffle(all)) {
+      if (wrong.length >= 3) break;
+      const label = kind === "meaning" ? meaningText(o, locale) : o.h;
+      if (o.id === w.id || seen.has(label)) continue;
+      seen.add(label);
+      wrong.push(label);
+    }
+    return { w, kind, pick: null, options: shuffle([right, ...wrong]).map((label) => ({ label, right: label === right })) };
+  });
+}
+
+export function LessonTest({ words, pool, testKey }: { words: PoolWord[]; pool: PoolWord[]; testKey: string }) {
+  const { t, locale } = useI18n();
+  const [qs, setQs] = useState<Question[] | null>(null);
+  const [i, setI] = useState(0);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const firstRef = useRef<HTMLButtonElement>(null);
+
+  // Build on the client only, so the random order never mismatches server HTML.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setQs(build(words, pool, locale));
+  }, [words, pool, locale]);
+
+  const q = qs?.[i];
+  const answered = q?.pick != null;
+
+  const pick = (k: number) => {
+    if (!qs || !q || answered) return;
+    recordAnswer(q.w.id, q.options[k].right);
+    setQs(qs.map((x, j) => (j === i ? { ...x, pick: k } : x)));
+  };
+  const next = () => {
+    if (!qs) return;
+    if (i + 1 === qs.length) recordTest(testKey, qs.filter((x) => x.pick != null && x.options[x.pick].right).length, qs.length);
+    setI(i + 1);
+  };
+
+  useEffect(() => {
+    (answered ? nextRef : firstRef).current?.focus({ preventScroll: true });
+  }, [answered, i]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!q || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (!answered && ["1", "2", "3", "4"].includes(e.key) && q.options[Number(e.key) - 1]) pick(Number(e.key) - 1);
+      else if (answered && e.key === "Enter" && (e.target as HTMLElement)?.tagName !== "BUTTON") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
+  if (!qs) return <p className="text-muted">{fmt(t.test.intro, { n: words.length })}</p>;
+
+  const dots = (
+    <div className="flex gap-1" aria-hidden="true">
+      {qs.map((x, j) => (
+        <span key={j} className={`h-1.5 flex-1 rounded-full ${x.pick == null ? (j === i ? "bg-muted" : "bg-line") : x.options[x.pick].right ? "bg-ok" : "bg-danger"}`} />
+      ))}
+    </div>
+  );
+
+  if (!q) {
+    const score = qs.filter((x) => x.pick != null && x.options[x.pick].right).length;
+    const pct = score / qs.length;
+    return (
+      <div className="flex max-w-2xl flex-col gap-5">
+        {dots}
+        <h2 className="text-2xl font-semibold tabular-nums" data-testid="test-result">{fmt(t.test.result, { score, total: qs.length })}</h2>
+        <p className="text-muted">{pct >= 0.8 ? t.test.resultGood : pct >= 0.5 ? t.test.resultMid : t.test.resultLow}</p>
+        <ul className="divide-y divide-line rounded-xl border border-line bg-surface">
+          {qs.map((x) => {
+            const ok = x.pick != null && x.options[x.pick].right;
+            return (
+              <li key={x.w.id} className="flex flex-wrap items-baseline gap-x-4 gap-y-1 px-4 py-3">
+                <Hanzi h={x.w.h} p={x.w.p} className="text-xl" />
+                <Pinyin p={x.w.p} />
+                <span className="min-w-0 flex-1 text-sm">{meaningText(x.w, locale)}</span>
+                <span className={`text-sm font-semibold ${ok ? "text-ok" : "text-danger"}`}>{ok ? "✓" : "✗"}</span>
+              </li>
+            );
+          })}
+        </ul>
+        <button type="button" onClick={() => { setQs(build(words, pool, locale)); setI(0); }} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
+          {t.test.retry}
+        </button>
+      </div>
+    );
+  }
+
+  const ask = q.kind === "meaning" ? t.test.askMeaning : q.kind === "hanzi" ? t.test.askHanzi : t.test.askPinyin;
+  return (
+    <div className="flex max-w-2xl flex-col gap-5">
+      {dots}
+      <div key={i} className="enter flex flex-col items-center gap-2 rounded-xl border border-line bg-surface px-4 py-8 text-center">
+        <span className="eyebrow">{fmt(t.test.question, { i: i + 1, n: qs.length })} · {ask}</span>
+        {q.kind === "hanzi" ? (
+          <span className="text-2xl font-semibold">{meaningText(q.w, locale)}</span>
+        ) : (
+          <span lang="zh-CN" className="han text-6xl">{q.w.h}</span>
+        )}
+      </div>
+      <div role="group" aria-label={ask} className="grid gap-2 sm:grid-cols-2">
+        {q.options.map((o, k) => {
+          const state = !answered ? "" : o.right ? "border-ok bg-ok/10" : k === q.pick ? "border-danger bg-danger/10" : "opacity-60";
+          return (
+            <button
+              key={k}
+              ref={k === 0 ? firstRef : undefined}
+              type="button"
+              data-option={k}
+              disabled={answered}
+              onClick={() => pick(k)}
+              className={`flex min-h-14 items-center gap-3 rounded-lg border border-line bg-surface px-4 text-left hover:border-muted disabled:cursor-default ${state}`}
+            >
+              <span className="min-w-0 flex-1">
+                {q.kind === "hanzi" ? <span lang="zh-CN" className="han text-2xl">{o.label}</span> : q.kind === "pinyin" ? <Pinyin p={o.label} className="text-lg" /> : o.label}
+              </span>
+              <kbd className="text-xs text-muted">{k + 1}</kbd>
+            </button>
+          );
+        })}
+      </div>
+      <p role="status" className={`min-h-6 font-semibold ${answered ? (q.options[q.pick!].right ? "text-ok" : "text-danger") : ""}`}>
+        {answered && (
+          <>
+            {q.options[q.pick!].right ? t.test.right : t.test.wrong} <span lang="zh-CN" className="han">{q.w.h}</span> · {q.w.p} · {meaningText(q.w, locale)}
+          </>
+        )}
+      </p>
+      {answered && (
+        <button ref={nextRef} type="button" onClick={next} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
+          {i + 1 === qs.length ? t.test.finish : t.common.next} <kbd className="ml-1 text-xs">Enter</kbd>
+        </button>
+      )}
+    </div>
+  );
+}

@@ -1,103 +1,55 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { getSettings, updateSettings } from "@/lib/settings";
+import { DICTIONARIES } from "@/lib/i18n";
+import type { Locale } from "@/lib/types";
+
+/** First visit: pick the explanation language. Returning visitors go straight to their dashboard. */
+export default function Onboarding() {
+  const router = useRouter();
+  useEffect(() => {
+    const saved = getSettings().locale;
+    if (saved) router.replace(`/${saved}`);
+  }, [router]);
+
+  const choose = (l: Locale) => {
+    updateSettings({ locale: l });
+    router.push(`/${l}`);
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center gap-10 py-12 pr-[max(16px,env(safe-area-inset-right))] pl-[max(16px,env(safe-area-inset-left))]">
+      <div className="flex items-center gap-3">
+        <span aria-hidden="true" className="han grid h-12 w-12 place-items-center rounded-lg bg-ink text-2xl text-paper">考</span>
+        <span className="text-2xl font-semibold">HSK Master</span>
+      </div>
+      <div className="grid gap-6 sm:grid-cols-2">
+        {(["en", "ru"] as const).map((l) => {
+          const t = DICTIONARIES[l];
+          return (
+            <section key={l} lang={l} className="flex flex-col gap-3">
+              <h1 className="text-xl font-semibold">{t.onboarding.title}</h1>
+              <p className="text-sm text-muted">{t.onboarding.body}</p>
+            </section>
+          );
+        })}
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {(["en", "ru"] as const).map((l) => (
+          <button
+            key={l}
+            type="button"
+            lang={l}
+            onClick={() => choose(l)}
+            className="flex min-h-16 items-center justify-between gap-3 rounded-xl border border-line bg-surface px-5 text-left text-lg font-semibold hover:border-accent"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            {DICTIONARIES[l].onboarding[l]}
+            <span aria-hidden="true" className="text-muted">→</span>
+          </button>
+        ))}
+      </div>
+    </main>
   );
 }

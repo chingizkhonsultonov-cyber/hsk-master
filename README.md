@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HSK Master
 
-## Getting Started
+Exam preparation for HSK 1–6 (HSK 2.0 standard) as an installable web app. English and Russian explanations.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build && npm start
+npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a production build)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What's in phase 1
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Module | Status |
+| --- | --- |
+| Language choice (English / Russian), switchable on every page | Done |
+| Dashboard with HSK 1–6 | Done |
+| Lessons: official words with hanzi, pinyin, audio, meanings, measure words, traditional forms | Done for all 6 levels (5,000 words, 233 lessons) |
+| Flashcards with spaced review (Leitner boxes) | Done |
+| Lesson tests (meaning, characters, pinyin with tone distractors) | Done |
+| Grammar | HSK 1 done (14 points); HSK 2–6 to write |
+| Writing on a 田字格 grid: stroke-order animation, stroke-by-stroke checking (touch, pen, mouse) | Done for all 2,632 characters |
+| Pinyin tone exercise with pitch contours | Done |
+| Listening (exam formats) | Planned, page describes the formats |
+| Speaking & HSKK coach (AI) | Planned |
+| Accounts and sync (Supabase) | Planned; progress is stored on the device in a sync-ready shape |
+| Offline / installable (PWA) | Done (manifest + service worker) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Russian meanings are written for HSK 1–2. HSK 3–6 show English meanings marked "EN" until translations are added.
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/app/[locale]/…              pages (statically generated for en and ru)
+src/components/                 UI; lesson/ (word list, flashcards, test), writing/ (pad, tone drill)
+src/lib/i18n/en.ts, ru.ts       every UI string, typed so both languages stay complete
+src/lib/progress.ts             on-device progress (spaced review, tests, writing), records carry updatedAt for sync
+src/lib/settings.ts             language, theme, tone colours
+src/data/hsk2/level-N.json      generated vocabulary
+src/data/grammar/               grammar points (en + ru)
+public/hanzi/<codepoint>.json   stroke data for Hanzi Writer
+scripts/build-vocab.py          rebuilds src/data from the source word lists
+scripts/glosses/hsk2-N.tsv      curated English + Russian meanings
+tests/app.spec.ts               Playwright + axe-core tests
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Rebuilding the vocabulary
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Download the source lists into one folder (`clem-N.json` from clem109/hsk-vocabulary `hsk-vocab-json/hsk-level-N.json`, `old-N.json` from drkameleon/complete-hsk-vocabulary `wordlists/exclusive/old/N.json`), then:
 
-## Deploy on Vercel
+```bash
+python3 scripts/build-vocab.py <folder>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Sources and licences
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- HSK 2.0 word lists with syllabus pinyin: [clem109/hsk-vocabulary](https://github.com/clem109/hsk-vocabulary) (MIT)
+- Dictionary senses, traditional forms, measure words: [drkameleon/complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT), built on CC-CEDICT (CC BY-SA 4.0)
+- Stroke data: [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) via [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) (Arphic Public License); engine [Hanzi Writer](https://github.com/chanind/hanzi-writer) (MIT)
+- Grammar explanations, example sentences and curated meanings: written for this project.
+- Past HSK papers and recordings are copyrighted by CTI and are not included. Listening questions will be original, in the official formats.
