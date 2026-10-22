@@ -30,7 +30,8 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 | Speaking: read aloud and listen-and-repeat, checked per character by speech recognition (recorder fallback) | Done; AI coach for tones and grammar planned |
 | Timed mock exam per level with section scores and mistake review | Done (essays, translation and the HSKK oral test are not scored) |
 | Exam readiness overview on each level page | Done |
-| Accounts and sync (Supabase) | Planned; progress is stored on the device in a sync-ready shape |
+| Accounts and sync (Supabase) | Built; switches on when the Supabase keys are set (see Setup) |
+| AI speaking coach (Claude) | Built; switches on when `ANTHROPIC_API_KEY` is set. Includes HSKK-style "answer a question" practice |
 | Offline / installable (PWA) | Done (manifest + service worker) |
 
 English and Russian meanings and pinyin are hand-checked for HSK 1–2 (504 entries). Higher levels use CC-CEDICT English senses (marked "EN" in Russian mode) and dictionary pinyin chosen to agree with pypinyin; both still need review.
@@ -69,3 +70,11 @@ python3 scripts/build-vocab.py <folder>
 - Example sentences: [Tatoeba](https://tatoeba.org) (CC BY 2.0 FR) via the npm package `tatoeba-sentence-pairs-in-mandarin-chinese-english`, graded by `scripts/build-sentences.py` so each level uses only its own and lower-level words
 - Grammar explanations, example sentences and curated meanings: written for this project.
 - Past HSK papers and recordings are copyrighted by CTI and are not included. Listening questions will be original, in the official formats.
+
+## Setup for the AI coach and accounts
+
+Both features are off until their keys are set; everything else works without them. See `.env.example`.
+
+1. **AI coach.** Create a key at console.anthropic.com (Settings → API keys) and set `ANTHROPIC_API_KEY` on the server. The coach uses `claude-opus-5-5` by default; set `COACH_MODEL=claude-haiku-5-5` to cut the cost to a few cents a month. The coach reads the speech-recognition transcript, so it judges grammar, word choice and likely tone errors from mis-recognised characters; it does not hear the audio. Requests use server-side refusal fallbacks (`fallbacks: "default"`).
+2. **Accounts and sync.** Create a Supabase project, run `supabase/schema.sql` in its SQL editor, and set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Sign-in appears under Settings. Progress merges per word, character and test (newest record wins). When Supabase is configured, only signed-in users can call the AI coach; without it, the coach is rate-limited per address.
+3. **Deploy.** Import the repository into Vercel and add the variables above. `npm run build` is the build command.

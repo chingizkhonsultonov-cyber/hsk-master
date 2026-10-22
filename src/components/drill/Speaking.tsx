@@ -10,14 +10,17 @@ import { Choice } from "../Choice";
 import { Pinyin } from "../Hanzi";
 import { sentencePinyin } from "./DrillRunner";
 import { VoiceCheck } from "./DrillPractice";
+import { Coach } from "./Coach";
+import { HSKK_QUESTIONS, hskkBand } from "@/data/hskk-questions";
 
-type Mode = "read" | "repeat";
+type Mode = "read" | "repeat" | "answer";
 
 // The Web Speech recognition API isn't in TypeScript's DOM types yet.
 interface RecognitionResult { transcript: string }
 interface RecognitionEvent { results: ArrayLike<ArrayLike<RecognitionResult>> }
 interface Recognition {
   lang: string;
+  continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
   onresult: ((e: RecognitionEvent) => void) | null;
@@ -71,7 +74,8 @@ function matchChars(target: string[], heard: string[]): boolean[] {
 const MAX_LEN: Record<number, number> = { 1: 8, 2: 10, 3: 12, 4: 16, 5: 20, 6: 24, 7: 28 };
 
 export function Speaking({ level, slug }: { level: number; slug: string }) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const questions = useMemo(() => shuffle(HSKK_QUESTIONS[hskkBand(level)]), [level]);
   const { bank, error } = useBank(slug);
   const pool = useMemo(() => (bank ? shuffle(bank.sentences.filter((s) => hanziOnly(sentenceText(s)).length <= MAX_LEN[level])) : []), [bank, level]);
   const [mode, setMode] = useState<Mode>("read");
@@ -94,9 +98,11 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
     setSupported(!!recognitionCtor());
   }, []);
 
+  const question = questions[k % questions.length];
   useEffect(() => {
     if (s && mode === "repeat") speak(sentenceText(s));
-  }, [s, mode]);
+    if (mode === "answer") speak(question.zh);
+  }, [s, mode, question]);
 
   const reset = () => {
     setHeard(null);
@@ -111,9 +117,15 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
     reset();
     const r = new Ctor();
     r.lang = "zh-CN";
+    // An answer can run to several sentences; reading a sentence is one utterance.
+    r.continuous = mode === "answer";
     r.interimResults = false;
     r.maxAlternatives = 3;
     r.onresult = (e) => {
+      if (mode === "answer") {
+        setHeard(Array.from(e.results).map((res) => res[0]?.transcript ?? "").join("，"));
+        return;
+      }
       const target = hanziOnly(sentenceText(s));
       const alts = Array.from(e.results[0] ?? []).map((a) => digitsToHanzi(a.transcript));
       // Keep the alternative that matches the target best.
@@ -164,9 +176,32 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
   return (
     <div className="flex max-w-2xl flex-col gap-5">
       <VoiceCheck />
-      <Choice legend={t.drill.type} name="mode" value={mode} options={["read", "repeat"] as const} label={(o) => t.speaking.modes[o]} onChange={(m) => { setMode(m); reset(); }} />
+      <Choice legend={t.drill.type} name="mode" value={mode} options={["read", "repeat", "answer"] as const} label={(o) => t.speaking.modes[o]} onChange={(m) => { setMode(m); reset(); }} />
       {!supported && <p role="note" className="rounded-lg border border-line bg-surface px-4 py-3 text-sm">{t.speaking.unsupported}</p>}
 
+      {mode === "answer" ? (
+        <div key={`q-${k}`} className="enter flex flex-col gap-4 rounded-xl border border-line bg-surface px-4 py-6">
+          <span className="eyebrow">{t.coach.question}</span>
+          <p lang="zh-CN" className="han text-2xl leading-relaxed" data-testid="hskk-question">{question.zh}</p>
+          <span className="text-sm">{locale === "ru" ? question.ru : question.en}</span>
+          <p className="text-sm text-muted">{t.coach.answerHint}</p>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={() => speak(question.zh)} className="min-h-11 rounded-full border border-line px-4 font-semibold hover:border-muted">{t.speaking.model}</button>
+            {supported && (
+              <button type="button" onClick={listening ? () => rec.current?.stop() : listen} className="min-h-11 rounded-full bg-accent px-5 font-semibold text-paper">
+                {listening ? t.speaking.stop : t.speaking.speak}
+              </button>
+            )}
+          </div>
+          {!supported && <p className="text-sm text-muted">{t.coach.noRecognition}</p>}
+          <div role="status" className="flex flex-col gap-2 text-sm">
+            {listening && <span className="font-semibold">{t.speaking.listeningNow}</span>}
+            {problem && <span className="text-danger">{problem}</span>}
+            {heard !== null && <span lang="zh-CN">{fmt(t.speaking.heard, { t: heard || "—" })}</span>}
+          </div>
+          {heard && <Coach key={heard} level={level} mode="answer" target={question.zh} heard={heard} />}
+        </div>
+      ) : (
       <div key={`${s.i}-${mode}`} className="enter flex flex-col gap-4 rounded-xl border border-line bg-surface px-4 py-6">
         {showText ? (
           <div className="flex flex-col gap-1">
@@ -207,6 +242,7 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
               {pct < 100 && <span className="text-muted">{t.speaking.missed}</span>}
             </>
           )}
+          {heard !== null && <Coach key={heard} level={level} mode={mode} target={sentenceText(s)} heard={heard} />}
           {clip && (
             <span className="flex flex-wrap items-center gap-2">
               {t.speaking.playback}
@@ -215,6 +251,7 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
           )}
         </div>
       </div>
+      )}
       <button type="button" onClick={() => { reset(); setK(k + 1); }} className="min-h-11 self-start rounded-lg border border-line bg-surface px-5 font-semibold hover:border-muted">
         {t.speaking.next}
       </button>

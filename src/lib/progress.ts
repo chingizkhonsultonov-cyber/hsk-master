@@ -28,6 +28,8 @@ export interface ProgressState {
   words: Record<string, WordProgress>;
   writing: Record<string, WritingProgress>;
   tests: Record<string, { best: number; total: number; updatedAt: number }>;
+  /** set by "Reset all progress"; synced records older than this are dropped */
+  resetAt?: number;
 }
 
 const KEY = "hsk-master:progress:v1";
@@ -151,7 +153,36 @@ export function recordWriting(char: string, mistakes: number) {
 }
 
 export function resetProgress() {
-  commit({ ...EMPTY });
+  commit({ ...EMPTY, resetAt: Date.now() });
+}
+
+/** Listen for any change to progress (used by cloud sync). */
+export const onProgressChange = subscribe;
+
+/** Replace progress with a merged copy (used by cloud sync). */
+export function replaceProgress(next: ProgressState) {
+  commit(next);
+}
+
+function mergeRecords<T extends { updatedAt: number }>(a: Record<string, T>, b: Record<string, T>, after: number): Record<string, T> {
+  const out: Record<string, T> = {};
+  for (const [k, v] of [...Object.entries(a), ...Object.entries(b)]) {
+    if (v.updatedAt < after) continue;
+    if (!out[k] || out[k].updatedAt < v.updatedAt) out[k] = v;
+  }
+  return out;
+}
+
+/** Combines two copies of progress: per word, character and test the newest record wins; a reset clears older records. */
+export function mergeProgress(a: ProgressState, b: ProgressState): ProgressState {
+  const resetAt = Math.max(a.resetAt ?? 0, b.resetAt ?? 0);
+  return {
+    version: 1,
+    words: mergeRecords(a.words, b.words, resetAt),
+    writing: mergeRecords(a.writing, b.writing, resetAt),
+    tests: mergeRecords(a.tests, b.tests, resetAt),
+    ...(resetAt ? { resetAt } : {}),
+  };
 }
 
 /** A word counts as learned once it has been recalled correctly on two separate reviews (box ≥ 2). */

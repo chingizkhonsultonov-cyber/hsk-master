@@ -1,5 +1,6 @@
 "use client";
 
+import { Account } from "./Account";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useI18n } from "@/lib/i18n/client";
@@ -71,7 +72,7 @@ export function SettingsForm() {
       </div>
       <div className={row}>
         <span className="font-semibold">{t.settings.account}</span>
-        <p className="text-sm text-muted">{t.settings.accountBody}</p>
+        <Account />
       </div>
       <div className={row}>
         {!confirming ? (

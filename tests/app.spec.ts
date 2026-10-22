@@ -346,3 +346,16 @@ test("speaking: a sentence to read, model audio and a speak or record button", a
   await noOverflow(page);
   await axe(page);
 });
+
+test("AI coach and cloud sync stay off without keys, and HSKK questions are offered", async ({ page, request }) => {
+  const status = await (await request.get("/api/coach")).json();
+  expect(status).toEqual({ enabled: false, signIn: false });
+  expect((await request.post("/api/coach", { data: {} })).status()).toBe(503);
+  await page.goto("/en/hsk/2/speaking");
+  await page.getByText("Answer a question", { exact: true }).click();
+  await expect(page.getByTestId("hskk-question")).not.toBeEmpty();
+  await noOverflow(page);
+  await axe(page);
+  await page.goto("/ru/settings");
+  await expect(page.getByText(/Синхронизация между устройствами включится/)).toBeVisible();
+});
