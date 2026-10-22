@@ -20,14 +20,14 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 | Lessons: official words with hanzi, pinyin, audio, meanings, measure words, traditional forms | Done for all levels (11,105 entries, 358 lessons) |
 | Flashcards with spaced review (Leitner boxes) | Done |
 | Lesson tests (meaning, characters, pinyin with tone distractors) | Done |
-| Grammar | Official grammar list for every level (593 items); detailed notes for HSK 1 (14 points) |
+| Grammar | Official grammar list for every level (593 items), each with an explanation, examples within the level's vocabulary and common mistakes (en + ru) |
 | Writing on a 田字格 grid: stroke-order animation, stroke-by-stroke checking (touch, pen, mouse) | Done for all 3,088 characters |
 | Pinyin tone exercise with pitch contours | Done |
 | Random practice per level (flashcards and tests, recent words held back) | Done |
 | Graded sentence bank (Tatoeba): 1,200–3,000 sentences per level | Done |
 | Listening: true/false, sentence heard, word heard, with sound-alike options and transcripts | Done (device text-to-speech) |
 | Reading & writing: fill the gap, word order, sentence meaning, arrange words, type the missing character | Done |
-| Speaking: read aloud and listen-and-repeat, checked per character by speech recognition (recorder fallback) | Done; AI coach for tones and grammar planned |
+| Speaking: read aloud and listen-and-repeat, checked per character by speech recognition (recorder fallback) | Done; AI coach below |
 | Timed mock exam per level with section scores and mistake review | Done (essays, translation and the HSKK oral test are not scored) |
 | Exam readiness overview on each level page | Done |
 | Accounts and sync (Supabase) | Built; switches on when the Supabase keys are set (see Setup) |

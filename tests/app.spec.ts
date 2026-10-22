@@ -203,6 +203,21 @@ test("HSK 7–9 has its own hub, lessons and official grammar", async ({ page })
   await axe(page);
 });
 
+test("every official grammar row above HSK 1 opens an explanation with examples", async ({ page }) => {
+  await page.goto("/en/hsk/4/grammar");
+  const group = page.locator("details", { hasText: "难道……吗" }).first();
+  if (!(await group.getAttribute("open"))) await group.locator("summary").first().click();
+  const row = page.locator("#g53");
+  await row.locator("summary").click();
+  await expect(row.getByText("Surely you know?")).toBeVisible();
+  await page.goto("/ru/hsk/7-9/grammar");
+  const ruGroup = page.locator("details", { hasText: "不瞒你说" }).first();
+  if (!(await ruGroup.getAttribute("open"))) await ruGroup.locator("summary").first().click();
+  await page.locator("#g40 summary").click();
+  await expect(page.getByText("Честно говоря, я тоже не очень понимаю.")).toBeVisible();
+  await noOverflow(page);
+});
+
 test("syllabus spelling is shown for words like 没（有）", async ({ page }) => {
   for (let l = 1; l <= 20; l++) {
     await page.goto(`/en/hsk/1/lessons/${l}`);
