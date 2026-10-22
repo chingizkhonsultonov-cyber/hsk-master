@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OpenCue } from "@/components/OpenCue";
 import { getDictionary, count } from "@/lib/i18n";
 import { levelSummary } from "@/lib/data";
 import { LEVEL_NUMBERS, levelName, levelSlug } from "@/lib/levels";
@@ -41,6 +42,7 @@ export default async function Dashboard({ params }: { params: Promise<{ locale: 
                   {count(t.common.words, s.words, locale)} · {count(t.common.lessons, s.lessons, locale)}
                 </span>
                 <LevelProgress level={n} total={s.words} />
+                <OpenCue label={t.common.open} />
               </Link>
             </li>
           );

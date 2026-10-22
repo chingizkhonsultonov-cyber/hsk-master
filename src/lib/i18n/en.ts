@@ -13,6 +13,7 @@ const en = {
     listen: "Listen",
     next: "Next",
     start: "Start",
+    open: "Open",
     again: "Try again",
     settings: "Settings",
     skip: "Skip to content",

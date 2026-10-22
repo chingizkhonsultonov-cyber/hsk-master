@@ -15,6 +15,7 @@ const ru: Dictionary = {
     listen: "Слушать",
     next: "Далее",
     start: "Начать",
+    open: "Открыть",
     again: "Ещё раз",
     settings: "Настройки",
     skip: "Перейти к содержимому",

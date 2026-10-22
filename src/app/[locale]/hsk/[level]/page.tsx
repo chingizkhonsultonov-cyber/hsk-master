@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OpenCue } from "@/components/OpenCue";
 import { getDictionary, fmt, count } from "@/lib/i18n";
 import { levelSummary } from "@/lib/data";
 import { Crumbs } from "@/components/Crumbs";
@@ -65,6 +66,7 @@ export default async function LevelHub({ params }: P) {
             <span className="flex min-w-0 flex-col gap-1">
               <span className="text-lg font-semibold">{c.title}</span>
               <span className="text-sm text-muted">{c.body}</span>
+              <OpenCue label={t.common.open} />
             </span>
           </Link>
         ))}
@@ -88,6 +90,7 @@ export default async function LevelHub({ params }: P) {
                   </span>
                   <span className="text-sm text-muted">{mod.body}</span>
                   {m.key === "lessons" && <span className="text-sm text-muted tabular-nums">{count(t.common.lessons, s.lessons, locale)}</span>}
+                  <OpenCue label={t.common.open} />
                 </span>
               </Link>
             </li>
