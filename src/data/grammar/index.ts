@@ -16,6 +16,7 @@ import r7 from "./notes/level-7.json";
 import d1 from "./notes/detail-1.json";
 import d2 from "./notes/detail-2.json";
 import d3 from "./notes/detail-3.json";
+import d4 from "./notes/detail-4.json";
 
 export interface Example {
   zh: string;
@@ -64,7 +65,7 @@ type RowDetail = Pick<RowNote, "i" | "e" | "u" | "q" | "c">;
 
 const NOTES: Record<number, GrammarPoint[]> = { 1: notes1 };
 const ROW_NOTES: Record<number, RowNote[]> = { 1: r1, 2: r2, 3: r3, 4: r4, 5: r5, 6: r6, 7: r7 } as unknown as Record<number, RowNote[]>;
-const DETAILS: Record<number, RowDetail[]> = { 1: d1, 2: d2, 3: d3 } as unknown as Record<number, RowDetail[]>;
+const DETAILS: Record<number, RowDetail[]> = { 1: d1, 2: d2, 3: d3, 4: d4 } as unknown as Record<number, RowDetail[]>;
 const SYLLABUS: Record<number, SyllabusItem[]> = { 1: s1, 2: s2, 3: s3, 4: s4, 5: s5, 6: s6, 7: s7 };
 
 export function getGrammar(level: number): GrammarPoint[] {
