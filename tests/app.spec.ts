@@ -125,7 +125,11 @@ test("grammar page has explained HSK 1 points and the official list", async ({ p
   await page.goto("/en/hsk/1/grammar");
   await expect(page.locator("article")).toHaveCount(14);
   await expect(page.getByRole("heading", { name: "Official grammar list" })).toBeVisible();
-  await expect(page.getByText("70 items in the official list")).toBeVisible();
+  await expect(page.getByText("70 items in the official list · 70 explained in detail")).toBeVisible();
+  const call = page.locator("details:has(#g27)").first();
+  if ((await call.getAttribute("open")) === null) await call.locator("summary").first().click();
+  await page.locator("#g27 summary").click();
+  await expect(page.getByText("Hello! Is Mr Wang there, please?")).toBeVisible();
   await expect(page.getByText("Modal verbs").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "Yes/no questions with 吗" })).toBeVisible();
   await page.goto("/ru/hsk/1/grammar");
@@ -219,7 +223,7 @@ test("HSK 7–9 has its own hub, lessons and official grammar", async ({ page })
   await axe(page);
 });
 
-test("every official grammar row above HSK 1 opens an explanation with examples", async ({ page }) => {
+test("every official grammar row opens an explanation with examples", async ({ page }) => {
   await page.goto("/en/hsk/4/grammar");
   const group = page.locator("details", { hasText: "难道……吗" }).first();
   if (!(await group.getAttribute("open"))) await group.locator("summary").first().click();

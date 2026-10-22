@@ -6,6 +6,7 @@ import s4 from "./syllabus/level-4.json";
 import s5 from "./syllabus/level-5.json";
 import s6 from "./syllabus/level-6.json";
 import s7 from "./syllabus/level-7.json";
+import r1 from "./notes/level-1.json";
 import r2 from "./notes/level-2.json";
 import r3 from "./notes/level-3.json";
 import r4 from "./notes/level-4.json";
@@ -52,7 +53,7 @@ export interface RowNote {
 }
 
 const NOTES: Record<number, GrammarPoint[]> = { 1: notes1 };
-const ROW_NOTES: Record<number, RowNote[]> = { 2: r2, 3: r3, 4: r4, 5: r5, 6: r6, 7: r7 } as unknown as Record<number, RowNote[]>;
+const ROW_NOTES: Record<number, RowNote[]> = { 1: r1, 2: r2, 3: r3, 4: r4, 5: r5, 6: r6, 7: r7 } as unknown as Record<number, RowNote[]>;
 const SYLLABUS: Record<number, SyllabusItem[]> = { 1: s1, 2: s2, 3: s3, 4: s4, 5: s5, 6: s6, 7: s7 };
 
 export function getGrammar(level: number): GrammarPoint[] {
@@ -66,4 +67,9 @@ export function getSyllabusGrammar(level: number): SyllabusItem[] {
 /** Explanations for rows of the official list, keyed by row index. */
 export function getRowNotes(level: number): Map<number, RowNote> {
   return new Map((ROW_NOTES[level] ?? []).map((n) => [n.i, n]));
+}
+
+/** How many grammar items of the level have an explanation. */
+export function explainedCount(level: number): number {
+  return Math.max(getRowNotes(level).size, getGrammar(level).length);
 }

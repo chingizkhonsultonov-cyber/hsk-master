@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary, fmt, count } from "@/lib/i18n";
 import { getLevel, lessonCount } from "@/lib/data";
-import { getGrammar, getSyllabusGrammar } from "@/data/grammar";
+import { explainedCount, getSyllabusGrammar } from "@/data/grammar";
 import { Crumbs } from "@/components/Crumbs";
 import { LessonTile } from "@/components/LessonTile";
 import type { Locale } from "@/lib/types";
@@ -23,7 +23,6 @@ export default async function Lessons({ params }: P) {
   const t = getDictionary(locale);
   const words = getLevel(level);
   const n = lessonCount(level);
-  const grammar = getGrammar(level);
   const syllabusGrammar = getSyllabusGrammar(level);
   const lessons = Array.from({ length: n }, (_, i) => {
     const ws = words.filter((w) => w.lesson === i + 1);
@@ -39,7 +38,7 @@ export default async function Lessons({ params }: P) {
       <Link href={`/${locale}/hsk/${slug}/grammar`} className="flex items-center justify-between gap-4 rounded-xl border border-line bg-surface p-5 hover:border-accent">
         <span className="flex flex-col gap-1">
           <span className="text-lg font-semibold">{t.lessons.grammar}</span>
-          <span className="text-sm text-muted">{fmt(t.grammar.counts, { n: syllabusGrammar.length, m: grammar.length })}</span>
+          <span className="text-sm text-muted">{fmt(t.grammar.counts, { n: syllabusGrammar.length, m: explainedCount(level) })}</span>
         </span>
         <span aria-hidden="true" className="han text-3xl text-muted">语法</span>
       </Link>

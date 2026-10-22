@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary, fmt } from "@/lib/i18n";
-import { getGrammar, getRowNotes, getSyllabusGrammar, type SyllabusItem } from "@/data/grammar";
+import { explainedCount, getGrammar, getRowNotes, getSyllabusGrammar, type SyllabusItem } from "@/data/grammar";
 import { grammarLabel } from "@/data/grammar/labels";
 import { Crumbs } from "@/components/Crumbs";
 import type { Locale } from "@/lib/types";
@@ -36,7 +36,7 @@ export default async function Grammar({ params }: P) {
         <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.grammar.title, { n: levelNumber(level) })}</h1>
         <p className="max-w-2xl text-muted">{t.grammar.intro}</p>
         <p className="text-sm text-muted">
-          {fmt(t.grammar.counts, { n: syllabus.length, m: points.length + rowNotes.size })}
+          {fmt(t.grammar.counts, { n: syllabus.length, m: explainedCount(level) })}
         </p>
       </div>
       {points.length > 0 && (
