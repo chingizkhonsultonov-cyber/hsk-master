@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary, fmt } from "@/lib/i18n";
-import { getGrammar, getSyllabusGrammar } from "@/data/grammar";
+import { getGrammar, getRowNotes, getSyllabusGrammar, type SyllabusItem } from "@/data/grammar";
 import { grammarLabel } from "@/data/grammar/labels";
 import { Crumbs } from "@/components/Crumbs";
 import type { Locale } from "@/lib/types";
@@ -21,12 +21,13 @@ export default async function Grammar({ params }: P) {
   const t = getDictionary(locale);
   const points = getGrammar(level);
   const syllabus = getSyllabusGrammar(level);
-  const groups: { c: string; items: typeof syllabus }[] = [];
-  for (const it of syllabus) {
+  const rowNotes = getRowNotes(level);
+  const groups: { c: string; items: (SyllabusItem & { k: number })[] }[] = [];
+  syllabus.forEach((it, k) => {
     const g = groups[groups.length - 1];
-    if (g && g.c === it.c) g.items.push(it);
-    else groups.push({ c: it.c, items: [it] });
-  }
+    if (g && g.c === it.c) g.items.push({ ...it, k });
+    else groups.push({ c: it.c, items: [{ ...it, k }] });
+  });
   const label = (zh: string) => grammarLabel(zh, locale);
   return (
     <div className="flex flex-col gap-8">
@@ -35,7 +36,7 @@ export default async function Grammar({ params }: P) {
         <h1 className="text-3xl font-semibold tracking-tight">{fmt(t.grammar.title, { n: levelNumber(level) })}</h1>
         <p className="max-w-2xl text-muted">{t.grammar.intro}</p>
         <p className="text-sm text-muted">
-          {fmt(t.grammar.counts, { n: syllabus.length, m: points.length })}
+          {fmt(t.grammar.counts, { n: syllabus.length, m: points.length + rowNotes.size })}
         </p>
       </div>
       {points.length > 0 && (
@@ -96,18 +97,51 @@ export default async function Grammar({ params }: P) {
               <span className="ml-auto text-sm font-normal text-muted tabular-nums">{g.items.length}</span>
             </summary>
             <ul className="divide-y divide-line border-t border-line">
-              {g.items.map((it, i) => (
-                <li key={i} className="grid gap-1 px-5 py-3 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-4">
-                  <span className="flex flex-col text-sm">
-                    {[it.n, it.s].filter(Boolean).map((x) => (
-                      <span key={x}>
-                        {label(x) ?? x} <span lang="zh-CN" className="han text-muted">{x}</span>
-                      </span>
-                    ))}
-                  </span>
-                  <span lang="zh-CN" className="han min-w-0 break-words">{it.v || "—"}</span>
-                </li>
-              ))}
+              {g.items.map((it) => {
+                const head = (
+                  <>
+                    <span className="flex flex-col text-sm">
+                      {[it.n, it.s].filter(Boolean).map((x) => (
+                        <span key={x}>
+                          {label(x) ?? x} <span lang="zh-CN" className="han text-muted">{x}</span>
+                        </span>
+                      ))}
+                    </span>
+                    <span lang="zh-CN" className="han min-w-0 break-words">{it.v || "—"}</span>
+                  </>
+                );
+                const note = rowNotes.get(it.k);
+                if (!note) return <li key={it.k} className="grid gap-1 px-5 py-3 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-4">{head}</li>;
+                const L = locale === "ru" ? 1 : 0;
+                return (
+                  <li key={it.k} id={`g${it.k + 1}`} className="scroll-mt-24">
+                    <details className="group">
+                      <summary className="grid cursor-pointer gap-1 px-5 py-3 hover:bg-paper sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-4">
+                        {head}
+                        <span className="text-sm font-semibold text-accent sm:col-start-2">{note.t[L]}</span>
+                      </summary>
+                      <div className="flex flex-col gap-3 border-t border-line bg-paper/60 px-5 py-4">
+                        {note.f && <p lang="zh-CN" className="han overflow-x-auto rounded-lg bg-surface px-3 py-2">{note.f}</p>}
+                        <p className="max-w-[65ch] leading-relaxed">{note.x[L]}</p>
+                        <ul className="flex flex-col gap-3">
+                          {note.e.map((ex) => (
+                            <li key={ex[0]} className="flex flex-col border-l-2 border-line pl-3">
+                              <span lang="zh-CN" className="han text-lg">{ex[0]}</span>
+                              <span lang="zh-Latn-pinyin" className="text-sm text-muted">{ex[1]}</span>
+                              <span className="text-sm">{ex[2 + L]}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        {note.w && (
+                          <p className="rounded-lg border border-danger/40 bg-danger/5 px-3 py-2 text-sm">
+                            <strong className="font-semibold text-danger">{t.grammar.warning}:</strong> {note.w[L]}
+                          </p>
+                        )}
+                      </div>
+                    </details>
+                  </li>
+                );
+              })}
             </ul>
           </details>
         ))}
