@@ -123,6 +123,14 @@ export default async function Grammar({ params }: P) {
                       <div className="flex flex-col gap-3 border-t border-line bg-paper/60 px-5 py-4">
                         {note.f && <p lang="zh-CN" className="han overflow-x-auto rounded-lg bg-surface px-3 py-2">{note.f}</p>}
                         <p className="max-w-[65ch] leading-relaxed">{note.x[L]}</p>
+                        {([["u", t.grammar.usage], ["q", t.grammar.forms]] as const).map(([k, h]) =>
+                          note[k] ? (
+                            <div key={k} className="flex max-w-[65ch] flex-col gap-1">
+                              <h3 className="text-sm font-semibold">{h}</h3>
+                              <p className="leading-relaxed">{note[k][L]}</p>
+                            </div>
+                          ) : null,
+                        )}
                         <ul className="flex flex-col gap-3">
                           {note.e.map((ex) => (
                             <li key={ex[0]} className="flex flex-col border-l-2 border-line pl-3">
@@ -132,6 +140,12 @@ export default async function Grammar({ params }: P) {
                             </li>
                           ))}
                         </ul>
+                        {note.c && (
+                          <div className="flex max-w-[65ch] flex-col gap-1 rounded-lg border border-line bg-surface px-3 py-2">
+                            <h3 className="text-sm font-semibold">{t.grammar.compare}</h3>
+                            <p className="text-sm leading-relaxed">{note.c[L]}</p>
+                          </div>
+                        )}
                         {note.w && (
                           <p className="rounded-lg border border-danger/40 bg-danger/5 px-3 py-2 text-sm">
                             <strong className="font-semibold text-danger">{t.grammar.warning}:</strong> {note.w[L]}

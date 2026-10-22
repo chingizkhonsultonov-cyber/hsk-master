@@ -130,6 +130,8 @@ test("grammar page has explained HSK 1 points and the official list", async ({ p
   if ((await call.getAttribute("open")) === null) await call.locator("summary").first().click();
   await page.locator("#g27 summary").click();
   await expect(page.getByText("Hello! Is Mr Wang there, please?")).toBeVisible();
+  await expect(page.locator("#g27").getByRole("heading", { name: "When to use it" })).toBeVisible();
+  await expect(page.getByText("Hello, is that Mr Li?")).toBeVisible();
   await expect(page.getByText("Modal verbs").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "Yes/no questions with 吗" })).toBeVisible();
   await page.goto("/ru/hsk/1/grammar");
