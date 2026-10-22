@@ -72,6 +72,14 @@ test("lesson word list shows hanzi, pinyin and Russian meanings", async ({ page 
   await axe(page);
 });
 
+test("higher levels have Russian meanings too", async ({ page }) => {
+  await page.goto("/ru/hsk/5/lessons/1");
+  await expect(page.getByText("присматривать")).toBeVisible();
+  await page.goto("/ru/hsk/7-9/lessons/1");
+  await expect(page.getByText("второсортный")).toBeVisible();
+  await expect(page.getByText("EN", { exact: true })).toHaveCount(0);
+});
+
 test("flashcards: reveal, rate, requeue and save progress", async ({ page }) => {
   await page.goto("/en/hsk/1/lessons/2");
   await page.getByRole("tab", { name: "Flashcards" }).click();

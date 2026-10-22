@@ -34,7 +34,7 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 | AI speaking coach (Claude) | Built; switches on when `ANTHROPIC_API_KEY` is set. Includes HSKK-style "answer a question" practice |
 | Offline / installable (PWA) | Done (manifest + service worker) |
 
-English and Russian meanings and pinyin are hand-checked for HSK 1–2 (504 entries). Higher levels use CC-CEDICT English senses (marked "EN" in Russian mode) and dictionary pinyin chosen to agree with pypinyin; both still need review.
+All 11,105 words (HSK 1–6 and 7–9) have hand-written English and Russian meanings and reviewed pinyin, with 一 and 不 written in their changed tones from HSK 3 up, as the syllabus does. The curated lists are in `scripts/glosses/`; `python3 scripts/apply-glosses.py` applies them to the word data. Dictionary senses that were left out are kept as "more meanings".
 
 ## Project layout
 

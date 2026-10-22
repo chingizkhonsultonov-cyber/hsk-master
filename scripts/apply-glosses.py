@@ -4,7 +4,7 @@ Each TSV line is: word as listed (with sense number) · pinyin (blank keeps the 
 Lines follow the official list order, the same order build-vocab.py reads them in, so a word listed twice
 takes its glosses in turn. Dictionary senses dropped by the curated English move to `dict`.
 
-Usage: python3 scripts/apply-glosses.py [level ...]
+Usage: python3 scripts/apply-glosses.py [level ...]   (default 3–7; levels 1–2 were glossed when built and use spaced pinyin)
 """
 import json
 import pathlib
@@ -16,7 +16,7 @@ def key(w):
     return (w.get("label") or w["h"]) + (str(w["sense"]) if w.get("sense") else "")
 
 TONES = {c: t for t, cs in enumerate(["āēīōūǖ", "áéíóúǘ", "ǎěǐǒǔǚ", "àèìòùǜ"], start=1) for c in cs}
-NUMERIC = set("第十百千万唯统初独")
+NUMERIC = set("第十百千万唯统初独数")
 
 def tone(syllable):
     return next((TONES[c] for c in syllable if c in TONES), 0)
@@ -35,7 +35,7 @@ def sandhi(h, p):
     return " ".join(syl)
 
 ok = True
-for level in [int(a) for a in sys.argv[1:]] or range(1, 8):
+for level in [int(a) for a in sys.argv[1:]] or range(3, 8):
     src = root / "scripts/glosses" / f"hsk3-{level}.tsv"
     lines = src.read_text(encoding="utf8").splitlines() if src.exists() else []
     rows = [l.split("\t") for l in lines if l.strip() and not l.startswith("#")]
