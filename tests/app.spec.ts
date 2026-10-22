@@ -396,3 +396,20 @@ test("AI coach and cloud sync stay off without keys, and HSKK questions are offe
   await page.goto("/ru/settings");
   await expect(page.getByText(/Синхронизация между устройствами включится/)).toBeVisible();
 });
+
+test("Ask Claude button opens claude.ai with the question and page filled in", async ({ page, context }) => {
+  await page.goto("/en/hsk/3/grammar");
+  await page.getByRole("button", { name: "Ask Claude" }).click();
+  const dialog = page.getByRole("dialog", { name: "Ask Claude about Chinese" });
+  await expect(dialog).toBeVisible();
+  await context.route("https://claude.ai/**", (r) => r.fulfill({ body: "ok" }));
+  await dialog.getByRole("textbox").fill("What does 了 mean?");
+  const [popup] = await Promise.all([context.waitForEvent("page"), dialog.getByRole("button", { name: "Ask in Claude ↗" }).click()]);
+  const q = new URL(popup.url()).searchParams.get("q") ?? "";
+  expect(q).toContain("level HSK 3");
+  expect(q).toContain("/en/hsk/3/grammar");
+  expect(q).toContain("What does 了 mean?");
+  await popup.close();
+  await dialog.getByRole("button", { name: "Close" }).click();
+  await expect(page.getByRole("button", { name: "Ask Claude" })).toBeVisible();
+});

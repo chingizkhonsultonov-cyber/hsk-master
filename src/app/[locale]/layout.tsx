@@ -5,6 +5,7 @@ import { I18nProvider } from "@/lib/i18n/client";
 import { LOCALES, getDictionary, isLocale } from "@/lib/i18n";
 import { ServiceWorker } from "@/components/ServiceWorker";
 import { CloudSync } from "@/components/Account";
+import { AskClaude } from "@/components/AskClaude";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -32,6 +33,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       </main>
       <ServiceWorker />
       <CloudSync />
+      <AskClaude />
     </I18nProvider>
   );
 }
