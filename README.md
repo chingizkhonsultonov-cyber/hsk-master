@@ -36,6 +36,12 @@ npx playwright test  # end-to-end tests on desktop, tablet and phone (needs a pr
 
 All 11,105 words (HSK 1–6 and 7–9) have hand-written English and Russian meanings and reviewed pinyin, with 一 and 不 written in their changed tones from HSK 3 up, as the syllabus does. The curated lists are in `scripts/glosses/`; `python3 scripts/apply-glosses.py` applies them to the word data. Dictionary senses that were left out are kept as "more meanings".
 
+## Live site
+
+The app is published at https://chingizkhonsultonov-cyber.github.io/hsk-master/ from the `gh-pages` branch.
+To update it, build plain files with `NEXT_PUBLIC_BASE_PATH=/hsk-master npm run build:static`, then push the contents of `out/` (plus an empty `.nojekyll`) to `gh-pages`.
+GitHub Pages has no server, so the AI coach and sign-in stay off there; deploy to Vercel with the keys set to use them.
+
 ## Project layout
 
 ```

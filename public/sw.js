@@ -1,8 +1,10 @@
 /* HSK Master service worker: offline app shell, cached pages and stroke data. */
-const VERSION = "v2";
+const VERSION = "v3";
 const STATIC = `static-${VERSION}`;
 const PAGES = `pages-${VERSION}`;
 const HANZI = `hanzi-${VERSION}`;
+// "" at the site root, "/hsk-master" when served from a sub-folder such as GitHub Pages.
+const BASE = new URL(self.registration.scope).pathname.replace(/\/$/, "");
 
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", (event) => {
@@ -18,8 +20,8 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   // Build assets and stroke data never change at a given URL: cache first.
-  if (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/hanzi/")) {
-    const cacheName = url.pathname.startsWith("/hanzi/") ? HANZI : STATIC;
+  if (url.pathname.startsWith(`${BASE}/_next/static/`) || url.pathname.startsWith(`${BASE}/hanzi/`)) {
+    const cacheName = url.pathname.startsWith(`${BASE}/hanzi/`) ? HANZI : STATIC;
     event.respondWith(
       caches.open(cacheName).then(async (cache) => {
         const hit = await cache.match(req);
@@ -33,7 +35,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Pages: network first, fall back to the last copy when offline.
-  if (req.mode === "navigate" || req.headers.get("RSC") === "1" || url.pathname.startsWith("/data/")) {
+  if (req.mode === "navigate" || req.headers.get("RSC") === "1" || url.pathname.startsWith(`${BASE}/data/`)) {
     event.respondWith(
       fetch(req)
         .then((res) => {
@@ -43,7 +45,7 @@ self.addEventListener("fetch", (event) => {
           }
           return res;
         })
-        .catch(async () => (await caches.match(req)) || (await caches.match("/")) || Response.error()),
+        .catch(async () => (await caches.match(req)) || (await caches.match(`${BASE}/`)) || Response.error()),
     );
   }
 });

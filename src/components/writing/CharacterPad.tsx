@@ -9,6 +9,7 @@ import { Tianzige } from "../Tianzige";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { SpeakButton } from "../SpeakButton";
 import type { CharEntry } from "./WritingClient";
+import { BASE } from "@/lib/base";
 
 type Status = { tone: "neutral" | "good" | "bad"; text: string };
 
@@ -46,7 +47,7 @@ export function CharacterPad({ entry }: { entry: CharEntry }) {
       delayBetweenStrokes: 220,
       showHintAfterMisses: 2,
       charDataLoader: (char, onLoad, onError) => {
-        fetch(`/hanzi/${char.codePointAt(0)!.toString(16)}.json`)
+        fetch(`${BASE}/hanzi/${char.codePointAt(0)!.toString(16)}.json`)
           .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
           .then(onLoad)
           .catch(onError);

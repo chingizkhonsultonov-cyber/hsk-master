@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n/client";
 import { fmt } from "@/lib/i18n";
 import { accessToken } from "@/lib/supabase";
 import { Pinyin } from "../Hanzi";
+import { BASE } from "@/lib/base";
 
 interface Feedback {
   score: number;
@@ -17,7 +18,7 @@ interface Feedback {
 
 let statusPromise: Promise<{ enabled: boolean; signIn: boolean }> | null = null;
 const coachStatus = () =>
-  (statusPromise ??= fetch("/api/coach").then((r) => (r.ok ? r.json() : { enabled: false, signIn: false })).catch(() => ({ enabled: false, signIn: false })));
+  (statusPromise ??= fetch(`${BASE}/api/coach`).then((r) => (r.ok ? r.json() : { enabled: false, signIn: false })).catch(() => ({ enabled: false, signIn: false })));
 
 /** Whether the AI coach is available on this deployment (an API key is configured on the server). */
 export function useCoachEnabled() {
@@ -43,7 +44,7 @@ export function Coach({ level, mode, target, heard }: { level: number; mode: "re
     setErr(null);
     try {
       const token = await accessToken();
-      const r = await fetch("/api/coach", {
+      const r = await fetch(`${BASE}/api/coach`, {
         method: "POST",
         headers: { "content-type": "application/json", ...(token ? { authorization: `Bearer ${token}` } : {}) },
         body: JSON.stringify({ level, locale, mode, target, heard }),

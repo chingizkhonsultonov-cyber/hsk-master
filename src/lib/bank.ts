@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Word } from "./types";
+import { BASE } from "@/lib/base";
 
 export type BankWord = Pick<Word, "id" | "h" | "p" | "en" | "ru" | "lesson">;
 
@@ -26,8 +27,8 @@ function load<T>(url: string): Promise<T> {
   return p as Promise<T>;
 }
 
-export const loadWords = (slug: string) => load<BankWord[]>(`/data/words/${slug}`);
-export const loadSentences = (slug: string) => load<Sentence[]>(`/data/sentences/${slug}`);
+export const loadWords = (slug: string) => load<BankWord[]>(`${BASE}/data/words/${slug}`);
+export const loadSentences = (slug: string) => load<Sentence[]>(`${BASE}/data/sentences/${slug}`);
 
 export interface Bank {
   words: BankWord[];

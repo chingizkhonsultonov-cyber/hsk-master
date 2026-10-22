@@ -9,6 +9,7 @@ import { ToneScope } from "../ToneScope";
 import { Flashcards, type CardFront, type CardWord } from "../lesson/Flashcards";
 import { LessonTest } from "../lesson/LessonTest";
 import { Choice } from "../Choice";
+import { BASE } from "@/lib/base";
 
 type Mode = "cards" | "test";
 type Source = "all" | "studied" | "weak" | "fresh";
@@ -73,7 +74,7 @@ export function PracticeClient({ level, slug }: { level: number; slug: string })
 
   useEffect(() => {
     let live = true;
-    fetch(`/data/words/${slug}`)
+    fetch(`${BASE}/data/words/${slug}`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((ws: CardWord[]) => {
         if (!live) return;
