@@ -1,1 +1,2022 @@
-[]
+[
+{
+"id": "urban",
+"t": [
+"City and countryside",
+"Город и деревня"
+],
+"d": [
+{
+"t": [
+"Moving back to the village",
+"Возвращение в деревню"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我表哥辞掉了城里的工作，回老家搞起了农产品直播。",
+"Wǒ biǎogē cídiào le chéng li de gōngzuò, huí lǎojiā gǎo qǐ le nóngchǎnpǐn zhíbō.",
+"My cousin quit his city job and went home to sell farm produce via livestreams.",
+"Мой двоюродный брат бросил работу в городе и вернулся в деревню продавать фермерские продукты через прямые эфиры."
+],
+[
+1,
+"现在这样的年轻人越来越多了，农村的机会其实不少。",
+"Xiànzài zhèyàng de niánqīngrén yuè lái yuè duō le, nóngcūn de jīhuì qíshí bù shǎo.",
+"There are more and more young people like that; the countryside actually has plenty of opportunities.",
+"Таких молодых людей всё больше, в деревне на самом деле немало возможностей."
+],
+[
+0,
+"他说虽然收入不稳定，但生活压力小多了，还能照顾父母。",
+"Tā shuō suīrán shōurù bù wěndìng, dàn shēnghuó yālì xiǎo duō le, hái néng zhàogù fùmǔ.",
+"He says his income is unstable, but life is far less stressful and he can look after his parents.",
+"Говорит, доход нестабильный, но жить гораздо спокойнее, и может заботиться о родителях."
+],
+[
+1,
+"关键是找到适合自己的生活方式。",
+"Guānjiàn shì zhǎo dào shìhé zìjǐ de shēnghuó fāngshì.",
+"The key is finding the way of life that suits you.",
+"Главное — найти подходящий себе образ жизни."
+]
+]
+},
+{
+"t": [
+"The price of city life",
+"Цена городской жизни"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"大城市机会多，可是房价高得离谱，通勤也要两个小时。",
+"Dà chéngshì jīhuì duō, kěshì fángjià gāo de lípǔ, tōngqín yě yào liǎng ge xiǎoshí.",
+"Big cities have opportunities, but housing is absurdly expensive and commuting takes two hours.",
+"В больших городах много возможностей, но жильё безумно дорогое, а дорога на работу занимает два часа."
+],
+[
+1,
+"所以不少人选择去二线城市发展，生活成本低，节奏也慢一些。",
+"Suǒyǐ bù shǎo rén xuǎnzé qù èrxiàn chéngshì fāzhǎn, shēnghuó chéngběn dī, jiézòu yě màn yìxiē.",
+"That's why many choose second-tier cities: lower costs and a slower pace.",
+"Поэтому многие едут в города второго уровня: жизнь дешевле и ритм спокойнее."
+],
+[
+0,
+"不过那里的工资和发展空间也有限。",
+"Búguò nàlǐ de gōngzī hé fāzhǎn kōngjiān yě yǒuxiàn.",
+"But salaries and career prospects there are limited too.",
+"Но там и зарплаты, и перспективы ограничены."
+],
+[
+1,
+"有得必有失，就看你更看重什么了。",
+"Yǒu dé bì yǒu shī, jiù kàn nǐ gèng kànzhòng shénme le.",
+"Every gain has a cost; it depends what you value more.",
+"За всё приходится платить, всё зависит от того, что для тебя важнее."
+]
+]
+}
+]
+},
+{
+"id": "privacy",
+"t": [
+"Online privacy",
+"Конфиденциальность в сети"
+],
+"d": [
+{
+"t": [
+"How did they know?",
+"Откуда они знают?"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我刚跟朋友聊到想买跑步机，手机上就推送了广告，太可怕了。",
+"Wǒ gāng gēn péngyou liáo dào xiǎng mǎi pǎobùjī, shǒujī shang jiù tuīsòng le guǎnggào, tài kěpà le.",
+"I'd just told a friend I wanted a treadmill, and ads popped up on my phone. Scary.",
+"Я только сказала подруге, что хочу беговую дорожку, и тут же на телефоне реклама. Жутко."
+],
+[
+1,
+"很多应用会收集我们的数据，有时候授权的时候根本没注意。",
+"Hěn duō yìngyòng huì shōují wǒmen de shùjù, yǒushíhou shòuquán de shíhou gēnběn méi zhùyì.",
+"Lots of apps collect our data; we often grant permissions without noticing.",
+"Многие приложения собирают наши данные, а мы, разрешая доступ, часто не обращаем внимания."
+],
+[
+0,
+"那怎么保护个人隐私呢？",
+"Nà zěnme bǎohù gèrén yǐnsī ne?",
+"So how do we protect our privacy?",
+"Как же тогда защищать личные данные?"
+],
+[
+1,
+"定期检查权限，不需要的就关掉，也别随便点陌生链接。",
+"Dìngqī jiǎnchá quánxiàn, bù xūyào de jiù guān diào, yě bié suíbiàn diǎn mòshēng liànjiē.",
+"Check permissions regularly, switch off what's unnecessary, and don't click unknown links.",
+"Регулярно проверять разрешения, отключать ненужное и не открывать незнакомые ссылки."
+]
+]
+},
+{
+"t": [
+"A scam call",
+"Звонок мошенников"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"刚才有人打电话说我的银行卡被冻结了，让我把验证码告诉他。",
+"Gāngcái yǒu rén dǎ diànhuà shuō wǒ de yínhángkǎ bèi dòngjié le, ràng wǒ bǎ yànzhèngmǎ gàosu tā.",
+"Someone just called saying my bank card was frozen and asked me for the verification code.",
+"Только что позвонили, сказали, что моя карта заблокирована, и попросили код подтверждения."
+],
+[
+1,
+"千万别说！银行不会在电话里要验证码，这肯定是骗子。",
+"Qiānwàn bié shuō! Yínháng bú huì zài diànhuà li yào yànzhèngmǎ, zhè kěndìng shì piànzi.",
+"Don't tell them! Banks never ask for codes by phone — that's definitely a scammer.",
+"Ни в коем случае! Банк не просит коды по телефону — это точно мошенник."
+],
+[
+0,
+"幸亏我多了个心眼儿，直接挂了。",
+"Xìngkuī wǒ duō le ge xīnyǎnr, zhíjiē guà le.",
+"Luckily I was suspicious and hung up.",
+"Хорошо, что я насторожился и сразу повесил трубку."
+],
+[
+1,
+"做得对，最好再向警方举报这个号码。",
+"Zuò de duì, zuìhǎo zài xiàng jǐngfāng jǔbào zhège hàomǎ.",
+"Good call. Better report the number to the police too.",
+"Правильно. И лучше сообщить номер в полицию."
+]
+]
+}
+]
+},
+{
+"id": "freelance",
+"t": [
+"Freelancing",
+"Фриланс"
+],
+"d": [
+{
+"t": [
+"Being your own boss",
+"Сам себе начальник"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我现在做自由翻译，时间完全由自己安排。",
+"Wǒ xiànzài zuò zìyóu fānyì, shíjiān wánquán yóu zìjǐ ānpái.",
+"I'm a freelance translator now; I set my own hours entirely.",
+"Я теперь фрилансер-переводчик, время распределяю сама."
+],
+[
+1,
+"听起来很自由，但收入稳定吗？",
+"Tīng qǐlai hěn zìyóu, dàn shōurù wěndìng ma?",
+"Sounds free, but is the income stable?",
+"Звучит свободно, но доход стабильный?"
+],
+[
+0,
+"忙的时候接不过来，闲的时候一个月都没活儿。",
+"Máng de shíhou jiē bu guòlai, xián de shíhou yí ge yuè dōu méi huór.",
+"When it's busy I can't keep up; when it's quiet, there's no work for a month.",
+"Когда густо — не успеваю, когда пусто — месяц без заказов."
+],
+[
+1,
+"那社保和医疗保险你得自己交，别忽视了。",
+"Nà shèbǎo hé yīliáo bǎoxiǎn nǐ děi zìjǐ jiāo, bié hūshì le.",
+"Then you have to pay social and health insurance yourself — don't neglect it.",
+"Тогда соцстрахование и медстраховку платишь сама, не забывай."
+]
+]
+},
+{
+"t": [
+"Delivery riders",
+"Курьеры"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"外卖骑手为了准时，经常闯红灯，太危险了。",
+"Wàimài qíshǒu wèile zhǔnshí, jīngcháng chuǎng hóngdēng, tài wēixiǎn le.",
+"Delivery riders often run red lights to be on time — it's so dangerous.",
+"Курьеры ради пунктуальности часто проезжают на красный, это очень опасно."
+],
+[
+1,
+"这背后是平台的算法压力，时间被压缩得越来越短。",
+"Zhè bèihòu shì píngtái de suànfǎ yālì, shíjiān bèi yāsuō de yuè lái yuè duǎn.",
+"Behind it is the platform's algorithm squeezing delivery times shorter and shorter.",
+"За этим стоит давление алгоритма платформы, время сокращают всё сильнее."
+],
+[
+0,
+"作为顾客，我们也可以多一点儿耐心。",
+"Zuòwéi gùkè, wǒmen yě kěyǐ duō yìdiǎnr nàixīn.",
+"As customers, we could be a bit more patient too.",
+"Мы, как клиенты, тоже можем быть терпеливее."
+],
+[
+1,
+"对，晚几分钟不是什么大事，安全更重要。",
+"Duì, wǎn jǐ fēnzhōng bú shì shénme dà shì, ānquán gèng zhòngyào.",
+"Right — a few minutes late is no big deal; safety matters more.",
+"Да, опоздание на несколько минут — пустяк, безопасность важнее."
+]
+]
+}
+]
+},
+{
+"id": "mental",
+"t": [
+"Mental health",
+"Психическое здоровье"
+],
+"d": [
+{
+"t": [
+"Feeling burned out",
+"Выгорание"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"最近我对什么都提不起兴趣，每天上班像在应付。",
+"Zuìjìn wǒ duì shénme dōu tí bu qǐ xìngqù, měi tiān shàngbān xiàng zài yìngfu.",
+"Lately nothing interests me; I'm just going through the motions at work.",
+"В последнее время ничего не интересно, на работе просто отбываю номер."
+],
+[
+1,
+"听起来你可能有点儿职业倦怠，要不要请几天假休息？",
+"Tīng qǐlai nǐ kěnéng yǒudiǎnr zhíyè juàndài, yào bu yào qǐng jǐ tiān jià xiūxi?",
+"Sounds like burnout. Why not take a few days off?",
+"Похоже на профессиональное выгорание. Может, взять пару дней отдыха?"
+],
+[
+0,
+"我怕别人觉得我太脆弱。",
+"Wǒ pà biérén juéde wǒ tài cuìruò.",
+"I'm afraid people will think I'm weak.",
+"Боюсь, подумают, что я слабая."
+],
+[
+1,
+"照顾好自己的情绪不是脆弱。如果持续下去，也可以找心理咨询师聊聊。",
+"Zhàogù hǎo zìjǐ de qíngxù bú shì cuìruò. Rúguǒ chíxù xiàqu, yě kěyǐ zhǎo xīnlǐ zīxúnshī liáoliao.",
+"Looking after your mental health isn't weakness. If it continues, talk to a counsellor.",
+"Заботиться о своём состоянии — не слабость. Если так продолжится, сходи к психологу."
+]
+]
+},
+{
+"t": [
+"Supporting a friend",
+"Поддержать друга"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"小陈失恋以后一直不出门，我们该怎么帮他？",
+"Xiǎo Chén shīliàn yǐhòu yìzhí bù chūmén, wǒmen gāi zěnme bāng tā?",
+"Xiao Chen hasn't left home since his break-up. How can we help him?",
+"Сяо Чэнь после расставания не выходит из дома. Как ему помочь?"
+],
+[
+1,
+"先别急着讲道理，多听他说就好。",
+"Xiān bié jí zhe jiǎng dàolǐ, duō tīng tā shuō jiù hǎo.",
+"Don't rush to lecture him; just listen.",
+"Не спеши поучать, просто выслушай."
+],
+[
+0,
+"要不周末约他出去走走，换换心情？",
+"Yàobù zhōumò yuē tā chūqu zǒuzou, huànhuan xīnqíng?",
+"How about asking him out this weekend for a change of scene?",
+"Может, позвать его в выходные прогуляться, отвлечься?"
+],
+[
+1,
+"可以，但别勉强他，让他知道我们一直都在。",
+"Kěyǐ, dàn bié miǎnqiǎng tā, ràng tā zhīdào wǒmen yìzhí dōu zài.",
+"Sure, but don't push him; let him know we're always here.",
+"Можно, только не дави — пусть знает, что мы рядом."
+]
+]
+}
+]
+},
+{
+"id": "heritage",
+"t": [
+"Cultural heritage",
+"Культурное наследие"
+],
+"d": [
+{
+"t": [
+"Saving old crafts",
+"Спасаем старые ремёсла"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"老艺人",
+"lǎo yìrén"
+]
+],
+"l": [
+[
+0,
+"您做剪纸做了多少年了？",
+"Nín zuò jiǎnzhǐ zuò le duōshao nián le?",
+"How many years have you been making paper-cuts?",
+"Сколько лет вы занимаетесь вырезанием из бумаги?"
+],
+[
+1,
+"五十多年了。可惜现在愿意学的年轻人越来越少。",
+"Wǔshí duō nián le. Kěxī xiànzài yuànyì xué de niánqīngrén yuè lái yuè shǎo.",
+"Over fifty years. Sadly fewer and fewer young people want to learn.",
+"Больше пятидесяти лет. Жаль, молодёжи, желающей учиться, всё меньше."
+],
+[
+0,
+"我觉得可以通过短视频让更多人了解这门手艺。",
+"Wǒ juéde kěyǐ tōngguò duǎn shìpín ràng gèng duō rén liǎojiě zhè mén shǒuyì.",
+"I think short videos could introduce the craft to more people.",
+"Думаю, короткие видео помогут больше людей узнать об этом ремесле."
+],
+[
+1,
+"我孙女也这么说，她帮我拍的视频还真有不少人看。",
+"Wǒ sūnnǚ yě zhème shuō, tā bāng wǒ pāi de shìpín hái zhēn yǒu bù shǎo rén kàn.",
+"My granddaughter says the same; the videos she made of me actually got lots of views.",
+"Внучка так же говорит, и её видео обо мне правда многие смотрят."
+]
+]
+},
+{
+"t": [
+"Rebuilding old streets",
+"Реконструкция старых улиц"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"老街改造以后，商店都一样，失去了原来的味道。",
+"Lǎo jiē gǎizào yǐhòu, shāngdiàn dōu yíyàng, shīqù le yuánlái de wèidao.",
+"Since the old street was redeveloped, the shops are all the same; it's lost its character.",
+"После реконструкции старой улицы все магазины одинаковые, исчез прежний дух."
+],
+[
+1,
+"保护和开发确实很难平衡。",
+"Bǎohù hé kāifā quèshí hěn nán pínghéng.",
+"Balancing preservation and development is genuinely hard.",
+"Сохранить и развивать одновременно действительно сложно."
+],
+[
+0,
+"我认为应该让原来的居民留下来，文化是靠人传下去的。",
+"Wǒ rènwéi yīnggāi ràng yuánlái de jūmín liú xiàlai, wénhuà shì kào rén chuán xiàqu de.",
+"I think the original residents should be allowed to stay; culture is passed on by people.",
+"Считаю, коренных жителей надо оставить — культура передаётся людьми."
+],
+[
+1,
+"这个观点我很赞同。",
+"Zhège guāndiǎn wǒ hěn zàntóng.",
+"I fully agree with that.",
+"Полностью согласна."
+]
+]
+}
+]
+},
+{
+"id": "minimalism",
+"t": [
+"Living with less",
+"Минимализм"
+],
+"d": [
+{
+"t": [
+"Decluttering",
+"Расхламление"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"我最近开始断舍离，扔掉了一半的衣服。",
+"Wǒ zuìjìn kāishǐ duànshělí, rēng diào le yíbàn de yīfu.",
+"I've started decluttering and got rid of half my clothes.",
+"Я начала расхламляться и выбросила половину одежды."
+],
+[
+1,
+"舍得吗？",
+"Shěde ma?",
+"Wasn't it hard to part with them?",
+"Не жалко?"
+],
+[
+0,
+"一开始舍不得，后来发现很多根本没穿过，留着只是占地方。",
+"Yì kāishǐ shěbude, hòulái fāxiàn hěn duō gēnběn méi chuān guo, liú zhe zhǐshì zhàn dìfang.",
+"At first, yes, but I found lots I'd never worn; they were just taking up space.",
+"Сначала жалко, потом поняла, что многое ни разу не надевала, только место занимало."
+],
+[
+1,
+"东西少了，心里也轻松了吧？",
+"Dōngxi shǎo le, xīn li yě qīngsōng le ba?",
+"Fewer things, lighter mind?",
+"Вещей меньше — и на душе легче?"
+]
+]
+},
+{
+"t": [
+"Need or want?",
+"Нужно или хочется?"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"每次想买东西前，我都问自己：是需要还是想要？",
+"Měi cì xiǎng mǎi dōngxi qián, wǒ dōu wèn zìjǐ: shì xūyào háishi xiǎng yào?",
+"Before buying anything, I ask myself: do I need it or just want it?",
+"Перед каждой покупкой спрашиваю себя: это нужно или просто хочется?"
+],
+[
+1,
+"这个方法好，能避免冲动消费。",
+"Zhège fāngfǎ hǎo, néng bìmiǎn chōngdòng xiāofèi.",
+"Good method — it avoids impulse buying.",
+"Хороший способ избежать импульсивных покупок."
+],
+[
+0,
+"而且省下来的钱可以用在旅行和学习上。",
+"Érqiě shěng xiàlai de qián kěyǐ yòng zài lǚxíng hé xuéxí shang.",
+"And the money saved can go on travel and learning.",
+"А сэкономленное можно потратить на путешествия и учёбу."
+],
+[
+1,
+"把钱花在体验上，比花在东西上更有意义。",
+"Bǎ qián huā zài tǐyàn shang, bǐ huā zài dōngxi shang gèng yǒu yìyì.",
+"Spending on experiences is more meaningful than on things.",
+"Тратить на впечатления осмысленнее, чем на вещи."
+]
+]
+}
+]
+},
+{
+"id": "equality",
+"t": [
+"Equality at work",
+"Равенство на работе"
+],
+"d": [
+{
+"t": [
+"An awkward interview question",
+"Неудобный вопрос на собеседовании"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"面试的时候，对方问我打算什么时候要孩子。",
+"Miànshì de shíhou, duìfāng wèn wǒ dǎsuàn shénme shíhou yào háizi.",
+"At the interview they asked when I'm planning to have children.",
+"На собеседовании меня спросили, когда я планирую детей."
+],
+[
+1,
+"这种问题本来就不应该问，跟能力没有关系。",
+"Zhè zhǒng wèntí běnlái jiù bù yīnggāi wèn, gēn nénglì méiyǒu guānxi.",
+"That question shouldn't be asked at all; it has nothing to do with ability.",
+"Такие вопросы вообще не должны задавать, это не связано с компетенцией."
+],
+[
+0,
+"我当时不知道该怎么回答。",
+"Wǒ dāngshí bù zhīdào gāi zěnme huídá.",
+"I didn't know how to answer at the time.",
+"Я тогда не знала, что ответить."
+],
+[
+1,
+"可以礼貌地说，你更希望讨论和工作相关的问题。",
+"Kěyǐ lǐmào de shuō, nǐ gèng xīwàng tǎolùn hé gōngzuò xiāngguān de wèntí.",
+"You can politely say you'd rather discuss work-related matters.",
+"Можно вежливо сказать, что предпочитаешь обсуждать вопросы, связанные с работой."
+]
+]
+},
+{
+"t": [
+"Paternity leave",
+"Отпуск для отцов"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我们公司开始给爸爸们放育儿假了。",
+"Wǒmen gōngsī kāishǐ gěi bàbamen fàng yù'érjià le.",
+"Our company has started giving fathers parental leave.",
+"Наша компания начала давать отцам отпуск по уходу за ребёнком."
+],
+[
+1,
+"这是好事，照顾孩子本来就是父母双方的责任。",
+"Zhè shì hǎo shì, zhàogù háizi běnlái jiù shì fùmǔ shuāngfāng de zérèn.",
+"Good — caring for children is both parents' responsibility.",
+"Это хорошо: забота о ребёнке — обязанность обоих родителей."
+],
+[
+0,
+"不过有些同事担心请假会影响升职。",
+"Búguò yǒuxiē tóngshì dānxīn qǐngjià huì yǐngxiǎng shēngzhí.",
+"Though some colleagues worry taking leave will hurt their promotion chances.",
+"Правда, некоторые коллеги боятся, что это помешает повышению."
+],
+[
+1,
+"制度有了，观念的改变还需要时间。",
+"Zhìdù yǒu le, guānniàn de gǎibiàn hái xūyào shíjiān.",
+"The policy's there; changing attitudes still takes time.",
+"Правила появились, но изменение взглядов требует времени."
+]
+]
+}
+]
+},
+{
+"id": "lifelong",
+"t": [
+"Lifelong learning",
+"Учиться всю жизнь"
+],
+"d": [
+{
+"t": [
+"Back to school at sixty",
+"Учёба в шестьдесят"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"奶奶",
+"nǎinai"
+]
+],
+"l": [
+[
+0,
+"奶奶，听说您报了老年大学的书法班？",
+"Nǎinai, tīngshuō nín bào le lǎonián dàxué de shūfǎ bān?",
+"Grandma, I hear you've joined a calligraphy class at the senior university?",
+"Бабушка, говорят, ты записалась на каллиграфию в университет для пожилых?"
+],
+[
+1,
+"是啊，年轻的时候没机会学，现在终于有时间了。",
+"Shì a, niánqīng de shíhou méi jīhuì xué, xiànzài zhōngyú yǒu shíjiān le.",
+"Yes — I never had the chance when I was young; now I finally have time.",
+"Да, в молодости не было возможности, а теперь наконец есть время."
+],
+[
+0,
+"您真是活到老，学到老！",
+"Nín zhēn shì huó dào lǎo, xué dào lǎo!",
+"You really are a lifelong learner!",
+"Ты и правда учишься всю жизнь!"
+],
+[
+1,
+"学东西让我觉得自己还很年轻。",
+"Xué dōngxi ràng wǒ juéde zìjǐ hái hěn niánqīng.",
+"Learning makes me feel young.",
+"Учёба помогает мне чувствовать себя молодой."
+]
+]
+},
+{
+"t": [
+"New skills for a new job",
+"Новые навыки"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"行业变化太快了，我大学学的东西很多已经过时了。",
+"Hángyè biànhuà tài kuài le, wǒ dàxué xué de dōngxi hěn duō yǐjīng guòshí le.",
+"The industry changes so fast; much of what I learned at university is outdated.",
+"Отрасль меняется так быстро, многое из университета уже устарело."
+],
+[
+1,
+"所以要不断更新自己的知识。",
+"Suǒyǐ yào búduàn gēngxīn zìjǐ de zhīshi.",
+"So you have to keep updating your knowledge.",
+"Поэтому нужно постоянно обновлять знания."
+],
+[
+0,
+"我报了一个数据分析的网课，每天晚上学一小时。",
+"Wǒ bào le yí ge shùjù fēnxī de wǎngkè, měi tiān wǎnshang xué yì xiǎoshí.",
+"I've signed up for an online data analysis course; an hour every evening.",
+"Записался на онлайн-курс по анализу данных, час каждый вечер."
+],
+[
+1,
+"坚持下去，一定会有收获。",
+"Jiānchí xiàqu, yídìng huì yǒu shōuhuò.",
+"Keep at it; it'll pay off.",
+"Не бросай — обязательно будет результат."
+]
+]
+}
+]
+},
+{
+"id": "doctors",
+"t": [
+"Doctors and patients",
+"Врачи и пациенты"
+],
+"d": [
+{
+"t": [
+"Searching symptoms online",
+"Ищем симптомы в интернете"
+],
+"s": [
+[
+"医生",
+"yīshēng"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你别太相信网上查的，每个人的情况都不一样。",
+"Nǐ bié tài xiāngxìn wǎng shang chá de, měi ge rén de qíngkuàng dōu bù yíyàng.",
+"Don't trust what you find online too much; every case is different.",
+"Не доверяйте слишком тому, что нашли в интернете, у каждого своя ситуация."
+],
+[
+1,
+"可是网上说这个症状可能很严重，我一晚上没睡着。",
+"Kěshì wǎng shang shuō zhège zhèngzhuàng kěnéng hěn yánzhòng, wǒ yì wǎnshang méi shuì zháo.",
+"But online it said this symptom could be serious; I couldn't sleep all night.",
+"Но там писали, что этот симптом может быть серьёзным, я всю ночь не спал."
+],
+[
+0,
+"从检查结果看，只是普通的炎症，按时吃药就行。",
+"Cóng jiǎnchá jiéguǒ kàn, zhǐshì pǔtōng de yánzhèng, ànshí chī yào jiù xíng.",
+"From your tests, it's just ordinary inflammation; take your medicine on time.",
+"По результатам — обычное воспаление, просто вовремя принимайте лекарство."
+],
+[
+1,
+"听您这么说，我就放心了。",
+"Tīng nín zhème shuō, wǒ jiù fàngxīn le.",
+"That's a relief to hear.",
+"Слава богу, успокоили."
+]
+]
+},
+{
+"t": [
+"Long waits at hospitals",
+"Очереди в больницах"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"大医院挂号要排很久，看病只有几分钟。",
+"Dà yīyuàn guàhào yào pái hěn jiǔ, kànbìng zhǐ yǒu jǐ fēnzhōng.",
+"At big hospitals you queue for ages to register and see the doctor for a few minutes.",
+"В больших больницах долго стоишь в очереди, а приём длится несколько минут."
+],
+[
+1,
+"优质医疗资源太集中了，小医院又不太受信任。",
+"Yōuzhì yīliáo zīyuán tài jízhōng le, xiǎo yīyuàn yòu bú tài shòu xìnrèn.",
+"Good medical resources are too concentrated, and people don't trust small hospitals.",
+"Хорошие медицинские ресурсы слишком сосредоточены, а маленьким больницам не доверяют."
+],
+[
+0,
+"现在推广的家庭医生制度也许能缓解这个问题。",
+"Xiànzài tuīguǎng de jiātíng yīshēng zhìdù yěxǔ néng huǎnjiě zhège wèntí.",
+"The family doctor system being rolled out may ease this.",
+"Внедряемая система семейных врачей, может, смягчит проблему."
+],
+[
+1,
+"希望如此，小病在社区解决就好了。",
+"Xīwàng rúcǐ, xiǎo bìng zài shèqū jiějué jiù hǎo le.",
+"Hopefully; minor ailments should be handled in the community.",
+"Надеюсь, мелкие болячки лучше решать по месту жительства."
+]
+]
+}
+]
+},
+{
+"id": "news",
+"t": [
+"Fake news",
+"Фейковые новости"
+],
+"d": [
+{
+"t": [
+"Is it true?",
+"Это правда?"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"群里有人转发说喝某种茶能预防癌症，是真的吗？",
+"Qún li yǒu rén zhuǎnfā shuō hē mǒu zhǒng chá néng yùfáng áizhèng, shì zhēn de ma?",
+"Someone in the group chat forwarded a post saying a certain tea prevents cancer. True?",
+"В группе переслали, что какой-то чай предотвращает рак. Это правда?"
+],
+[
+1,
+"一看就是谣言，没有任何科学依据。",
+"Yí kàn jiù shì yáoyán, méiyǒu rènhé kēxué yījù.",
+"Obviously a rumour; there's no scientific basis.",
+"Очевидная выдумка, никакой научной основы."
+],
+[
+0,
+"可是我爸妈已经信了，还买了好几盒。",
+"Kěshì wǒ bàmā yǐjīng xìn le, hái mǎi le hǎo jǐ hé.",
+"But my parents believe it and bought several boxes.",
+"Но мои родители поверили и купили несколько коробок."
+],
+[
+1,
+"你可以找权威机构的辟谣文章发给他们看。",
+"Nǐ kěyǐ zhǎo quánwēi jīgòu de pìyáo wénzhāng fā gěi tāmen kàn.",
+"Find a debunking article from an authoritative source and send it to them.",
+"Найди опровержение от авторитетной организации и отправь им."
+]
+]
+},
+{
+"t": [
+"Checking sources",
+"Проверяем источники"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"现在信息太多，真假难辨。",
+"Xiànzài xìnxī tài duō, zhēn jiǎ nán biàn.",
+"There's so much information now, it's hard to tell true from false.",
+"Сейчас столько информации, что трудно отличить правду от лжи."
+],
+[
+1,
+"我的习惯是看消息来源，再找两三个不同的媒体对比一下。",
+"Wǒ de xíguàn shì kàn xiāoxi láiyuán, zài zhǎo liǎng sān ge bù tóng de méitǐ duìbǐ yíxià.",
+"I check the source, then compare with two or three different outlets.",
+"Я смотрю на источник и сравниваю с двумя-тремя другими СМИ."
+],
+[
+0,
+"标题特别夸张的，往往不可信。",
+"Biāotí tèbié kuāzhāng de, wǎngwǎng bù kěxìn.",
+"Headlines that are really sensational often can't be trusted.",
+"Слишком кричащим заголовкам обычно нельзя верить."
+],
+[
+1,
+"对，转发之前多想一步，就能少传一条谣言。",
+"Duì, zhuǎnfā zhīqián duō xiǎng yí bù, jiù néng shǎo chuán yì tiáo yáoyán.",
+"Yes — think once more before forwarding, and one less rumour spreads.",
+"Да, подумай лишний раз перед репостом — и одним слухом меньше."
+]
+]
+}
+]
+},
+{
+"id": "tradition",
+"t": [
+"Tradition and modern life",
+"Традиции и современность"
+],
+"d": [
+{
+"t": [
+"Digital red envelopes",
+"Электронные красные конверты"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"爷爷",
+"yéye"
+]
+],
+"l": [
+[
+0,
+"爷爷，今年过年我们在群里发电子红包吧，更有意思。",
+"Yéye, jīnnián guònián wǒmen zài qún li fā diànzǐ hóngbāo ba, gèng yǒu yìsi.",
+"Grandpa, let's send digital red envelopes in the family chat this New Year — it's more fun.",
+"Дедушка, давай в этот Новый год дарить электронные конверты в чате, так интереснее."
+],
+[
+1,
+"我还是喜欢亲手把红包交给你们，那才有年味儿。",
+"Wǒ háishi xǐhuan qīnshǒu bǎ hóngbāo jiāo gěi nǐmen, nà cái yǒu niánwèir.",
+"I still prefer handing them over in person; that's what feels like New Year.",
+"Мне всё же нравится вручать конверты лично, тогда чувствуется праздник."
+],
+[
+0,
+"那两种都要，线上抢红包，线下拜年。",
+"Nà liǎng zhǒng dōu yào, xiànshàng qiǎng hóngbāo, xiànxià bàinián.",
+"Then let's do both: grab envelopes online, visit in person.",
+"Тогда и то, и другое: конверты онлайн, поздравления лично."
+],
+[
+1,
+"哈哈，你们年轻人点子真多。",
+"Hāha, nǐmen niánqīngrén diǎnzi zhēn duō.",
+"Haha, you young people are full of ideas.",
+"Ха-ха, у вас, молодёжи, столько идей."
+]
+]
+},
+{
+"t": [
+"A traditional wedding?",
+"Традиционная свадьба?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"你的婚礼打算办中式的还是西式的？",
+"Nǐ de hūnlǐ dǎsuàn bàn Zhōngshì de háishi Xīshì de?",
+"Are you planning a Chinese-style or Western-style wedding?",
+"Свадьбу будешь делать в китайском или западном стиле?"
+],
+[
+1,
+"我想穿中式礼服，但流程简单一些，不要那么多繁琐的规矩。",
+"Wǒ xiǎng chuān Zhōngshì lǐfú, dàn liúchéng jiǎndān yìxiē, búyào nàme duō fánsuǒ de guīju.",
+"I'd like to wear traditional Chinese dress but keep it simple, without all the fussy rules.",
+"Хочу китайский наряд, но церемонию попроще, без множества сложных правил."
+],
+[
+0,
+"既保留了传统，又符合现代人的习惯。",
+"Jì bǎoliú le chuántǒng, yòu fúhé xiàndàirén de xíguàn.",
+"Keeping tradition while suiting modern habits.",
+"И традиции сохраняются, и современным привычкам соответствует."
+],
+[
+1,
+"我也是这么想的，形式可以变，祝福的意义不变。",
+"Wǒ yě shì zhème xiǎng de, xíngshì kěyǐ biàn, zhùfú de yìyì bú biàn.",
+"That's my thinking: the form can change, but the meaning of the blessing stays.",
+"Я тоже так думаю: форма может меняться, а смысл благословения — нет."
+]
+]
+}
+]
+},
+{
+"id": "space",
+"t": [
+"Space exploration",
+"Освоение космоса"
+],
+"d": [
+{
+"t": [
+"Watching a launch",
+"Смотрим запуск"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"你看昨晚的火箭发射直播了吗？",
+"Nǐ kàn zuówǎn de huǒjiàn fāshè zhíbō le ma?",
+"Did you watch last night's rocket launch live?",
+"Ты смотрела вчерашнюю трансляцию запуска ракеты?"
+],
+[
+1,
+"看了，倒计时的时候我特别激动。",
+"Kàn le, dàojìshí de shíhou wǒ tèbié jīdòng.",
+"Yes — I was so excited during the countdown.",
+"Смотрела, на обратном отсчёте очень волновалась."
+],
+[
+0,
+"这次要把宇航员送到空间站，待半年。",
+"Zhè cì yào bǎ yǔhángyuán sòng dào kōngjiānzhàn, dāi bàn nián.",
+"This time astronauts are going to the space station for six months.",
+"На этот раз космонавтов отправляют на станцию на полгода."
+],
+[
+1,
+"真佩服他们，在太空生活那么久一定很不容易。",
+"Zhēn pèifu tāmen, zài tàikōng shēnghuó nàme jiǔ yídìng hěn bù róngyì.",
+"I really admire them; living in space that long can't be easy.",
+"Восхищаюсь ими, так долго жить в космосе наверняка непросто."
+]
+]
+},
+{
+"t": [
+"Is it worth the money?",
+"Стоит ли это денег?"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"有人说航天花那么多钱，不如用来解决地球上的问题。",
+"Yǒu rén shuō hángtiān huā nàme duō qián, bùrú yòng lái jiějué dìqiú shang de wèntí.",
+"Some say space programmes cost so much the money should go to problems on Earth.",
+"Некоторые говорят: столько денег на космос — лучше бы решать земные проблемы."
+],
+[
+1,
+"可是很多航天技术后来都用在了日常生活中，比如卫星导航。",
+"Kěshì hěn duō hángtiān jìshù hòulái dōu yòng zài le rìcháng shēnghuó zhōng, bǐrú wèixīng dǎoháng.",
+"But much space technology ends up in daily life, like satellite navigation.",
+"Но многие космические технологии потом приходят в быт, например спутниковая навигация."
+],
+[
+0,
+"这倒是，天气预报也离不开卫星。",
+"Zhè dào shì, tiānqì yùbào yě lí bu kāi wèixīng.",
+"True — weather forecasting relies on satellites too.",
+"И то правда, прогноз погоды тоже без спутников невозможен."
+],
+[
+1,
+"探索未知本身也是人类进步的动力。",
+"Tànsuǒ wèizhī běnshēn yě shì rénlèi jìnbù de dònglì.",
+"And exploring the unknown is itself a driver of human progress.",
+"К тому же исследование неизвестного само по себе движет прогресс."
+]
+]
+}
+]
+},
+{
+"id": "food",
+"t": [
+"Food safety",
+"Безопасность продуктов"
+],
+"d": [
+{
+"t": [
+"Reading the label",
+"Читаем этикетку"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"买东西的时候你会看配料表吗？",
+"Mǎi dōngxi de shíhou nǐ huì kàn pèiliàobiǎo ma?",
+"Do you read the ingredients list when you shop?",
+"Ты читаешь состав, когда покупаешь продукты?"
+],
+[
+1,
+"会，特别是给孩子买零食，添加剂太多的我就不买。",
+"Huì, tèbié shì gěi háizi mǎi língshí, tiānjiājì tài duō de wǒ jiù bù mǎi.",
+"Yes, especially snacks for my child; if there are too many additives I don't buy them.",
+"Да, особенно когда покупаю сладости ребёнку: если много добавок — не беру."
+],
+[
+0,
+"还要注意生产日期和保质期。",
+"Hái yào zhùyì shēngchǎn rìqī hé bǎozhìqī.",
+"Watch the production date and shelf life too.",
+"И ещё смотреть дату производства и срок годности."
+],
+[
+1,
+"对，有一次我差点儿买了过期的牛奶。",
+"Duì, yǒu yí cì wǒ chàdiǎnr mǎi le guòqī de niúnǎi.",
+"Right — once I nearly bought expired milk.",
+"Да, однажды чуть не купила просроченное молоко."
+]
+]
+},
+{
+"t": [
+"Organic vegetables",
+"Органические овощи"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"有机蔬菜比普通的贵一倍，真的值得吗？",
+"Yǒujī shūcài bǐ pǔtōng de guì yí bèi, zhēn de zhídé ma?",
+"Organic vegetables cost twice as much. Are they really worth it?",
+"Органические овощи вдвое дороже. Оно того стоит?"
+],
+[
+1,
+"营养上差别不大，主要是农药残留少一些。",
+"Yíngyǎng shang chābié bú dà, zhǔyào shì nóngyào cánliú shǎo yìxiē.",
+"Nutritionally there's little difference; mainly there's less pesticide residue.",
+"По питательности разница небольшая, главное — меньше остатков пестицидов."
+],
+[
+0,
+"那普通蔬菜多洗几遍也可以吧？",
+"Nà pǔtōng shūcài duō xǐ jǐ biàn yě kěyǐ ba?",
+"So washing ordinary vegetables a few times is fine too?",
+"Значит, обычные можно просто тщательно мыть?"
+],
+[
+1,
+"可以，用清水泡一会儿再冲干净，效果就不错。",
+"Kěyǐ, yòng qīngshuǐ pào yíhuìr zài chōng gānjìng, xiàoguǒ jiù búcuò.",
+"Yes — soak them in clean water, then rinse well; that works well.",
+"Да, замочить в чистой воде и хорошо промыть — вполне достаточно."
+]
+]
+}
+]
+},
+{
+"id": "equity",
+"t": [
+"Education for all",
+"Образование для всех"
+],
+"d": [
+{
+"t": [
+"Teaching in the mountains",
+"Учитель в горах"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"支教老师",
+"zhījiào lǎoshī"
+]
+],
+"l": [
+[
+0,
+"您为什么选择来山区支教？",
+"Nín wèishénme xuǎnzé lái shānqū zhījiào?",
+"Why did you choose to teach in the mountains?",
+"Почему вы решили преподавать в горном районе?"
+],
+[
+1,
+"这里的孩子很聪明，只是缺少好的老师和资源。",
+"Zhèlǐ de háizi hěn cōngming, zhǐshì quēshǎo hǎo de lǎoshī hé zīyuán.",
+"The children here are bright; they just lack good teachers and resources.",
+"Дети здесь очень способные, просто не хватает хороших учителей и ресурсов."
+],
+[
+0,
+"生活条件这么艰苦，您习惯吗？",
+"Shēnghuó tiáojiàn zhème jiānkǔ, nín xíguàn ma?",
+"Living conditions are so tough. Are you used to it?",
+"Условия такие тяжёлые, вы привыкли?"
+],
+[
+1,
+"一开始不习惯，但看到孩子们的进步，我觉得一切都值得。",
+"Yì kāishǐ bù xíguàn, dàn kàn dào háizimen de jìnbù, wǒ juéde yíqiè dōu zhídé.",
+"Not at first, but seeing the children improve makes it all worth it.",
+"Сначала нет, но когда видишь успехи детей, понимаешь, что всё не зря."
+]
+]
+},
+{
+"t": [
+"Online classes for villages",
+"Онлайн-уроки для сёл"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"现在很多乡村学校能通过网络听城市名师的课。",
+"Xiànzài hěn duō xiāngcūn xuéxiào néng tōngguò wǎngluò tīng chéngshì míngshī de kè.",
+"Many village schools can now attend top city teachers' classes online.",
+"Сейчас многие сельские школы могут онлайн слушать уроки лучших городских учителей."
+],
+[
+1,
+"这对缩小教育差距很有帮助。",
+"Zhè duì suōxiǎo jiàoyù chājù hěn yǒu bāngzhù.",
+"That really helps narrow the education gap.",
+"Это сильно помогает сократить разрыв в образовании."
+],
+[
+0,
+"不过光有网课还不够，还需要当地老师的辅导。",
+"Búguò guāng yǒu wǎngkè hái bú gòu, hái xūyào dāngdì lǎoshī de fǔdǎo.",
+"But online lessons alone aren't enough; local teachers still need to guide them.",
+"Но одних онлайн-уроков мало, нужна поддержка местных учителей."
+],
+[
+1,
+"对，技术只是工具，人才是关键。",
+"Duì, jìshù zhǐshì gōngjù, rén cái shì guānjiàn.",
+"Right — technology is just a tool; people are the key.",
+"Да, технологии — лишь инструмент, главное — люди."
+]
+]
+}
+]
+},
+{
+"id": "youth",
+"t": [
+"Pressure on young people",
+"Молодёжь под давлением"
+],
+"d": [
+{
+"t": [
+"Lying flat",
+"«Лечь плашмя»"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"最近“躺平”这个词特别流行，你怎么看？",
+"Zuìjìn “tǎngpíng” zhège cí tèbié liúxíng, nǐ zěnme kàn?",
+"“Lying flat” is all the rage lately. What do you think?",
+"Сейчас очень популярно выражение «лечь плашмя». Что думаешь?"
+],
+[
+1,
+"我理解，竞争太激烈了，有些人觉得再努力也看不到希望。",
+"Wǒ lǐjiě, jìngzhēng tài jīliè le, yǒuxiē rén juéde zài nǔlì yě kàn bu dào xīwàng.",
+"I get it; competition is so fierce that some feel no amount of effort brings hope.",
+"Понимаю: конкуренция жёсткая, некоторые считают, что сколько ни старайся — надежды нет."
+],
+[
+0,
+"可完全放弃也不是办法吧。",
+"Kě wánquán fàngqì yě bú shì bànfǎ ba.",
+"But giving up completely isn't a solution either.",
+"Но совсем сдаться — тоже не выход."
+],
+[
+1,
+"我觉得更多是一种态度：不盲目跟别人比，按自己的节奏生活。",
+"Wǒ juéde gèng duō shì yì zhǒng tàidu: bù mángmù gēn biérén bǐ, àn zìjǐ de jiézòu shēnghuó.",
+"I see it more as an attitude: don't blindly compare yourself with others; live at your own pace.",
+"По-моему, это скорее позиция: не сравнивать себя слепо с другими и жить в своём ритме."
+]
+]
+},
+{
+"t": [
+"Involution",
+"Гонка без победителей"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"我们部门现在都比谁下班晚，其实效率并不高。",
+"Wǒmen bùmén xiànzài dōu bǐ shéi xiàbān wǎn, qíshí xiàolǜ bìng bù gāo.",
+"In my department everyone competes to leave last, but it's not actually efficient.",
+"У нас в отделе соревнуются, кто позже уйдёт, хотя эффективность от этого не растёт."
+],
+[
+1,
+"这就是所谓的“内卷”吧。",
+"Zhè jiù shì suǒwèi de “nèijuǎn” ba.",
+"That's the so-called “involution”.",
+"Это и есть так называемая «инволюция»."
+],
+[
+0,
+"大家都很累，可谁也不敢第一个走。",
+"Dàjiā dōu hěn lèi, kě shéi yě bù gǎn dì-yī ge zǒu.",
+"Everyone's exhausted, but no one dares to be first out.",
+"Все устали, но никто не решается уйти первым."
+],
+[
+1,
+"这需要管理者改变评价标准，看结果而不是看时间。",
+"Zhè xūyào guǎnlǐzhě gǎibiàn píngjià biāozhǔn, kàn jiéguǒ ér bú shì kàn shíjiān.",
+"Managers need to change how they judge people: by results, not hours.",
+"Руководителям надо менять критерии оценки: по результату, а не по часам."
+]
+]
+}
+]
+},
+{
+"id": "sports",
+"t": [
+"Sport and national pride",
+"Спорт и национальная гордость"
+],
+"d": [
+{
+"t": [
+"The Olympic final",
+"Олимпийский финал"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"昨天的乒乓球决赛太精彩了，最后一分我都不敢看。",
+"Zuótiān de pīngpāngqiú juésài tài jīngcǎi le, zuìhòu yì fēn wǒ dōu bù gǎn kàn.",
+"Yesterday's table tennis final was thrilling; I couldn't bear to watch the last point.",
+"Вчерашний финал по настольному теннису был потрясающим, последнее очко я боялась смотреть."
+],
+[
+1,
+"双方水平都很高，输赢只差一点点。",
+"Shuāngfāng shuǐpíng dōu hěn gāo, shūyíng zhǐ chà yì diǎndiǎn.",
+"Both sides were top class; it came down to a tiny margin.",
+"Оба очень сильные, исход решили мелочи."
+],
+[
+0,
+"赛后两个人拥抱的画面特别感人。",
+"Sài hòu liǎng ge rén yōngbào de huàmiàn tèbié gǎnrén.",
+"The two of them hugging afterwards was really moving.",
+"Как они обнялись после матча — очень трогательно."
+],
+[
+1,
+"这才是体育精神，比金牌更重要。",
+"Zhè cái shì tǐyù jīngshén, bǐ jīnpái gèng zhòngyào.",
+"That's true sportsmanship — more important than gold.",
+"Вот это и есть спортивный дух, он важнее золота."
+]
+]
+},
+{
+"t": [
+"Too much focus on medals?",
+"Слишком много внимания медалям?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"有人说我们太看重金牌数了。",
+"Yǒu rén shuō wǒmen tài kànzhòng jīnpáishù le.",
+"Some say we care too much about gold medal counts.",
+"Говорят, мы слишком зациклены на количестве золотых медалей."
+],
+[
+1,
+"确实，现在观众越来越懂得欣赏比赛本身了。",
+"Quèshí, xiànzài guānzhòng yuè lái yuè dǒngde xīnshǎng bǐsài běnshēn le.",
+"True, though audiences increasingly appreciate the competition itself.",
+"Это так, но зрители всё больше ценят саму игру."
+],
+[
+0,
+"我也喜欢看普通人参加全民健身。",
+"Wǒ yě xǐhuan kàn pǔtōng rén cānjiā quánmín jiànshēn.",
+"I also love seeing ordinary people taking up fitness.",
+"Мне ещё нравится, когда обычные люди занимаются спортом."
+],
+[
+1,
+"体育的意义不只是拿奖，更是让大家更健康、更快乐。",
+"Tǐyù de yìyì bù zhǐ shì ná jiǎng, gèng shì ràng dàjiā gèng jiànkāng, gèng kuàilè.",
+"Sport isn't just about winning prizes; it's about making everyone healthier and happier.",
+"Смысл спорта не только в наградах, а в том, чтобы все были здоровее и счастливее."
+]
+]
+}
+]
+},
+{
+"id": "charity",
+"t": [
+"Charity",
+"Благотворительность"
+],
+"d": [
+{
+"t": [
+"A fundraiser",
+"Сбор средств"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我们公司在为山区学校募捐，你愿意参加吗？",
+"Wǒmen gōngsī zài wèi shānqū xuéxiào mùjuān, nǐ yuànyì cānjiā ma?",
+"My company is fundraising for mountain schools. Would you like to take part?",
+"Наша компания собирает деньги для горных школ. Хочешь участвовать?"
+],
+[
+1,
+"当然。捐的钱主要用来做什么？",
+"Dāngrán. Juān de qián zhǔyào yòng lái zuò shénme?",
+"Of course. What will the money mainly be used for?",
+"Конечно. На что в основном пойдут деньги?"
+],
+[
+0,
+"买图书和取暖设备，每一笔都会公开。",
+"Mǎi túshū hé qǔnuǎn shèbèi, měi yì bǐ dōu huì gōngkāi.",
+"Books and heating equipment; every payment will be made public.",
+"На книги и обогреватели, каждая трата будет публичной."
+],
+[
+1,
+"透明就好，我捐五百。",
+"Tòumíng jiù hǎo, wǒ juān wǔbǎi.",
+"Transparency is what counts. I'll give five hundred.",
+"Главное — прозрачность. Жертвую пятьсот."
+]
+]
+},
+{
+"t": [
+"Giving time, not money",
+"Помогать временем"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"我没多少钱可以捐，但我想做点儿有意义的事。",
+"Wǒ méi duōshao qián kěyǐ juān, dàn wǒ xiǎng zuò diǎnr yǒu yìyì de shì.",
+"I don't have much money to give, but I want to do something meaningful.",
+"Денег на пожертвования у меня немного, но хочется сделать что-то полезное."
+],
+[
+1,
+"献爱心不一定要捐钱，可以当志愿者，给留守儿童辅导功课。",
+"Xiàn àixīn bù yídìng yào juān qián, kěyǐ dāng zhìyuànzhě, gěi liúshǒu értóng fǔdǎo gōngkè.",
+"Kindness doesn't have to mean money; you could volunteer tutoring left-behind children.",
+"Помогать можно не только деньгами: можно волонтёром заниматься с детьми, оставшимися без родителей."
+],
+[
+0,
+"线上辅导也可以吗？",
+"Xiànshàng fǔdǎo yě kěyǐ ma?",
+"Can it be done online?",
+"А онлайн можно?"
+],
+[
+1,
+"可以，每周一两个小时就能帮上大忙。",
+"Kěyǐ, měi zhōu yì liǎng ge xiǎoshí jiù néng bāng shang dà máng.",
+"Yes; an hour or two a week makes a big difference.",
+"Можно, час-два в неделю — уже большая помощь."
+]
+]
+}
+]
+},
+{
+"id": "translation",
+"t": [
+"Translation and languages",
+"Перевод и языки"
+],
+"d": [
+{
+"t": [
+"Lost in translation",
+"Трудности перевода"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"这句古诗翻译成俄语，总觉得少了点儿味道。",
+"Zhè jù gǔshī fānyì chéng Éyǔ, zǒng juéde shǎo le diǎnr wèidao.",
+"This line of classical poetry in Russian always feels like it's missing something.",
+"Эта строка классической поэзии в русском переводе всё время теряет вкус."
+],
+[
+1,
+"诗歌最难翻译，音韵和意境很难同时保留。",
+"Shīgē zuì nán fānyì, yīnyùn hé yìjìng hěn nán tóngshí bǎoliú.",
+"Poetry is the hardest; it's tough to keep both sound and imagery.",
+"Стихи переводить труднее всего: сложно сохранить и звучание, и образ."
+],
+[
+0,
+"那你一般优先保留什么？",
+"Nà nǐ yìbān yōuxiān bǎoliú shénme?",
+"So what do you usually prioritise?",
+"А что ты обычно сохраняешь в первую очередь?"
+],
+[
+1,
+"先保证意思准确，再尽量让语言自然、有美感。",
+"Xiān bǎozhèng yìsi zhǔnquè, zài jǐnliàng ràng yǔyán zìrán, yǒu měigǎn.",
+"Accuracy of meaning first, then making the language natural and beautiful as far as possible.",
+"Сначала точность смысла, потом по возможности естественность и красота языка."
+]
+]
+},
+{
+"t": [
+"Will machines replace translators?",
+"Заменят ли машины переводчиков?"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"机器翻译这么发达，翻译这个职业还有前途吗？",
+"Jīqì fānyì zhème fādá, fānyì zhège zhíyè hái yǒu qiántú ma?",
+"With machine translation so advanced, does translating as a career have a future?",
+"Машинный перевод так развит — есть ли будущее у профессии переводчика?"
+],
+[
+1,
+"简单的文件确实可以交给机器，但文学、法律和谈判还离不开人。",
+"Jiǎndān de wénjiàn quèshí kěyǐ jiāo gěi jīqì, dàn wénxué, fǎlǜ hé tánpàn hái lí bu kāi rén.",
+"Simple documents, yes, but literature, law and negotiations still need people.",
+"Простые документы можно доверить машине, но литература, право и переговоры без людей не обойдутся."
+],
+[
+0,
+"也就是说，翻译要学会跟机器合作。",
+"Yě jiù shì shuō, fānyì yào xuéhuì gēn jīqì hézuò.",
+"In other words, translators need to learn to work with machines.",
+"То есть переводчикам надо научиться работать вместе с машинами."
+],
+[
+1,
+"没错，会用工具的人效率会高得多。",
+"Méi cuò, huì yòng gōngjù de rén xiàolǜ huì gāo de duō.",
+"Exactly; those who use the tools will be far more productive.",
+"Именно, кто умеет пользоваться инструментами, работает гораздо эффективнее."
+]
+]
+}
+]
+},
+{
+"id": "contract",
+"t": [
+"Negotiating a contract",
+"Переговоры по контракту"
+],
+"d": [
+{
+"t": [
+"Discussing terms",
+"Обсуждаем условия"
+],
+"s": [
+[
+"对方代表",
+"duìfāng dàibiǎo"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"关于交货时间，我们希望能提前到下个月底。",
+"Guānyú jiāohuò shíjiān, wǒmen xīwàng néng tíqián dào xià ge yuèdǐ.",
+"Regarding delivery, we'd like to bring it forward to the end of next month.",
+"Что касается сроков поставки, мы хотели бы перенести их на конец следующего месяца."
+],
+[
+1,
+"时间这么紧，我们需要增加人手，成本会相应提高。",
+"Shíjiān zhème jǐn, wǒmen xūyào zēngjiā rénshǒu, chéngběn huì xiāngyìng tígāo.",
+"With such a tight timeline we'd need more staff, so costs would rise accordingly.",
+"При таких сжатых сроках нам понадобится больше людей, и затраты соответственно вырастут."
+],
+[
+0,
+"那价格方面能不能各让一步？",
+"Nà jiàgé fāngmiàn néng bu néng gè ràng yí bù?",
+"Could we each make a concession on price?",
+"Тогда, может, обе стороны уступят по цене?"
+],
+[
+1,
+"可以考虑。如果订单量增加两成，我们可以维持原价。",
+"Kěyǐ kǎolǜ. Rúguǒ dìngdānliàng zēngjiā liǎng chéng, wǒmen kěyǐ wéichí yuánjià.",
+"We can consider it. If the order volume rises by 20%, we can keep the original price.",
+"Можно обсудить. Если объём заказа вырастет на двадцать процентов, сохраним прежнюю цену."
+]
+]
+},
+{
+"t": [
+"Before signing",
+"Перед подписанием"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"律师",
+"lǜshī"
+]
+],
+"l": [
+[
+0,
+"合同里有没有需要特别注意的地方？",
+"Hétong li yǒu méiyǒu xūyào tèbié zhùyì de dìfang?",
+"Is there anything in the contract that needs special attention?",
+"Есть ли в договоре моменты, на которые стоит обратить особое внимание?"
+],
+[
+1,
+"第八条违约责任写得不够明确，建议补充具体的赔偿标准。",
+"Dì-bā tiáo wéiyuē zérèn xiě de bú gòu míngquè, jiànyì bǔchōng jùtǐ de péicháng biāozhǔn.",
+"Clause 8 on liability for breach isn't clear enough; I suggest adding specific compensation terms.",
+"Пункт восемь об ответственности за нарушение недостаточно чёткий, советую добавить конкретные размеры компенсации."
+],
+[
+0,
+"好的，我马上跟对方沟通。",
+"Hǎo de, wǒ mǎshàng gēn duìfāng gōutōng.",
+"OK, I'll raise it with the other side right away.",
+"Хорошо, сейчас же обсужу с партнёрами."
+],
+[
+1,
+"签字之前一定要确认所有修改都已经写进去。",
+"Qiānzì zhīqián yídìng yào quèrèn suǒyǒu xiūgǎi dōu yǐjīng xiě jìnqu.",
+"Before signing, make sure every change has been written in.",
+"Перед подписанием обязательно убедитесь, что все правки внесены."
+]
+]
+}
+]
+},
+{
+"id": "arts",
+"t": [
+"Calligraphy and painting",
+"Каллиграфия и живопись"
+],
+"d": [
+{
+"t": [
+"Learning calligraphy",
+"Учимся каллиграфии"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"书法老师",
+"shūfǎ lǎoshī"
+]
+],
+"l": [
+[
+0,
+"老师，我写的字总是歪的，怎么办？",
+"Lǎoshī, wǒ xiě de zì zǒngshì wāi de, zěnme bàn?",
+"Teacher, my characters always come out crooked. What should I do?",
+"Учитель, у меня иероглифы всё время кривые. Что делать?"
+],
+[
+1,
+"别急，先练基本笔画，横要平，竖要直。",
+"Bié jí, xiān liàn jīběn bǐhuà, héng yào píng, shù yào zhí.",
+"Don't rush. Practise the basic strokes first: horizontals level, verticals straight.",
+"Не спеши. Сначала отработай базовые черты: горизонтальные ровно, вертикальные прямо."
+],
+[
+0,
+"每天练多长时间合适？",
+"Měi tiān liàn duō cháng shíjiān héshì?",
+"How long should I practise each day?",
+"Сколько в день лучше заниматься?"
+],
+[
+1,
+"半个小时就够，重要的是心要静，持之以恒。",
+"Bàn ge xiǎoshí jiù gòu, zhòngyào de shì xīn yào jìng, chí zhī yǐ héng.",
+"Half an hour is enough; what matters is a calm mind and perseverance.",
+"Получаса достаточно, главное — спокойствие и постоянство."
+]
+]
+},
+{
+"t": [
+"At an exhibition",
+"На выставке"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"这幅山水画留了这么多空白，有什么讲究吗？",
+"Zhè fú shānshuǐhuà liú le zhème duō kòngbái, yǒu shénme jiǎngjiu ma?",
+"This landscape painting leaves so much blank space. Is there a reason?",
+"В этой картине «горы и воды» столько пустого места. В чём смысл?"
+],
+[
+1,
+"这叫“留白”，给观众留下想象的空间。",
+"Zhè jiào “liúbái”, gěi guānzhòng liú xià xiǎngxiàng de kōngjiān.",
+"It's called “leaving white”; it gives viewers room to imagine.",
+"Это называется «оставить белое» — пространство для воображения зрителя."
+],
+[
+0,
+"怪不得看久了，觉得空白处好像有云雾。",
+"Guàibude kàn jiǔ le, juéde kòngbáichù hǎoxiàng yǒu yúnwù.",
+"No wonder — the longer I look, the more the empty part seems full of mist.",
+"Неудивительно: чем дольше смотришь, тем больше кажется, что там туман."
+],
+[
+1,
+"这正是中国画追求的意境。",
+"Zhè zhèng shì Zhōngguóhuà zhuīqiú de yìjìng.",
+"That's exactly the mood Chinese painting aims for.",
+"Именно к такому настроению и стремится китайская живопись."
+]
+]
+}
+]
+}
+]
