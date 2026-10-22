@@ -80,6 +80,17 @@ test("higher levels have Russian meanings too", async ({ page }) => {
   await expect(page.getByText("EN", { exact: true })).toHaveCount(0);
 });
 
+test("back button returns to the previous page, or the parent page on a fresh visit", async ({ page }) => {
+  await page.goto("/en/hsk/1/lessons/1");
+  await page.getByRole("button", { name: "Back" }).click();
+  await expect(page).toHaveURL(/\/en\/hsk\/1\/lessons\/?$/);
+  await page.goto("/en/hsk/2");
+  await page.getByRole("link", { name: /Random practice/ }).first().click();
+  await expect(page).toHaveURL(/practice/);
+  await page.getByRole("button", { name: "Back" }).click();
+  await expect(page).toHaveURL(/\/en\/hsk\/2\/?$/);
+});
+
 test("flashcards: reveal, rate, requeue and save progress", async ({ page }) => {
   await page.goto("/en/hsk/1/lessons/2");
   await page.getByRole("tab", { name: "Flashcards" }).click();

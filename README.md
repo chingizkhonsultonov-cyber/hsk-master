@@ -39,8 +39,8 @@ All 11,105 words (HSK 1–6 and 7–9) have hand-written English and Russian mea
 ## Live site
 
 The app is published at https://chingizkhonsultonov-cyber.github.io/hsk-master/ from the `gh-pages` branch.
-To update it, build plain files with `NEXT_PUBLIC_BASE_PATH=/hsk-master npm run build:static`, then push the contents of `out/` (plus an empty `.nojekyll`) to `gh-pages`.
-GitHub Pages has no server, so the AI coach and sign-in stay off there; deploy to Vercel with the keys set to use them.
+To update it, run `scripts/deploy-pages.sh`, which builds plain files into `out/` and pushes them to `gh-pages`.
+GitHub Pages has no server, so the AI coach stays off there. Sign-in and sync work when the Supabase keys are set at build time.
 
 ## Project layout
 
