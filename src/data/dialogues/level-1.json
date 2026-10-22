@@ -1,0 +1,1094 @@
+[
+{
+"id": "greetings",
+"t": [
+"Greetings and introductions",
+"Приветствие и знакомство"
+],
+"d": [
+{
+"t": [
+"Meeting a new classmate",
+"Знакомство с одногруппницей"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"你好！",
+"Nǐ hǎo!",
+"Hi!",
+"Привет!"
+],
+[
+1,
+"你好！你叫什么名字？",
+"Nǐ hǎo! Nǐ jiào shénme míngzi?",
+"Hi! What's your name?",
+"Привет! Как тебя зовут?"
+],
+[
+0,
+"我叫王明。你呢？",
+"Wǒ jiào Wáng Míng. Nǐ ne?",
+"I'm Wang Ming. And you?",
+"Меня зовут Ван Мин. А тебя?"
+],
+[
+1,
+"我叫安娜。我是新同学。",
+"Wǒ jiào Ānnà. Wǒ shì xīn tóngxué.",
+"I'm Anna. I'm a new classmate.",
+"Меня зовут Анна. Я новая одногруппница."
+],
+[
+0,
+"你是哪国人？",
+"Nǐ shì nǎ guó rén?",
+"Which country are you from?",
+"Ты из какой страны?"
+],
+[
+1,
+"我是俄国人。认识你很高兴！",
+"Wǒ shì Éguó rén. Rènshi nǐ hěn gāoxìng!",
+"I'm Russian. Nice to meet you!",
+"Я из России. Рада познакомиться!"
+],
+[
+0,
+"认识你，我也很高兴！",
+"Rènshi nǐ, wǒ yě hěn gāoxìng!",
+"Nice to meet you too!",
+"Мне тоже очень приятно!"
+]
+]
+},
+{
+"t": [
+"Saying hello to a teacher",
+"Приветствие учителя"
+],
+"s": [
+[
+"学生",
+"xuésheng"
+],
+[
+"老师",
+"lǎoshī"
+]
+],
+"l": [
+[
+0,
+"老师，早上好！",
+"Lǎoshī, zǎoshang hǎo!",
+"Good morning, teacher!",
+"Доброе утро, учитель!"
+],
+[
+1,
+"早上好！你今天来得很早。",
+"Zǎoshang hǎo! Nǐ jīntiān lái de hěn zǎo.",
+"Good morning! You're early today.",
+"Доброе утро! Ты сегодня рано."
+],
+[
+0,
+"是，今天上午有汉语课。",
+"Shì, jīntiān shàngwǔ yǒu Hànyǔ kè.",
+"Yes, there's a Chinese class this morning.",
+"Да, сегодня утром урок китайского."
+],
+[
+1,
+"你喜欢学汉语吗？",
+"Nǐ xǐhuan xué Hànyǔ ma?",
+"Do you like learning Chinese?",
+"Тебе нравится учить китайский?"
+],
+[
+0,
+"非常喜欢！汉字很好玩儿。",
+"Fēicháng xǐhuan! Hànzì hěn hǎowánr.",
+"I love it! Chinese characters are really fun.",
+"Очень нравится! Иероглифы — это очень интересно."
+],
+[
+1,
+"很好！我们上课吧。",
+"Hěn hǎo! Wǒmen shàngkè ba.",
+"Great! Let's start the class.",
+"Отлично! Давайте начнём урок."
+]
+]
+},
+{
+"t": [
+"Saying goodbye",
+"Прощание"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"现在几点了？",
+"Xiànzài jǐ diǎn le?",
+"What time is it now?",
+"Который сейчас час?"
+],
+[
+1,
+"五点半。我要回家了。",
+"Wǔ diǎn bàn. Wǒ yào huí jiā le.",
+"Half past five. I need to go home.",
+"Половина шестого. Мне пора домой."
+],
+[
+0,
+"好，明天见！",
+"Hǎo, míngtiān jiàn!",
+"OK, see you tomorrow!",
+"Хорошо, до завтра!"
+],
+[
+1,
+"明天见！你晚上做什么？",
+"Míngtiān jiàn! Nǐ wǎnshang zuò shénme?",
+"See you tomorrow! What are you doing tonight?",
+"До завтра! Что ты делаешь вечером?"
+],
+[
+0,
+"我在家看书。再见！",
+"Wǒ zài jiā kàn shū. Zàijiàn!",
+"I'm reading at home. Bye!",
+"Читаю дома. Пока!"
+],
+[
+1,
+"再见！",
+"Zàijiàn!",
+"Bye!",
+"Пока!"
+]
+]
+}
+]
+},
+{
+"id": "family",
+"t": [
+"Family",
+"Семья"
+],
+"d": [
+{
+"t": [
+"Looking at a family photo",
+"Смотрим семейное фото"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"这是你家人吗？",
+"Zhè shì nǐ jiārén ma?",
+"Is this your family?",
+"Это твоя семья?"
+],
+[
+1,
+"是。这是我爸爸，这是我妈妈。",
+"Shì. Zhè shì wǒ bàba, zhè shì wǒ māma.",
+"Yes. This is my dad, and this is my mum.",
+"Да. Это мой папа, а это мама."
+],
+[
+0,
+"这个男孩子是谁？",
+"Zhège nán háizi shì shéi?",
+"Who's this boy?",
+"А кто этот мальчик?"
+],
+[
+1,
+"他是我弟弟，今年十岁。",
+"Tā shì wǒ dìdi, jīnnián shí suì.",
+"He's my little brother; he's ten this year.",
+"Это мой младший брат, ему в этом году десять."
+],
+[
+0,
+"你家有几口人？",
+"Nǐ jiā yǒu jǐ kǒu rén?",
+"How many people are in your family?",
+"Сколько человек в твоей семье?"
+],
+[
+1,
+"我家有四口人。",
+"Wǒ jiā yǒu sì kǒu rén.",
+"There are four people in my family.",
+"Нас в семье четверо."
+]
+]
+},
+{
+"t": [
+"Parents' jobs",
+"Кем работают родители"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"你爸爸做什么工作？",
+"Nǐ bàba zuò shénme gōngzuò?",
+"What does your dad do?",
+"Кем работает твой папа?"
+],
+[
+1,
+"他是医生，在医院工作。",
+"Tā shì yīshēng, zài yīyuàn gōngzuò.",
+"He's a doctor; he works at a hospital.",
+"Он врач, работает в больнице."
+],
+[
+0,
+"你妈妈呢？",
+"Nǐ māma ne?",
+"And your mum?",
+"А мама?"
+],
+[
+1,
+"我妈妈是老师，在中学上课。",
+"Wǒ māma shì lǎoshī, zài zhōngxué shàngkè.",
+"My mum is a teacher; she teaches at a secondary school.",
+"Мама учительница, преподаёт в средней школе."
+],
+[
+0,
+"他们很忙吗？",
+"Tāmen hěn máng ma?",
+"Are they very busy?",
+"Они очень заняты?"
+],
+[
+1,
+"很忙，晚上七点回家。",
+"Hěn máng, wǎnshang qī diǎn huí jiā.",
+"Very busy; they get home at seven in the evening.",
+"Очень, домой приходят в семь вечера."
+]
+]
+},
+{
+"t": [
+"Brothers and sisters",
+"Братья и сёстры"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你有哥哥姐姐吗？",
+"Nǐ yǒu gēge jiějie ma?",
+"Do you have older brothers or sisters?",
+"У тебя есть старшие брат или сестра?"
+],
+[
+1,
+"我有一个姐姐，没有哥哥。",
+"Wǒ yǒu yí ge jiějie, méiyǒu gēge.",
+"I have an older sister, no older brother.",
+"У меня есть старшая сестра, старшего брата нет."
+],
+[
+0,
+"你姐姐多大了？",
+"Nǐ jiějie duō dà le?",
+"How old is your sister?",
+"Сколько лет твоей сестре?"
+],
+[
+1,
+"她二十三岁，是大学生。",
+"Tā èrshísān suì, shì dàxuéshēng.",
+"She's twenty-three and at university.",
+"Ей двадцать три, она студентка."
+],
+[
+0,
+"她漂亮吗？",
+"Tā piàoliang ma?",
+"Is she pretty?",
+"Она красивая?"
+],
+[
+1,
+"很漂亮！她还很会唱歌。",
+"Hěn piàoliang! Tā hái hěn huì chàng gē.",
+"Very! And she sings really well.",
+"Очень! И ещё она прекрасно поёт."
+]
+]
+}
+]
+},
+{
+"id": "food",
+"t": [
+"Food and drink",
+"Еда и напитки"
+],
+"d": [
+{
+"t": [
+"Ordering at a restaurant",
+"Заказ в ресторане"
+],
+"s": [
+[
+"服务员",
+"fúwùyuán"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"您好！请问几个人？",
+"Nín hǎo! Qǐngwèn jǐ ge rén?",
+"Hello! How many people, please?",
+"Здравствуйте! Сколько вас?"
+],
+[
+1,
+"两个人。",
+"Liǎng ge rén.",
+"Two.",
+"Двое."
+],
+[
+0,
+"请坐。你们想吃什么？",
+"Qǐng zuò. Nǐmen xiǎng chī shénme?",
+"Please sit down. What would you like to eat?",
+"Присаживайтесь. Что будете есть?"
+],
+[
+1,
+"我们要一个菜和米饭。",
+"Wǒmen yào yí ge cài hé mǐfàn.",
+"We'd like one dish and some rice.",
+"Нам одно блюдо и рис."
+],
+[
+0,
+"喝什么？",
+"Hē shénme?",
+"Anything to drink?",
+"Что будете пить?"
+],
+[
+1,
+"两杯茶，谢谢。",
+"Liǎng bēi chá, xièxie.",
+"Two cups of tea, thanks.",
+"Два чая, спасибо."
+]
+]
+},
+{
+"t": [
+"What do you like to eat?",
+"Что ты любишь есть?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你喜欢吃什么？",
+"Nǐ xǐhuan chī shénme?",
+"What do you like to eat?",
+"Что ты любишь есть?"
+],
+[
+1,
+"我喜欢吃饺子。你呢？",
+"Wǒ xǐhuan chī jiǎozi. Nǐ ne?",
+"I like dumplings. And you?",
+"Я люблю пельмени. А ты?"
+],
+[
+0,
+"我喜欢吃面条儿和包子。",
+"Wǒ xǐhuan chī miàntiáor hé bāozi.",
+"I like noodles and steamed buns.",
+"Я люблю лапшу и баоцзы."
+],
+[
+1,
+"我知道一个饭店，饺子很好吃。",
+"Wǒ zhīdào yí ge fàndiàn, jiǎozi hěn hǎochī.",
+"I know a restaurant with really good dumplings.",
+"Я знаю ресторан, там очень вкусные пельмени."
+],
+[
+0,
+"太好了！我们明天中午去吧。",
+"Tài hǎo le! Wǒmen míngtiān zhōngwǔ qù ba.",
+"Great! Let's go tomorrow at noon.",
+"Отлично! Давай пойдём завтра в обед."
+]
+]
+},
+{
+"t": [
+"Breakfast at home",
+"Завтрак дома"
+],
+"s": [
+[
+"妈妈",
+"māma"
+],
+[
+"儿子",
+"érzi"
+]
+],
+"l": [
+[
+0,
+"起床了！早饭好了。",
+"Qǐchuáng le! Zǎofàn hǎo le.",
+"Time to get up! Breakfast is ready.",
+"Вставай! Завтрак готов."
+],
+[
+1,
+"今天早上吃什么？",
+"Jīntiān zǎoshang chī shénme?",
+"What's for breakfast this morning?",
+"Что сегодня на завтрак?"
+],
+[
+0,
+"面包、鸡蛋，还有牛奶。",
+"Miànbāo, jīdàn, hái yǒu niúnǎi.",
+"Bread, eggs and milk.",
+"Хлеб, яйца и молоко."
+],
+[
+1,
+"我不想喝牛奶，我想喝水。",
+"Wǒ bù xiǎng hē niúnǎi, wǒ xiǎng hē shuǐ.",
+"I don't want milk; I want water.",
+"Не хочу молока, хочу воды."
+],
+[
+0,
+"好吧。吃一个苹果吧。",
+"Hǎo ba. Chī yí ge píngguǒ ba.",
+"All right. Have an apple too.",
+"Ладно. Съешь ещё яблоко."
+],
+[
+1,
+"好，谢谢妈妈！",
+"Hǎo, xièxie māma!",
+"OK, thanks, Mum!",
+"Хорошо, спасибо, мама!"
+]
+]
+}
+]
+},
+{
+"id": "shopping",
+"t": [
+"Shopping",
+"Покупки"
+],
+"d": [
+{
+"t": [
+"Buying fruit",
+"Покупаем фрукты"
+],
+"s": [
+[
+"卖水果的",
+"mài shuǐguǒ de"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"您要买什么？",
+"Nín yào mǎi shénme?",
+"What would you like?",
+"Что желаете?"
+],
+[
+1,
+"苹果多少钱一个？",
+"Píngguǒ duōshao qián yí ge?",
+"How much is an apple?",
+"Сколько стоит одно яблоко?"
+],
+[
+0,
+"五块钱一个。",
+"Wǔ kuài qián yí ge.",
+"Five yuan each.",
+"Пять юаней за штуку."
+],
+[
+1,
+"有点儿贵。四块，可以吗？",
+"Yǒudiǎnr guì. Sì kuài, kěyǐ ma?",
+"A bit expensive. Four yuan, OK?",
+"Дороговато. Четыре юаня, можно?"
+],
+[
+0,
+"好吧，您要几个？",
+"Hǎo ba, nín yào jǐ ge?",
+"All right. How many?",
+"Ладно. Сколько штук?"
+],
+[
+1,
+"两个。给你八块钱。",
+"Liǎng ge. Gěi nǐ bā kuài qián.",
+"Two. Here's eight yuan.",
+"Два. Вот восемь юаней."
+]
+]
+},
+{
+"t": [
+"Buying clothes",
+"Покупаем одежду"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"店员",
+"diànyuán"
+]
+],
+"l": [
+[
+0,
+"这件衣服很好看。多少钱？",
+"Zhè jiàn yīfu hěn hǎokàn. Duōshao qián?",
+"This item of clothing looks nice. How much is it?",
+"Эта вещь красивая. Сколько стоит?"
+],
+[
+1,
+"三百块。",
+"Sānbǎi kuài.",
+"Three hundred yuan.",
+"Триста юаней."
+],
+[
+0,
+"太贵了！有便宜一点儿的吗？",
+"Tài guì le! Yǒu piányi yìdiǎnr de ma?",
+"Too expensive! Do you have anything cheaper?",
+"Слишком дорого! Есть что-нибудь подешевле?"
+],
+[
+1,
+"那件一百五十块，也很漂亮。",
+"Nà jiàn yìbǎi wǔshí kuài, yě hěn piàoliang.",
+"That one is 150 yuan, and it's pretty too.",
+"Вон та за сто пятьдесят, тоже красивая."
+],
+[
+0,
+"好，我买那件。",
+"Hǎo, wǒ mǎi nà jiàn.",
+"OK, I'll buy that one.",
+"Хорошо, беру ту."
+]
+]
+},
+{
+"t": [
+"At the supermarket",
+"В супермаркете"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"我们家没有米了。",
+"Wǒmen jiā méiyǒu mǐ le.",
+"We've run out of rice at home.",
+"У нас дома кончился рис."
+],
+[
+1,
+"我们去超市买吧。还要买什么？",
+"Wǒmen qù chāoshì mǎi ba. Hái yào mǎi shénme?",
+"Let's go to the supermarket. What else do we need?",
+"Пойдём в супермаркет. Что ещё купить?"
+],
+[
+0,
+"鸡蛋、牛奶，还有一些水果。",
+"Jīdàn, niúnǎi, hái yǒu yìxiē shuǐguǒ.",
+"Eggs, milk and some fruit.",
+"Яйца, молоко и немного фруктов."
+],
+[
+1,
+"超市在哪儿？",
+"Chāoshì zài nǎr?",
+"Where's the supermarket?",
+"Где супермаркет?"
+],
+[
+0,
+"在学校外边，走五分钟。",
+"Zài xuéxiào wàibian, zǒu wǔ fēnzhōng.",
+"Outside the school, a five-minute walk.",
+"Возле школы, пять минут пешком."
+]
+]
+}
+]
+},
+{
+"id": "time",
+"t": [
+"Time and plans",
+"Время и планы"
+],
+"d": [
+{
+"t": [
+"Making a plan for the weekend",
+"Планы на выходные"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"星期天你有时间吗？",
+"Xīngqītiān nǐ yǒu shíjiān ma?",
+"Are you free on Sunday?",
+"У тебя есть время в воскресенье?"
+],
+[
+1,
+"有。你想做什么？",
+"Yǒu. Nǐ xiǎng zuò shénme?",
+"Yes. What do you want to do?",
+"Есть. Что ты хочешь делать?"
+],
+[
+0,
+"我们去看电影，好吗？",
+"Wǒmen qù kàn diànyǐng, hǎo ma?",
+"Shall we go and see a film?",
+"Давай сходим в кино?"
+],
+[
+1,
+"好！几点？",
+"Hǎo! Jǐ diǎn?",
+"Sure! What time?",
+"Давай! Во сколько?"
+],
+[
+0,
+"下午三点，在电影院前边见。",
+"Xiàwǔ sān diǎn, zài diànyǐngyuàn qiánbian jiàn.",
+"Three in the afternoon; meet in front of the cinema.",
+"В три часа дня, встретимся перед кинотеатром."
+],
+[
+1,
+"好，星期天见！",
+"Hǎo, xīngqītiān jiàn!",
+"OK, see you on Sunday!",
+"Хорошо, до воскресенья!"
+]
+]
+},
+{
+"t": [
+"What day is it today?",
+"Какое сегодня число?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"今天几月几号？",
+"Jīntiān jǐ yuè jǐ hào?",
+"What's the date today?",
+"Какое сегодня число?"
+],
+[
+1,
+"今天十月二十号。",
+"Jīntiān shí yuè èrshí hào.",
+"Today is 20 October.",
+"Сегодня двадцатое октября."
+],
+[
+0,
+"星期几？",
+"Xīngqī jǐ?",
+"What day of the week?",
+"А какой день недели?"
+],
+[
+1,
+"星期五。明天不上课。",
+"Xīngqīwǔ. Míngtiān bú shàngkè.",
+"Friday. No classes tomorrow.",
+"Пятница. Завтра нет занятий."
+],
+[
+0,
+"太好了！我明天想睡觉。",
+"Tài hǎo le! Wǒ míngtiān xiǎng shuìjiào.",
+"Great! Tomorrow I want to sleep.",
+"Отлично! Завтра хочу выспаться."
+]
+]
+},
+{
+"t": [
+"A phone call",
+"Телефонный звонок"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李先生",
+"Lǐ xiānsheng"
+]
+],
+"l": [
+[
+0,
+"喂，请问李先生在吗？",
+"Wéi, qǐngwèn Lǐ xiānsheng zài ma?",
+"Hello, is Mr Li there, please?",
+"Алло, скажите, господин Ли на месте?"
+],
+[
+1,
+"是我。您是谁？",
+"Shì wǒ. Nín shì shéi?",
+"Speaking. Who's calling?",
+"Это я. Кто говорит?"
+],
+[
+0,
+"我是王明。您明天上午在公司吗？",
+"Wǒ shì Wáng Míng. Nín míngtiān shàngwǔ zài gōngsī ma?",
+"This is Wang Ming. Will you be at the office tomorrow morning?",
+"Это Ван Мин. Вы завтра утром будете в компании?"
+],
+[
+1,
+"在。你十点来吧。",
+"Zài. Nǐ shí diǎn lái ba.",
+"Yes. Come at ten.",
+"Буду. Приходите в десять."
+],
+[
+0,
+"好的，谢谢！明天见。",
+"Hǎo de, xièxie! Míngtiān jiàn.",
+"OK, thank you! See you tomorrow.",
+"Хорошо, спасибо! До завтра."
+]
+]
+}
+]
+},
+{
+"id": "weather",
+"t": [
+"Weather and getting around",
+"Погода и транспорт"
+],
+"d": [
+{
+"t": [
+"Talking about the weather",
+"Разговор о погоде"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"今天天气怎么样？",
+"Jīntiān tiānqì zěnmeyàng?",
+"What's the weather like today?",
+"Какая сегодня погода?"
+],
+[
+1,
+"很冷，下午会下雪。",
+"Hěn lěng, xiàwǔ huì xià xuě.",
+"Very cold; it'll snow this afternoon.",
+"Очень холодно, днём пойдёт снег."
+],
+[
+0,
+"我很喜欢下雪！",
+"Wǒ hěn xǐhuan xià xuě!",
+"I love snow!",
+"Я очень люблю снег!"
+],
+[
+1,
+"你多穿点儿衣服，不要生病。",
+"Nǐ duō chuān diǎnr yīfu, búyào shēngbìng.",
+"Wear more clothes so you don't get ill.",
+"Оденься потеплее, не заболей."
+],
+[
+0,
+"知道了，谢谢！",
+"Zhīdào le, xièxie!",
+"Got it, thanks!",
+"Поняла, спасибо!"
+]
+]
+},
+{
+"t": [
+"Taking a taxi",
+"Едем на такси"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"司机",
+"sījī"
+]
+],
+"l": [
+[
+0,
+"你好，我去大学。",
+"Nǐ hǎo, wǒ qù dàxué.",
+"Hi, I'm going to the university.",
+"Здравствуйте, мне в университет."
+],
+[
+1,
+"好。您几点上课？",
+"Hǎo. Nín jǐ diǎn shàngkè?",
+"OK. What time is your class?",
+"Хорошо. Во сколько у вас занятия?"
+],
+[
+0,
+"十一点。现在去，可以吗？",
+"Shíyī diǎn. Xiànzài qù, kěyǐ ma?",
+"Eleven. Can we make it if we go now?",
+"В одиннадцать. Если поехать сейчас, успеем?"
+],
+[
+1,
+"可以，要二十分钟。",
+"Kěyǐ, yào èrshí fēnzhōng.",
+"Yes, it takes twenty minutes.",
+"Успеем, доедем за двадцать минут."
+],
+[
+0,
+"太好了，谢谢！",
+"Tài hǎo le, xièxie!",
+"Great, thanks!",
+"Отлично, спасибо!"
+]
+]
+},
+{
+"t": [
+"Asking the way",
+"Как пройти?"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"女士",
+"nǚshì"
+]
+],
+"l": [
+[
+0,
+"请问，书店在哪儿？",
+"Qǐngwèn, shūdiàn zài nǎr?",
+"Excuse me, where's the bookshop?",
+"Скажите, пожалуйста, где книжный магазин?"
+],
+[
+1,
+"在那边，医院后边。",
+"Zài nàbian, yīyuàn hòubian.",
+"Over there, behind the hospital.",
+"Вон там, за больницей."
+],
+[
+0,
+"要几分钟？",
+"Yào jǐ fēnzhōng?",
+"How many minutes does it take?",
+"Сколько минут идти?"
+],
+[
+1,
+"五分钟。",
+"Wǔ fēnzhōng.",
+"Five minutes.",
+"Пять минут."
+],
+[
+0,
+"谢谢您！",
+"Xièxie nín!",
+"Thank you!",
+"Спасибо!"
+],
+[
+1,
+"不客气。",
+"Bú kèqi.",
+"You're welcome.",
+"Не за что."
+]
+]
+}
+]
+}
+]

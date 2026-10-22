@@ -24,6 +24,7 @@ const MODULES = [
   { key: "reading", glyph: "读" },
   { key: "writing", glyph: "写" },
   { key: "speaking", glyph: "说" },
+  { key: "dialogues", glyph: "话" },
 ] as const;
 
 export default async function LevelHub({ params }: P) {

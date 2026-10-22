@@ -413,3 +413,18 @@ test("Ask Claude button opens claude.ai with the question and page filled in", a
   await dialog.getByRole("button", { name: "Close" }).click();
   await expect(page.getByRole("button", { name: "Ask Claude" })).toBeVisible();
 });
+
+test("dialogues section: topics, pinyin and translation toggles", async ({ page }) => {
+  await page.goto("/en/hsk/1");
+  await page.getByRole("link", { name: /Dialogues/ }).click();
+  await expect(page).toHaveURL(/\/en\/hsk\/1\/dialogues\/?$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("HSK 1 dialogues");
+  await expect(page.getByRole("heading", { name: "Ordering at a restaurant" })).toBeVisible();
+  const line = page.getByText("Hi! What's your name?");
+  await expect(line).toBeVisible();
+  await page.getByRole("button", { name: /Translation/ }).click();
+  await expect(line).toBeHidden();
+  await expect(page.getByText("Nǐ hǎo! Nǐ jiào shénme míngzi?")).toBeVisible();
+  await page.getByRole("button", { name: /Pinyin/ }).click();
+  await expect(page.getByText("Nǐ hǎo! Nǐ jiào shénme míngzi?")).toBeHidden();
+});
