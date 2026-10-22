@@ -2029,5 +2029,113 @@
 ]
 }
 ]
+},
+{
+"id": "festival",
+"t": [
+"Mid-Autumn Festival",
+"Праздник середины осени"
+],
+"d": [
+{
+"t": [
+"Mooncakes",
+"Лунные пряники"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"超市里怎么有这么多月饼？",
+"Chāoshì li zěnme yǒu zhème duō yuèbing?",
+"Why are there so many mooncakes in the supermarket?",
+"Почему в супермаркете столько лунных пряников?"
+],
+[
+1,
+"因为下个星期就是中秋节了。",
+"Yīnwèi xià ge xīngqī jiù shì Zhōngqiū Jié le.",
+"Because the Mid-Autumn Festival is next week.",
+"Потому что на следующей неделе праздник середины осени."
+],
+[
+0,
+"中秋节的时候大家做什么？",
+"Zhōngqiū Jié de shíhou dàjiā zuò shénme?",
+"What do people do at the festival?",
+"Что делают в этот праздник?"
+],
+[
+1,
+"一家人一起吃饭、吃月饼、看月亮。",
+"Yì jiā rén yìqǐ chī fàn, chī yuèbing, kàn yuèliang.",
+"Families eat together, have mooncakes and look at the moon.",
+"Вся семья вместе ужинает, ест пряники и любуется луной."
+],
+[
+0,
+"听起来很温暖。我也买一盒尝尝。",
+"Tīng qǐlai hěn wēnnuǎn. Wǒ yě mǎi yì hé chángchang.",
+"Sounds lovely. I'll buy a box to try too.",
+"Звучит тепло. Куплю коробку попробовать."
+]
+]
+},
+{
+"t": [
+"Festival evening",
+"Праздничный вечер"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"今晚的月亮又大又圆！",
+"Jīnwǎn de yuèliang yòu dà yòu yuán!",
+"The moon is so big and round tonight!",
+"Какая сегодня большая и круглая луна!"
+],
+[
+1,
+"是啊，可惜我不能回家跟父母一起过节。",
+"Shì a, kěxī wǒ bù néng huí jiā gēn fùmǔ yìqǐ guò jié.",
+"Yes. It's a pity I can't go home to celebrate with my parents.",
+"Да. Жаль, что не могу поехать домой к родителям."
+],
+[
+0,
+"给他们打个视频电话吧。",
+"Gěi tāmen dǎ ge shìpín diànhuà ba.",
+"Give them a video call.",
+"Позвони им по видеосвязи."
+],
+[
+1,
+"好主意，现在就打。",
+"Hǎo zhǔyi, xiànzài jiù dǎ.",
+"Good idea; I'll call right now.",
+"Хорошая мысль, позвоню прямо сейчас."
+]
+]
+}
+]
 }
 ]
