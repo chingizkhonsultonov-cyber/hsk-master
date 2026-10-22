@@ -1,1 +1,2029 @@
-[]
+[
+{
+"id": "career",
+"t": [
+"Changing jobs",
+"Смена работы"
+],
+"d": [
+{
+"t": [
+"Thinking of quitting",
+"Думаю уволиться"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我最近一直在考虑换工作。",
+"Wǒ zuìjìn yìzhí zài kǎolǜ huàn gōngzuò.",
+"I've been thinking about changing jobs lately.",
+"В последнее время всё думаю сменить работу."
+],
+[
+1,
+"为什么？你现在的工资不是挺高的吗？",
+"Wèishénme? Nǐ xiànzài de gōngzī bú shì tǐng gāo de ma?",
+"Why? Isn't your salary pretty good now?",
+"Почему? У тебя же неплохая зарплата?"
+],
+[
+0,
+"工资是不错，可是压力太大，每天都加班到很晚。",
+"Gōngzī shì búcuò, kěshì yālì tài dà, měi tiān dōu jiābān dào hěn wǎn.",
+"The pay is good, but the pressure is huge and I work late every day.",
+"Зарплата хорошая, но нагрузка огромная, каждый день допоздна."
+],
+[
+1,
+"那你得先找好下一个工作，再辞职。",
+"Nà nǐ děi xiān zhǎo hǎo xià yí ge gōngzuò, zài cízhí.",
+"Then find your next job first, and only then quit.",
+"Тогда сначала найди новую работу, а потом увольняйся."
+],
+[
+0,
+"你说得对，不能太着急。",
+"Nǐ shuō de duì, bù néng tài zháojí.",
+"You're right; I shouldn't rush.",
+"Ты права, не стоит спешить."
+]
+]
+},
+{
+"t": [
+"A new direction",
+"Новое направление"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"听说你不当老师了？",
+"Tīngshuō nǐ bù dāng lǎoshī le?",
+"I hear you've stopped teaching?",
+"Говорят, ты больше не работаешь учителем?"
+],
+[
+1,
+"对，我开了一家小咖啡店。",
+"Duì, wǒ kāi le yì jiā xiǎo kāfēidiàn.",
+"Yes, I've opened a small café.",
+"Да, открыл маленькую кофейню."
+],
+[
+0,
+"真勇敢！刚开始一定很辛苦吧？",
+"Zhēn yǒnggǎn! Gāng kāishǐ yídìng hěn xīnkǔ ba?",
+"How brave! It must be hard at the start?",
+"Как смело! Поначалу, наверное, тяжело?"
+],
+[
+1,
+"是挺累的，不过做自己喜欢的事，再累也值得。",
+"Shì tǐng lèi de, búguò zuò zìjǐ xǐhuan de shì, zài lèi yě zhídé.",
+"It's tiring, but doing what you love is worth it, however tiring.",
+"Устаю, но делать любимое дело того стоит."
+]
+]
+}
+]
+},
+{
+"id": "overtime",
+"t": [
+"Work and rest",
+"Работа и отдых"
+],
+"d": [
+{
+"t": [
+"Working late again",
+"Опять задерживаешься"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"都九点了，你还在办公室？",
+"Dōu jiǔ diǎn le, nǐ hái zài bàngōngshì?",
+"It's already nine and you're still at the office?",
+"Уже девять, а ты всё в офисе?"
+],
+[
+1,
+"这个报告明天早上就要交，我还没写完。",
+"Zhège bàogào míngtiān zǎoshang jiù yào jiāo, wǒ hái méi xiě wán.",
+"This report is due tomorrow morning and I haven't finished it.",
+"Отчёт надо сдать завтра утром, а я не дописал."
+],
+[
+0,
+"身体是最重要的，别太累了。",
+"Shēntǐ shì zuì zhòngyào de, bié tài lèi le.",
+"Your health matters most; don't overdo it.",
+"Здоровье важнее всего, не перетрудись."
+],
+[
+1,
+"知道了，写完我就回家。",
+"Zhīdào le, xiě wán wǒ jiù huí jiā.",
+"I know; I'll go home as soon as I've finished.",
+"Знаю, допишу и сразу домой."
+]
+]
+},
+{
+"t": [
+"Taking time off",
+"Берём отпуск"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"经理",
+"jīnglǐ"
+]
+],
+"l": [
+[
+0,
+"经理，我下个月想请一个星期的假。",
+"Jīnglǐ, wǒ xià ge yuè xiǎng qǐng yí ge xīngqī de jià.",
+"Manager, I'd like to take a week off next month.",
+"Начальник, я хотел бы взять неделю отпуска в следующем месяце."
+],
+[
+1,
+"是有什么事吗？",
+"Shì yǒu shénme shì ma?",
+"Is something going on?",
+"Что-то случилось?"
+],
+[
+0,
+"我姐姐结婚，我得回老家。",
+"Wǒ jiějie jiéhūn, wǒ děi huí lǎojiā.",
+"My sister's getting married; I need to go home.",
+"Сестра выходит замуж, мне нужно поехать домой."
+],
+[
+1,
+"没问题，你把工作安排好就行。",
+"Méi wèntí, nǐ bǎ gōngzuò ānpái hǎo jiù xíng.",
+"No problem, just arrange your work before you go.",
+"Без проблем, только распредели дела."
+]
+]
+}
+]
+},
+{
+"id": "environment",
+"t": [
+"Protecting the environment",
+"Защита окружающей среды"
+],
+"d": [
+{
+"t": [
+"Sorting rubbish",
+"Сортировка мусора"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"这个瓶子应该扔到哪个垃圾桶里？",
+"Zhège píngzi yīnggāi rēng dào nǎge lājītǒng li?",
+"Which bin should this bottle go in?",
+"В какой контейнер выбросить эту бутылку?"
+],
+[
+1,
+"扔到蓝色的那个，那是可回收的。",
+"Rēng dào lánsè de nàge, nà shì kě huíshōu de.",
+"The blue one; that's for recycling.",
+"В синий, это для вторсырья."
+],
+[
+0,
+"剩下的饭菜呢？",
+"Shèng xià de fàncài ne?",
+"And leftover food?",
+"А остатки еды?"
+],
+[
+1,
+"扔到绿色的。垃圾分类虽然麻烦，但是对环境很有好处。",
+"Rēng dào lǜsè de. Lājī fēnlèi suīrán máfan, dànshì duì huánjìng hěn yǒu hǎochu.",
+"In the green one. Sorting rubbish is a hassle, but it's good for the environment.",
+"В зелёный. Сортировать мусор хлопотно, зато полезно для природы."
+]
+]
+},
+{
+"t": [
+"Less plastic",
+"Меньше пластика"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"你怎么自己带了个袋子？",
+"Nǐ zěnme zìjǐ dài le ge dàizi?",
+"Why did you bring your own bag?",
+"Ты почему со своей сумкой?"
+],
+[
+1,
+"我想少用塑料袋，这样能减少污染。",
+"Wǒ xiǎng shǎo yòng sùliàodài, zhèyàng néng jiǎnshǎo wūrǎn.",
+"I want to use fewer plastic bags; it reduces pollution.",
+"Хочу меньше пользоваться пакетами, так меньше загрязнения."
+],
+[
+0,
+"有道理。我以后也带自己的杯子去买咖啡。",
+"Yǒu dàolǐ. Wǒ yǐhòu yě dài zìjǐ de bēizi qù mǎi kāfēi.",
+"Makes sense. From now on I'll bring my own cup for coffee.",
+"Разумно. Буду теперь ходить за кофе со своей кружкой."
+],
+[
+1,
+"每个人做一点儿，变化就会很大。",
+"Měi ge rén zuò yìdiǎnr, biànhuà jiù huì hěn dà.",
+"If everyone does a little, it makes a big difference.",
+"Если каждый сделает немного, изменения будут огромными."
+]
+]
+}
+]
+},
+{
+"id": "online",
+"t": [
+"Studying online",
+"Онлайн-обучение"
+],
+"d": [
+{
+"t": [
+"An online course",
+"Онлайн-курс"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"你在网上上课，效果怎么样？",
+"Nǐ zài wǎng shang shàngkè, xiàoguǒ zěnmeyàng?",
+"How effective are your online classes?",
+"Как тебе онлайн-занятия, есть результат?"
+],
+[
+1,
+"挺好的，时间很方便，而且可以反复看。",
+"Tǐng hǎo de, shíjiān hěn fāngbiàn, érqiě kěyǐ fǎnfù kàn.",
+"Pretty good; the times are convenient, and I can rewatch.",
+"Хорошо: время удобное, и можно пересматривать."
+],
+[
+0,
+"可是没有人管你，你能坚持吗？",
+"Kěshì méiyǒu rén guǎn nǐ, nǐ néng jiānchí ma?",
+"But no one's checking on you. Can you keep it up?",
+"Но никто тебя не контролирует — не бросишь?"
+],
+[
+1,
+"我给自己定了计划，每天学一个小时。",
+"Wǒ gěi zìjǐ dìng le jìhuà, měi tiān xué yí ge xiǎoshí.",
+"I've set myself a plan: one hour a day.",
+"Я составила себе план: час в день."
+]
+]
+},
+{
+"t": [
+"Camera on, please",
+"Включите камеру"
+],
+"s": [
+[
+"老师",
+"lǎoshī"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"李明，请把摄像头打开。",
+"Lǐ Míng, qǐng bǎ shèxiàngtóu dǎkāi.",
+"Li Ming, please turn on your camera.",
+"Ли Мин, включи, пожалуйста, камеру."
+],
+[
+1,
+"老师，对不起，我的网络不太好。",
+"Lǎoshī, duìbuqǐ, wǒ de wǎngluò bú tài hǎo.",
+"Sorry, teacher, my connection isn't great.",
+"Извините, у меня плохой интернет."
+],
+[
+0,
+"那你先听着，有问题可以在聊天框里写。",
+"Nà nǐ xiān tīng zhe, yǒu wèntí kěyǐ zài liáotiānkuàng li xiě.",
+"Then just listen for now; write any questions in the chat box.",
+"Тогда пока слушай, вопросы пиши в чат."
+],
+[
+1,
+"好的，谢谢老师。",
+"Hǎo de, xièxie lǎoshī.",
+"OK, thank you.",
+"Хорошо, спасибо."
+]
+]
+}
+]
+},
+{
+"id": "diet",
+"t": [
+"Healthy eating",
+"Здоровое питание"
+],
+"d": [
+{
+"t": [
+"Going on a diet",
+"Сажусь на диету"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"我决定减肥，从今天开始不吃晚饭了。",
+"Wǒ juédìng jiǎnféi, cóng jīntiān kāishǐ bù chī wǎnfàn le.",
+"I've decided to lose weight. From today, no more dinner.",
+"Решила худеть: с сегодняшнего дня без ужина."
+],
+[
+1,
+"不吃饭对身体不好，少吃一点儿就可以了。",
+"Bù chī fàn duì shēntǐ bù hǎo, shǎo chī yìdiǎnr jiù kěyǐ le.",
+"Skipping meals is bad for you; just eat a bit less.",
+"Не есть вредно, просто ешь поменьше."
+],
+[
+0,
+"那我该怎么做？",
+"Nà wǒ gāi zěnme zuò?",
+"So what should I do?",
+"А как тогда?"
+],
+[
+1,
+"多吃蔬菜水果，少吃甜的，再加上运动。",
+"Duō chī shūcài shuǐguǒ, shǎo chī tián de, zài jiā shang yùndòng.",
+"More vegetables and fruit, fewer sweets, plus exercise.",
+"Больше овощей и фруктов, меньше сладкого, плюс спорт."
+]
+]
+},
+{
+"t": [
+"Too much coffee",
+"Слишком много кофе"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"你今天已经喝了三杯咖啡了。",
+"Nǐ jīntiān yǐjīng hē le sān bēi kāfēi le.",
+"You've already had three coffees today.",
+"Ты сегодня уже выпил три чашки кофе."
+],
+[
+1,
+"不喝的话我上班没精神。",
+"Bù hē de huà wǒ shàngbān méi jīngshen.",
+"If I don't, I have no energy at work.",
+"Без него на работе вялый."
+],
+[
+0,
+"喝太多会影响睡觉，晚上更睡不着。",
+"Hē tài duō huì yǐngxiǎng shuìjiào, wǎnshang gèng shuì bu zháo.",
+"Too much affects your sleep; you'll sleep even worse.",
+"Много кофе мешает сну, ночью вообще не уснёшь."
+],
+[
+1,
+"也是。那下午我改喝绿茶吧。",
+"Yě shì. Nà xiàwǔ wǒ gǎi hē lǜchá ba.",
+"True. I'll switch to green tea in the afternoon.",
+"И то правда. После обеда перейду на зелёный чай."
+]
+]
+}
+]
+},
+{
+"id": "trip",
+"t": [
+"Travel trouble",
+"Неприятности в поездке"
+],
+"d": [
+{
+"t": [
+"Missed the train",
+"Опоздали на поезд"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"糟糕，火车已经开走了！",
+"Zāogāo, huǒchē yǐjīng kāi zǒu le!",
+"Oh no, the train has already left!",
+"Чёрт, поезд уже ушёл!"
+],
+[
+1,
+"都怪路上堵车。我们去问问能不能改签。",
+"Dōu guài lù shang dǔ chē. Wǒmen qù wènwen néng bu néng gǎiqiān.",
+"It's the traffic's fault. Let's ask if we can change the ticket.",
+"Всё из-за пробок. Пойдём спросим, можно ли переоформить билет."
+],
+[
+0,
+"下一班是几点？",
+"Xià yì bān shì jǐ diǎn?",
+"When's the next one?",
+"Во сколько следующий?"
+],
+[
+1,
+"四点二十，还有座位，只要再交一点儿手续费。",
+"Sì diǎn èrshí, hái yǒu zuòwèi, zhǐ yào zài jiāo yìdiǎnr shǒuxùfèi.",
+"4:20; there are still seats, just a small fee.",
+"В 16:20, места есть, только небольшой сбор."
+]
+]
+},
+{
+"t": [
+"Lost luggage",
+"Потерялся багаж"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"工作人员",
+"gōngzuò rényuán"
+]
+],
+"l": [
+[
+0,
+"我等了半天，我的行李箱还没出来。",
+"Wǒ děng le bàntiān, wǒ de xínglixiāng hái méi chūlai.",
+"I've waited ages and my suitcase still hasn't come out.",
+"Жду уже долго, а моего чемодана всё нет."
+],
+[
+1,
+"请把您的行李票给我看一下。",
+"Qǐng bǎ nín de xínglipiào gěi wǒ kàn yíxià.",
+"Please show me your baggage tag.",
+"Покажите, пожалуйста, багажную квитанцию."
+],
+[
+0,
+"给您。箱子是黑色的，上面有一个红色的标志。",
+"Gěi nín. Xiāngzi shì hēisè de, shàngmiàn yǒu yí ge hóngsè de biāozhì.",
+"Here. The case is black with a red label on it.",
+"Вот. Чемодан чёрный, на нём красная бирка."
+],
+[
+1,
+"看起来它被送到了别的城市，明天会给您送到酒店。",
+"Kàn qǐlai tā bèi sòng dào le bié de chéngshì, míngtiān huì gěi nín sòng dào jiǔdiàn.",
+"It seems it was sent to another city. We'll deliver it to your hotel tomorrow.",
+"Похоже, его отправили в другой город. Завтра доставим в отель."
+]
+]
+}
+]
+},
+{
+"id": "service",
+"t": [
+"Customer service",
+"Служба поддержки"
+],
+"d": [
+{
+"t": [
+"A wrong bill",
+"Ошибка в счёте"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"客服",
+"kèfú"
+]
+],
+"l": [
+[
+0,
+"你好，我这个月的话费怎么这么多？",
+"Nǐ hǎo, wǒ zhège yuè de huàfèi zěnme zhème duō?",
+"Hello, why is my phone bill so high this month?",
+"Здравствуйте, почему у меня такой большой счёт за телефон?"
+],
+[
+1,
+"请稍等，我帮您查一下……您用了很多国际电话。",
+"Qǐng shāo děng, wǒ bāng nín chá yíxià…… Nín yòng le hěn duō guójì diànhuà.",
+"One moment, let me check… You made a lot of international calls.",
+"Минутку, проверю… У вас много международных звонков."
+],
+[
+0,
+"不可能，我都是用网络打的。",
+"Bù kěnéng, wǒ dōu shì yòng wǎngluò dǎ de.",
+"Impossible; I make all my calls over the internet.",
+"Не может быть, я звоню только через интернет."
+],
+[
+1,
+"那可能是系统出错了，我帮您处理，三天内给您答复。",
+"Nà kěnéng shì xìtǒng chū cuò le, wǒ bāng nín chǔlǐ, sān tiān nèi gěi nín dáfù.",
+"Then it may be a system error. I'll sort it out and reply within three days.",
+"Тогда, возможно, ошибка системы. Разберусь и отвечу в течение трёх дней."
+]
+]
+},
+{
+"t": [
+"Cancelling a membership",
+"Отменяем абонемент"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"客服",
+"kèfú"
+]
+],
+"l": [
+[
+0,
+"我想取消健身房的会员。",
+"Wǒ xiǎng qǔxiāo jiànshēnfáng de huìyuán.",
+"I'd like to cancel my gym membership.",
+"Хочу отменить абонемент в спортзал."
+],
+[
+1,
+"可以问一下原因吗？",
+"Kěyǐ wèn yíxià yuányīn ma?",
+"May I ask why?",
+"Можно узнать причину?"
+],
+[
+0,
+"我要搬到别的城市去了。",
+"Wǒ yào bān dào bié de chéngshì qù le.",
+"I'm moving to another city.",
+"Я переезжаю в другой город."
+],
+[
+1,
+"明白了。剩下的钱我们会退到您的卡里。",
+"Míngbai le. Shèng xià de qián wǒmen huì tuì dào nín de kǎ li.",
+"I see. We'll refund the remaining amount to your card.",
+"Понятно. Остаток вернём на вашу карту."
+]
+]
+}
+]
+},
+{
+"id": "wedding",
+"t": [
+"A wedding",
+"Свадьба"
+],
+"d": [
+{
+"t": [
+"Wedding invitation",
+"Приглашение на свадьбу"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"我十月要结婚了，这是给你的请帖！",
+"Wǒ shí yuè yào jiéhūn le, zhè shì gěi nǐ de qǐngtiě!",
+"I'm getting married in October — here's your invitation!",
+"Я в октябре выхожу замуж — вот тебе приглашение!"
+],
+[
+1,
+"恭喜恭喜！你们认识多久了？",
+"Gōngxǐ gōngxǐ! Nǐmen rènshi duō jiǔ le?",
+"Congratulations! How long have you known each other?",
+"Поздравляю! Сколько вы знакомы?"
+],
+[
+0,
+"五年了，大学的时候就在一起了。",
+"Wǔ nián le, dàxué de shíhou jiù zài yìqǐ le.",
+"Five years; we've been together since university.",
+"Пять лет, вместе ещё с университета."
+],
+[
+1,
+"真为你高兴！我一定准时到。",
+"Zhēn wèi nǐ gāoxìng! Wǒ yídìng zhǔnshí dào.",
+"I'm so happy for you! I'll be there on time.",
+"Очень за тебя рада! Обязательно приду вовремя."
+]
+]
+},
+{
+"t": [
+"What gift to give",
+"Что подарить на свадьбу"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"在中国参加婚礼，一般送什么？",
+"Zài Zhōngguó cānjiā hūnlǐ, yìbān sòng shénme?",
+"What do people usually give at a wedding in China?",
+"Что обычно дарят на свадьбу в Китае?"
+],
+[
+1,
+"一般送红包，里面放钱。",
+"Yìbān sòng hóngbāo, lǐmiàn fàng qián.",
+"Usually a red envelope with money inside.",
+"Обычно красный конверт с деньгами."
+],
+[
+0,
+"放多少比较合适？",
+"Fàng duōshao bǐjiào héshì?",
+"How much is appropriate?",
+"Сколько положить уместно?"
+],
+[
+1,
+"看关系，不过最好是双数，比如六百、八百。",
+"Kàn guānxi, búguò zuìhǎo shì shuāngshù, bǐrú liùbǎi, bābǎi.",
+"It depends on how close you are, but even numbers are best, like 600 or 800.",
+"Зависит от близости, но лучше чётное число, например шестьсот или восемьсот."
+]
+]
+}
+]
+},
+{
+"id": "abroad",
+"t": [
+"Studying abroad",
+"Учёба за границей"
+],
+"d": [
+{
+"t": [
+"Applying to a Chinese university",
+"Поступаем в китайский вуз"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"老师",
+"lǎoshī"
+]
+],
+"l": [
+[
+0,
+"老师，我想申请去中国读研究生，需要准备什么？",
+"Lǎoshī, wǒ xiǎng shēnqǐng qù Zhōngguó dú yánjiūshēng, xūyào zhǔnbèi shénme?",
+"Teacher, I want to apply for a master's in China. What should I prepare?",
+"Учитель, хочу поступить в магистратуру в Китае. Что нужно подготовить?"
+],
+[
+1,
+"首先要有HSK证书，一般要求五级以上。",
+"Shǒuxiān yào yǒu HSK zhèngshū, yìbān yāoqiú wǔ jí yǐshàng.",
+"First you need an HSK certificate, usually level 5 or above.",
+"Во-первых, сертификат HSK, обычно не ниже пятого уровня."
+],
+[
+0,
+"还要别的材料吗？",
+"Hái yào bié de cáiliào ma?",
+"Any other documents?",
+"Какие ещё документы?"
+],
+[
+1,
+"还要成绩单、推荐信和个人计划。我可以帮你写推荐信。",
+"Hái yào chéngjìdān, tuījiànxìn hé gèrén jìhuà. Wǒ kěyǐ bāng nǐ xiě tuījiànxìn.",
+"Transcripts, a recommendation letter and a study plan. I can write you a recommendation.",
+"Ещё выписка оценок, рекомендательное письмо и учебный план. Рекомендацию могу написать я."
+]
+]
+},
+{
+"t": [
+"Homesick",
+"Тоска по дому"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"来中国半年了，你习惯这儿的生活了吗？",
+"Lái Zhōngguó bàn nián le, nǐ xíguàn zhèr de shēnghuó le ma?",
+"You've been in China six months. Are you used to life here?",
+"Ты в Китае уже полгода. Привыкла к здешней жизни?"
+],
+[
+1,
+"基本习惯了，就是有时候特别想家。",
+"Jīběn xíguàn le, jiùshì yǒushíhou tèbié xiǎng jiā.",
+"Mostly, but sometimes I really miss home.",
+"В основном да, только иногда очень скучаю по дому."
+],
+[
+0,
+"想家的时候你怎么办？",
+"Xiǎng jiā de shíhou nǐ zěnme bàn?",
+"What do you do when you're homesick?",
+"Что делаешь, когда скучаешь?"
+],
+[
+1,
+"给妈妈打视频电话，或者自己做家乡菜。",
+"Gěi māma dǎ shìpín diànhuà, huòzhě zìjǐ zuò jiāxiāng cài.",
+"I video-call my mum or cook food from home.",
+"Звоню маме по видео или готовлю что-нибудь домашнее."
+]
+]
+}
+]
+},
+{
+"id": "phones",
+"t": [
+"Phones and social media",
+"Телефоны и соцсети"
+],
+"d": [
+{
+"t": [
+"Always on the phone",
+"Вечно в телефоне"
+],
+"s": [
+[
+"妈妈",
+"māma"
+],
+[
+"儿子",
+"érzi"
+]
+],
+"l": [
+[
+0,
+"吃饭的时候能不能别看手机？",
+"Chī fàn de shíhou néng bu néng bié kàn shǒujī?",
+"Can you not look at your phone while we eat?",
+"Можно за едой не смотреть в телефон?"
+],
+[
+1,
+"我在回同学的消息，马上就好。",
+"Wǒ zài huí tóngxué de xiāoxi, mǎshàng jiù hǎo.",
+"I'm replying to a classmate; nearly done.",
+"Отвечаю однокласснику, сейчас закончу."
+],
+[
+0,
+"你每天花在手机上的时间太长了。",
+"Nǐ měi tiān huā zài shǒujī shang de shíjiān tài cháng le.",
+"You spend far too long on your phone every day.",
+"Ты слишком много времени проводишь в телефоне."
+],
+[
+1,
+"好吧，我把手机放在房间里。",
+"Hǎo ba, wǒ bǎ shǒujī fàng zài fángjiān li.",
+"Fine, I'll leave my phone in my room.",
+"Ладно, оставлю телефон в комнате."
+]
+]
+},
+{
+"t": [
+"Posting photos",
+"Выкладываем фото"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"我刚把我们的合影发到朋友圈了。",
+"Wǒ gāng bǎ wǒmen de héyǐng fā dào péngyouquān le.",
+"I just posted our group photo on Moments.",
+"Я только что выложила наше общее фото в ленту."
+],
+[
+1,
+"啊？那张我闭着眼睛呢！",
+"Á? Nà zhāng wǒ bì zhe yǎnjing ne!",
+"What? My eyes are closed in that one!",
+"Что? Я там с закрытыми глазами!"
+],
+[
+0,
+"哈哈，没注意，我马上删了，换一张。",
+"Hāha, méi zhùyì, wǒ mǎshàng shān le, huàn yì zhāng.",
+"Haha, I didn't notice. I'll delete it and post another.",
+"Ха-ха, не заметила. Сейчас удалю и выложу другую."
+],
+[
+1,
+"下次发之前先让我看看。",
+"Xià cì fā zhīqián xiān ràng wǒ kànkan.",
+"Next time, show me before you post.",
+"В следующий раз сначала покажи мне."
+]
+]
+}
+]
+},
+{
+"id": "money",
+"t": [
+"Money and saving",
+"Деньги и сбережения"
+],
+"d": [
+{
+"t": [
+"Where does my money go?",
+"Куда уходят деньги?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"每个月还没到月底，我的钱就花完了。",
+"Měi ge yuè hái méi dào yuèdǐ, wǒ de qián jiù huā wán le.",
+"Every month, my money's gone before the month ends.",
+"Каждый месяц деньги заканчиваются раньше конца месяца."
+],
+[
+1,
+"你记过账吗？看看钱都花在哪儿了。",
+"Nǐ jì guo zhàng ma? Kànkan qián dōu huā zài nǎr le.",
+"Have you tracked your spending? See where it all goes.",
+"Ты вела учёт расходов? Посмотри, на что уходят."
+],
+[
+0,
+"大部分都在网上买衣服了。",
+"Dà bùfen dōu zài wǎng shang mǎi yīfu le.",
+"Most of it goes on clothes online.",
+"Большая часть — на одежду в интернете."
+],
+[
+1,
+"那就每个月先存一部分，剩下的再花。",
+"Nà jiù měi ge yuè xiān cún yí bùfen, shèng xià de zài huā.",
+"Then save a portion first each month and spend the rest.",
+"Тогда каждый месяц сначала откладывай часть, а остальное трать."
+]
+]
+},
+{
+"t": [
+"Saving for a trip",
+"Копим на поездку"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我打算明年去欧洲旅行，现在开始存钱。",
+"Wǒ dǎsuàn míngnián qù Ōuzhōu lǚxíng, xiànzài kāishǐ cún qián.",
+"I plan to travel in Europe next year, so I'm starting to save.",
+"Собираюсь в следующем году в Европу, начинаю копить."
+],
+[
+1,
+"大概需要多少钱？",
+"Dàgài xūyào duōshao qián?",
+"Roughly how much will you need?",
+"Сколько примерно нужно?"
+],
+[
+0,
+"机票、住宿加上吃饭，至少要两万。",
+"Jīpiào, zhùsù jiā shang chī fàn, zhìshǎo yào liǎngwàn.",
+"Flights, accommodation and food — at least 20,000.",
+"Билеты, жильё и еда — минимум двадцать тысяч."
+],
+[
+1,
+"那你得少出去吃饭了。",
+"Nà nǐ děi shǎo chūqu chī fàn le.",
+"Then you'll have to eat out less.",
+"Тогда придётся реже ходить в рестораны."
+]
+]
+}
+]
+},
+{
+"id": "driving",
+"t": [
+"Driving",
+"Вождение"
+],
+"d": [
+{
+"t": [
+"Learning to drive",
+"Учусь водить"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我在学开车，下个月考驾照。",
+"Wǒ zài xué kāichē, xià ge yuè kǎo jiàzhào.",
+"I'm learning to drive; my driving test is next month.",
+"Учусь водить, в следующем месяце экзамен на права."
+],
+[
+1,
+"难不难？",
+"Nán bu nán?",
+"Is it hard?",
+"Трудно?"
+],
+[
+0,
+"停车最难，我总是停不进去。",
+"Tíng chē zuì nán, wǒ zǒngshì tíng bu jìnqu.",
+"Parking is the hardest; I can never get it in.",
+"Труднее всего парковаться, никак не заезжаю."
+],
+[
+1,
+"多练习几次就好了，别紧张。",
+"Duō liànxí jǐ cì jiù hǎo le, bié jǐnzhāng.",
+"Practise a few more times and you'll be fine. Don't be nervous.",
+"Потренируйся ещё — и получится. Не волнуйся."
+]
+]
+},
+{
+"t": [
+"Pulled over",
+"Остановил полицейский"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"交警",
+"jiāojǐng"
+]
+],
+"l": [
+[
+0,
+"警察同志，我有什么问题吗？",
+"Jǐngchá tóngzhì, wǒ yǒu shénme wèntí ma?",
+"Officer, is something wrong?",
+"Товарищ полицейский, что-то не так?"
+],
+[
+1,
+"你刚才开得太快了，这条路限速六十。",
+"Nǐ gāngcái kāi de tài kuài le, zhè tiáo lù xiànsù liùshí.",
+"You were driving too fast; the limit on this road is sixty.",
+"Вы ехали слишком быстро, здесь ограничение шестьдесят."
+],
+[
+0,
+"对不起，我没看到牌子。",
+"Duìbuqǐ, wǒ méi kàn dào páizi.",
+"Sorry, I didn't see the sign.",
+"Извините, я не заметил знак."
+],
+[
+1,
+"请出示驾照。下次一定要注意安全。",
+"Qǐng chūshì jiàzhào. Xià cì yídìng yào zhùyì ānquán.",
+"Show me your licence, please. Be careful next time.",
+"Предъявите права. В следующий раз будьте внимательнее."
+]
+]
+}
+]
+},
+{
+"id": "volunteer",
+"t": [
+"Volunteering",
+"Волонтёрство"
+],
+"d": [
+{
+"t": [
+"Helping at an old people's home",
+"Помогаем в доме престарелых"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"这个周末你有空吗？我们去养老院当志愿者。",
+"Zhège zhōumò nǐ yǒu kòng ma? Wǒmen qù yǎnglǎoyuàn dāng zhìyuànzhě.",
+"Are you free this weekend? Let's volunteer at the old people's home.",
+"Ты свободен на выходных? Пойдём волонтёрами в дом престарелых."
+],
+[
+1,
+"好啊，要做些什么？",
+"Hǎo a, yào zuò xiē shénme?",
+"Sure. What will we do?",
+"Давай. Что нужно делать?"
+],
+[
+0,
+"陪老人聊聊天，给他们唱唱歌。",
+"Péi lǎorén liáoliao tiān, gěi tāmen chàngchang gē.",
+"Chat with the old folks and sing them some songs.",
+"Поболтать с пожилыми людьми, спеть им песни."
+],
+[
+1,
+"这个有意义，我一定去。",
+"Zhège yǒu yìyì, wǒ yídìng qù.",
+"That's worthwhile; I'll definitely come.",
+"Это стоящее дело, обязательно пойду."
+]
+]
+},
+{
+"t": [
+"After volunteering",
+"После волонтёрства"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"今天那位老奶奶拉着我的手说了很久。",
+"Jīntiān nà wèi lǎo nǎinai lā zhe wǒ de shǒu shuō le hěn jiǔ.",
+"Today that old lady held my hand and talked for ages.",
+"Сегодня одна бабушка долго держала меня за руку и разговаривала."
+],
+[
+1,
+"她的孩子都在外地工作，很少来看她。",
+"Tā de háizi dōu zài wàidì gōngzuò, hěn shǎo lái kàn tā.",
+"Her children all work in other cities and rarely visit.",
+"Её дети работают в других городах и редко её навещают."
+],
+[
+0,
+"怪不得她那么高兴。",
+"Guàibude tā nàme gāoxìng.",
+"No wonder she was so happy.",
+"Неудивительно, что она так радовалась."
+],
+[
+1,
+"以后我们每个月都来一次吧。",
+"Yǐhòu wǒmen měi ge yuè dōu lái yí cì ba.",
+"Let's come once a month from now on.",
+"Давай теперь приходить раз в месяц."
+]
+]
+}
+]
+},
+{
+"id": "parents",
+"t": [
+"Parents' expectations",
+"Ожидания родителей"
+],
+"d": [
+{
+"t": [
+"Mum wants me to be a doctor",
+"Мама хочет, чтобы я стал врачом"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我妈希望我当医生，可是我对医学没兴趣。",
+"Wǒ mā xīwàng wǒ dāng yīshēng, kěshì wǒ duì yīxué méi xìngqù.",
+"My mum wants me to be a doctor, but I'm not interested in medicine.",
+"Мама хочет, чтобы я стал врачом, а мне медицина неинтересна."
+],
+[
+1,
+"那你喜欢什么？",
+"Nà nǐ xǐhuan shénme?",
+"What do you like, then?",
+"А что тебе нравится?"
+],
+[
+0,
+"我想学设计。",
+"Wǒ xiǎng xué shèjì.",
+"I want to study design.",
+"Хочу учиться дизайну."
+],
+[
+1,
+"你应该跟她好好谈谈，让她了解你的想法。",
+"Nǐ yīnggāi gēn tā hǎohǎo tántan, ràng tā liǎojiě nǐ de xiǎngfǎ.",
+"You should have a proper talk with her so she understands you.",
+"Тебе стоит серьёзно с ней поговорить, чтобы она поняла тебя."
+]
+]
+},
+{
+"t": [
+"When are you getting married?",
+"Когда женишься?"
+],
+"s": [
+[
+"妈妈",
+"māma"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你都三十了，什么时候结婚啊？",
+"Nǐ dōu sānshí le, shénme shíhou jiéhūn a?",
+"You're already thirty — when are you getting married?",
+"Тебе уже тридцать, когда женишься?"
+],
+[
+1,
+"妈，我现在工作太忙了，以后再说吧。",
+"Mā, wǒ xiànzài gōngzuò tài máng le, yǐhòu zài shuō ba.",
+"Mum, I'm too busy with work right now. Let's talk about it later.",
+"Мам, у меня сейчас много работы, потом поговорим."
+],
+[
+0,
+"你每次都这么说。",
+"Nǐ měi cì dōu zhème shuō.",
+"You say that every time.",
+"Ты каждый раз так говоришь."
+],
+[
+1,
+"放心吧，遇到合适的人我一定告诉你。",
+"Fàngxīn ba, yù dào héshì de rén wǒ yídìng gàosu nǐ.",
+"Don't worry; when I meet the right person, I'll tell you.",
+"Не волнуйся, встречу подходящего человека — сразу скажу."
+]
+]
+}
+]
+},
+{
+"id": "major",
+"t": [
+"Choosing a major",
+"Выбор специальности"
+],
+"d": [
+{
+"t": [
+"What should I study?",
+"На кого учиться?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"老师",
+"lǎoshī"
+]
+],
+"l": [
+[
+0,
+"老师，我不知道应该选什么专业。",
+"Lǎoshī, wǒ bù zhīdào yīnggāi xuǎn shénme zhuānyè.",
+"Teacher, I don't know which major to choose.",
+"Учитель, не знаю, какую специальность выбрать."
+],
+[
+1,
+"你对什么最感兴趣？",
+"Nǐ duì shénme zuì gǎn xìngqù?",
+"What are you most interested in?",
+"Что тебе интереснее всего?"
+],
+[
+0,
+"我喜欢语言，也喜欢经济。",
+"Wǒ xǐhuan yǔyán, yě xǐhuan jīngjì.",
+"I like languages, and economics too.",
+"Мне нравятся языки и экономика."
+],
+[
+1,
+"那可以考虑国际贸易，两方面都能用上。",
+"Nà kěyǐ kǎolǜ guójì màoyì, liǎng fāngmiàn dōu néng yòng shang.",
+"Then consider international trade; you'd use both.",
+"Тогда подумай о международной торговле — пригодится и то, и другое."
+]
+]
+},
+{
+"t": [
+"Changing majors",
+"Перевод на другую специальность"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我想从数学专业换到计算机专业。",
+"Wǒ xiǎng cóng shùxué zhuānyè huàn dào jìsuànjī zhuānyè.",
+"I want to switch from maths to computer science.",
+"Хочу перевестись с математики на информатику."
+],
+[
+1,
+"可以换吗？",
+"Kěyǐ huàn ma?",
+"Is that allowed?",
+"А так можно?"
+],
+[
+0,
+"可以，不过第一年的成绩要好，还要参加一个考试。",
+"Kěyǐ, búguò dì-yī nián de chéngjì yào hǎo, hái yào cānjiā yí ge kǎoshì.",
+"Yes, but you need good first-year grades and to pass an exam.",
+"Можно, но нужны хорошие оценки за первый курс и экзамен."
+],
+[
+1,
+"你数学那么好，肯定没问题。",
+"Nǐ shùxué nàme hǎo, kěndìng méi wèntí.",
+"You're so good at maths — no problem for you.",
+"Ты так хорош в математике, точно получится."
+]
+]
+}
+]
+},
+{
+"id": "housing",
+"t": [
+"Buying a home",
+"Покупка жилья"
+],
+"d": [
+{
+"t": [
+"Rent or buy?",
+"Снимать или покупать?"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你觉得是租房好还是买房好？",
+"Nǐ juéde shì zū fáng hǎo háishi mǎi fáng hǎo?",
+"Do you think renting or buying is better?",
+"Как думаешь, лучше снимать или покупать?"
+],
+[
+1,
+"看情况。如果工作不稳定，租房更灵活。",
+"Kàn qíngkuàng. Rúguǒ gōngzuò bù wěndìng, zū fáng gèng línghuó.",
+"It depends. If your job isn't stable, renting is more flexible.",
+"Зависит от ситуации. Если работа нестабильная, снимать гибче."
+],
+[
+0,
+"可是房租每年都在涨。",
+"Kěshì fángzū měi nián dōu zài zhǎng.",
+"But rent goes up every year.",
+"Но аренда дорожает каждый год."
+],
+[
+1,
+"这也是个问题。买房的话压力也很大。",
+"Zhè yě shì ge wèntí. Mǎi fáng de huà yālì yě hěn dà.",
+"That's a problem too. But buying is a lot of pressure as well.",
+"Это тоже проблема. Но и покупка — большая нагрузка."
+]
+]
+},
+{
+"t": [
+"Looking at a new flat",
+"Смотрим новостройку"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"销售",
+"xiāoshòu"
+]
+],
+"l": [
+[
+0,
+"这套房子多大？",
+"Zhè tào fángzi duō dà?",
+"How big is this flat?",
+"Какая площадь у этой квартиры?"
+],
+[
+1,
+"九十平方米，两室一厅，南北通透。",
+"Jiǔshí píngfāngmǐ, liǎng shì yì tīng, nánběi tōngtòu.",
+"Ninety square metres, two bedrooms and a living room, light on both sides.",
+"Девяносто квадратов, две спальни и гостиная, окна на обе стороны."
+],
+[
+0,
+"周围有学校吗？",
+"Zhōuwéi yǒu xuéxiào ma?",
+"Are there schools nearby?",
+"Рядом есть школы?"
+],
+[
+1,
+"有，小学和中学走路都只要十分钟。",
+"Yǒu, xiǎoxué hé zhōngxué zǒulù dōu zhǐ yào shí fēnzhōng.",
+"Yes, both primary and secondary are ten minutes' walk.",
+"Да, и начальная, и средняя — в десяти минутах пешком."
+]
+]
+}
+]
+},
+{
+"id": "films",
+"t": [
+"Talking about a film",
+"Обсуждаем фильм"
+],
+"d": [
+{
+"t": [
+"What did you think?",
+"Как тебе фильм?"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"你觉得这部电影怎么样？",
+"Nǐ juéde zhè bù diànyǐng zěnmeyàng?",
+"What did you think of the film?",
+"Как тебе фильм?"
+],
+[
+1,
+"故事很感人，最后我都哭了。",
+"Gùshi hěn gǎnrén, zuìhòu wǒ dōu kū le.",
+"The story was moving; I even cried at the end.",
+"История трогательная, в конце я даже заплакал."
+],
+[
+0,
+"我也是。男主角演得特别好。",
+"Wǒ yě shì. Nán zhǔjué yǎn de tèbié hǎo.",
+"Me too. The lead actor was brilliant.",
+"Я тоже. Главный герой сыграл отлично."
+],
+[
+1,
+"听说他为了这个角色减了二十斤。",
+"Tīngshuō tā wèile zhège juésè jiǎn le èrshí jīn.",
+"I heard he lost ten kilos for the role.",
+"Говорят, ради роли он похудел на десять кило."
+]
+]
+},
+{
+"t": [
+"Not worth watching",
+"Не стоило смотреть"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"这部电影太无聊了，我差点儿睡着。",
+"Zhè bù diànyǐng tài wúliáo le, wǒ chàdiǎnr shuì zháo.",
+"That film was so boring I nearly fell asleep.",
+"Фильм такой скучный, я чуть не уснул."
+],
+[
+1,
+"网上评分那么高，没想到这么一般。",
+"Wǎng shang píngfēn nàme gāo, méi xiǎngdào zhème yìbān.",
+"It had such high ratings online — I didn't expect it to be so average.",
+"В интернете такие высокие оценки, не думала, что он такой средний."
+],
+[
+0,
+"下次我们先看看朋友的推荐。",
+"Xià cì wǒmen xiān kànkan péngyou de tuījiàn.",
+"Next time, let's check our friends' recommendations first.",
+"В следующий раз сначала спросим друзей."
+],
+[
+1,
+"同意。",
+"Tóngyì.",
+"Agreed.",
+"Согласна."
+]
+]
+}
+]
+},
+{
+"id": "meeting",
+"t": [
+"A business meeting",
+"Деловая встреча"
+],
+"d": [
+{
+"t": [
+"Scheduling a meeting",
+"Назначаем встречу"
+],
+"s": [
+[
+"秘书",
+"mìshū"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"王经理，张总想下周跟您见个面。",
+"Wáng jīnglǐ, Zhāng zǒng xiǎng xià zhōu gēn nín jiàn ge miàn.",
+"Manager Wang, Director Zhang would like to meet you next week.",
+"Менеджер Ван, директор Чжан хочет встретиться с вами на следующей неделе."
+],
+[
+1,
+"我周二和周四下午都有空。",
+"Wǒ zhōu'èr hé zhōusì xiàwǔ dōu yǒu kòng.",
+"I'm free Tuesday and Thursday afternoons.",
+"Я свободен во вторник и четверг после обеда."
+],
+[
+0,
+"那就定在周四下午两点，在我们公司会议室。",
+"Nà jiù dìng zài zhōusì xiàwǔ liǎng diǎn, zài wǒmen gōngsī huìyìshì.",
+"Then Thursday at 2 p.m., in our meeting room.",
+"Тогда в четверг в два, в нашей переговорной."
+],
+[
+1,
+"好的，我会提前准备好材料。",
+"Hǎo de, wǒ huì tíqián zhǔnbèi hǎo cáiliào.",
+"Fine; I'll prepare the materials in advance.",
+"Хорошо, подготовлю материалы заранее."
+]
+]
+},
+{
+"t": [
+"At the meeting",
+"На встрече"
+],
+"s": [
+[
+"张总",
+"Zhāng zǒng"
+],
+[
+"王明",
+"Wáng Míng"
+]
+],
+"l": [
+[
+0,
+"我们对贵公司的产品很感兴趣。",
+"Wǒmen duì guì gōngsī de chǎnpǐn hěn gǎn xìngqù.",
+"We're very interested in your company's products.",
+"Нас очень интересует продукция вашей компании."
+],
+[
+1,
+"谢谢。这是我们最新的介绍，请您看一下。",
+"Xièxie. Zhè shì wǒmen zuìxīn de jièshào, qǐng nín kàn yíxià.",
+"Thank you. Here's our latest brochure.",
+"Спасибо. Вот наша последняя презентация, взгляните."
+],
+[
+0,
+"价格方面还能再商量吗？",
+"Jiàgé fāngmiàn hái néng zài shāngliang ma?",
+"Is the price negotiable?",
+"По цене ещё можно договориться?"
+],
+[
+1,
+"如果数量大，我们可以给百分之十的折扣。",
+"Rúguǒ shùliàng dà, wǒmen kěyǐ gěi bǎi fēn zhī shí de zhékòu.",
+"For a large order, we can offer a 10% discount.",
+"При крупном заказе дадим скидку десять процентов."
+]
+]
+}
+]
+},
+{
+"id": "etiquette",
+"t": [
+"Chinese customs",
+"Китайские обычаи"
+],
+"d": [
+{
+"t": [
+"Gifts to avoid",
+"Что нельзя дарить"
+],
+"s": [
+[
+"安娜",
+"Ānnà"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"我想送中国朋友一个钟，可以吗？",
+"Wǒ xiǎng sòng Zhōngguó péngyou yí ge zhōng, kěyǐ ma?",
+"I want to give a Chinese friend a clock. Is that OK?",
+"Хочу подарить китайскому другу часы. Можно?"
+],
+[
+1,
+"最好别送。“送钟”听起来像“送终”，不吉利。",
+"Zuìhǎo bié sòng. “Sòng zhōng” tīng qǐlai xiàng “sòngzhōng”, bù jílì.",
+"Better not. “Giving a clock” sounds like “seeing someone off to death” — unlucky.",
+"Лучше не надо. «Дарить часы» звучит как «провожать в последний путь» — плохая примета."
+],
+[
+0,
+"原来是这样！那送什么好呢？",
+"Yuánlái shì zhèyàng! Nà sòng shénme hǎo ne?",
+"I see! What's a good gift then?",
+"Вот оно что! А что лучше подарить?"
+],
+[
+1,
+"送茶叶或者你们国家的特产都不错。",
+"Sòng cháyè huòzhě nǐmen guójiā de tèchǎn dōu búcuò.",
+"Tea, or a speciality from your country, would be good.",
+"Чай или что-нибудь особенное из твоей страны."
+]
+]
+},
+{
+"t": [
+"At the dinner table",
+"За столом"
+],
+"s": [
+[
+"王明",
+"Wáng Míng"
+],
+[
+"安娜",
+"Ānnà"
+]
+],
+"l": [
+[
+0,
+"在中国吃饭，筷子不能插在米饭上。",
+"Zài Zhōngguó chī fàn, kuàizi bù néng chā zài mǐfàn shang.",
+"In China, you shouldn't stick chopsticks upright in rice.",
+"В Китае нельзя втыкать палочки в рис."
+],
+[
+1,
+"为什么？",
+"Wèishénme?",
+"Why?",
+"Почему?"
+],
+[
+0,
+"因为那样像给去世的人上香。",
+"Yīnwèi nàyàng xiàng gěi qùshì de rén shàng xiāng.",
+"Because it looks like incense offered to the dead.",
+"Потому что это похоже на благовония для умерших."
+],
+[
+1,
+"谢谢你告诉我，我以后一定注意。",
+"Xièxie nǐ gàosu wǒ, wǒ yǐhòu yídìng zhùyì.",
+"Thanks for telling me; I'll be careful from now on.",
+"Спасибо, что сказал, буду внимательна."
+]
+]
+}
+]
+},
+{
+"id": "adoption",
+"t": [
+"Adopting a pet",
+"Берём питомца"
+],
+"d": [
+{
+"t": [
+"Adopt, don't buy",
+"Взять из приюта"
+],
+"s": [
+[
+"张丽",
+"Zhāng Lì"
+],
+[
+"李明",
+"Lǐ Míng"
+]
+],
+"l": [
+[
+0,
+"我想养一只狗，你觉得去哪儿买好？",
+"Wǒ xiǎng yǎng yì zhī gǒu, nǐ juéde qù nǎr mǎi hǎo?",
+"I want a dog. Where do you think I should buy one?",
+"Хочу завести собаку. Где лучше купить?"
+],
+[
+1,
+"为什么不去动物救助站领养一只呢？",
+"Wèishénme bú qù dòngwù jiùzhùzhàn lǐngyǎng yì zhī ne?",
+"Why not adopt one from an animal shelter?",
+"Почему бы не взять из приюта?"
+],
+[
+0,
+"领养要花钱吗？",
+"Lǐngyǎng yào huā qián ma?",
+"Does adopting cost money?",
+"Это платно?"
+],
+[
+1,
+"基本不要钱，但是要保证好好照顾它。",
+"Jīběn bú yào qián, dànshì yào bǎozhèng hǎohǎo zhàogù tā.",
+"Hardly anything, but you must promise to take good care of it.",
+"Почти бесплатно, но нужно обещать хорошо о ней заботиться."
+]
+]
+},
+{
+"t": [
+"The first week",
+"Первая неделя"
+],
+"s": [
+[
+"李明",
+"Lǐ Míng"
+],
+[
+"张丽",
+"Zhāng Lì"
+]
+],
+"l": [
+[
+0,
+"你的小狗适应新家了吗？",
+"Nǐ de xiǎo gǒu shìyìng xīn jiā le ma?",
+"Has your puppy settled into its new home?",
+"Твой щенок освоился в новом доме?"
+],
+[
+1,
+"刚开始有点儿怕人，现在每天跟着我。",
+"Gāng kāishǐ yǒudiǎnr pà rén, xiànzài měi tiān gēn zhe wǒ.",
+"It was a bit scared at first; now it follows me everywhere.",
+"Сначала боялся людей, а теперь всюду за мной ходит."
+],
+[
+0,
+"你给它起名字了吗？",
+"Nǐ gěi tā qǐ míngzi le ma?",
+"Have you named it?",
+"Ты дала ему имя?"
+],
+[
+1,
+"叫“豆豆”，因为它的眼睛像两颗黑豆。",
+"Jiào “Dòudou”, yīnwèi tā de yǎnjing xiàng liǎng kē hēi dòu.",
+"“Doudou”, because its eyes look like two black beans.",
+"«Доудоу» — его глаза похожи на две чёрные фасолинки."
+]
+]
+}
+]
+}
+]
