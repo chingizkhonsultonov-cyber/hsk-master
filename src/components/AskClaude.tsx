@@ -6,7 +6,9 @@ import { useI18n } from "@/lib/i18n/client";
 import { fmt } from "@/lib/i18n";
 import { accessToken, cloudEnabled } from "@/lib/supabase";
 
-const ENDPOINT = process.env.NEXT_PUBLIC_SUPABASE_URL ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/ask` : null;
+// The built-in chat needs the "ask" function deployed with an Anthropic key, so it has its own switch;
+// accounts alone keep the claude.ai hand-off.
+const ENDPOINT = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_ASK_CHAT === "1" ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/ask` : null;
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
 const STORE = "hsk-ask-chat";
 

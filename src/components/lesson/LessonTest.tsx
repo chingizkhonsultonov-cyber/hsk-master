@@ -173,7 +173,7 @@ export function LessonTest({ words, pool, examples = NO_EXAMPLES, testKey, onNew
             <span lang="zh-CN" className="han text-2xl leading-relaxed sm:text-3xl">
               {q.ex.s.map((tok, j) =>
                 q.ex!.k[j] === q.w.id ? (
-                  answered ? <span key={j} className="text-accent">{tok}</span> : <span key={j} aria-label="___" className="mx-1 inline-block w-[2.5em] border-b-2 border-ink align-baseline">&nbsp;</span>
+                  answered ? <span key={j} className="text-accent">{tok}</span> : <span key={j} className="mx-1 inline-block w-[2.5em] border-b-2 border-ink align-baseline"><span className="sr-only">___</span>&nbsp;</span>
                 ) : (
                   tok
                 ),

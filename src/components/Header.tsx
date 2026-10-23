@@ -6,6 +6,7 @@ import { useI18n } from "@/lib/i18n/client";
 import { resolvedTheme, updateSettings, useSettings } from "@/lib/settings";
 import { useEffect } from "react";
 import type { Locale } from "@/lib/types";
+import { AccountButton } from "./Account";
 
 export function Header() {
   const { locale, t } = useI18n();
@@ -54,6 +55,7 @@ export function Header() {
           <svg className="hidden dark:block" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="8" cy="8" r="3" /><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1" strokeLinecap="round" /></svg>
           <svg className="dark:hidden" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z" strokeLinejoin="round" /></svg>
         </button>
+        <AccountButton />
         <Link
           href={`/${locale}/settings`}
           aria-label={t.common.settings}

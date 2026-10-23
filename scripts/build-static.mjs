@@ -7,7 +7,13 @@ const api = "src/app/api";
 const aside = "scripts/.api-aside";
 renameSync(api, aside);
 try {
-  execSync("next build", { stdio: "inherit", env: { ...process.env, STATIC_EXPORT: "1" } });
+  // Supabase project for accounts and progress sync. The publishable key is meant for browsers (row level
+// security limits each user to their own row), so it is fine to keep here; the secret key never is.
+const supabase = {
+  NEXT_PUBLIC_SUPABASE_URL: "https://umxvlwbrdemrtorwsvey.supabase.co",
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: "sb_publishable_J3Cw7ibNaRmRWuKROJfp6g_vpPh9KOX",
+};
+execSync("next build", { stdio: "inherit", env: { ...supabase, ...process.env, STATIC_EXPORT: "1" } });
 } finally {
   renameSync(aside, api);
 }

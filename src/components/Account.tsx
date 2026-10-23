@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n/client";
 import { cloudEnabled, supabase } from "@/lib/supabase";
 import { startSync, syncNow, useSync } from "@/lib/sync";
+import { BASE } from "@/lib/base";
+import Link from "next/link";
 
 /** Starts cloud sync on every page when Supabase is configured. */
 export function CloudSync() {
@@ -13,7 +15,7 @@ export function CloudSync() {
 
 /** Email and password sign-in for syncing progress across devices. */
 export function Account() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { status, email } = useSync();
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +68,14 @@ export function Account() {
         <button
           type="button"
           disabled={busy || !mail || password.length < 6}
-          onClick={() => run(() => sb.auth.signUp({ email: mail, password }), t.account.checkEmail)}
+          onClick={() =>
+            run(async () => {
+              // The confirmation link (when the project requires one) brings the learner back to this page.
+              const { data, error } = await sb.auth.signUp({ email: mail, password, options: { emailRedirectTo: `${window.location.origin}${BASE}/${locale}/settings` } });
+              if (!error && !data.session) setNote({ ok: true, text: t.account.checkEmail });
+              return { error };
+            })
+          }
           className="min-h-11 rounded-lg border border-line px-4 font-semibold hover:border-muted disabled:opacity-60"
         >
           {t.account.signUp}
@@ -74,5 +83,30 @@ export function Account() {
       </div>
       {note && <p role="status" className={`text-sm ${note.ok ? "text-ok" : "text-danger"}`}>{note.text}</p>}
     </form>
+  );
+}
+
+/** Header shortcut to the account section: "Sign in" when signed out, the email's first letter when signed in. */
+export function AccountButton() {
+  const { t, locale } = useI18n();
+  const { email } = useSync();
+  if (!cloudEnabled) return null;
+  return (
+    <Link
+      href={`/${locale}/settings#account`}
+      aria-label={email ? `${t.account.signedInAs} ${email}` : t.account.signIn}
+      title={email ?? t.account.signIn}
+      className={`grid h-9 min-w-9 place-items-center rounded-lg border px-2 text-sm font-semibold ${email ? "border-accent bg-accent-soft text-accent" : "border-line hover:border-muted"}`}
+    >
+      {email ? (
+        email[0].toUpperCase()
+      ) : (
+        <>
+          {/* user icon: Lucide "user" (ISC licence) */}
+          <svg className="sm:hidden" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+          <span className="hidden sm:inline">{t.account.signIn}</span>
+        </>
+      )}
+    </Link>
   );
 }

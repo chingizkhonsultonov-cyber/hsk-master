@@ -70,7 +70,7 @@ export function SettingsForm() {
           <span className="tone-1">mā</span> <span className="tone-2">má</span> <span className="tone-3">mǎ</span> <span className="tone-4">mà</span> <span className="tone-5">ma</span> · {t.settings.toneColoursHelp}
         </p>
       </div>
-      <div className={row}>
+      <div id="account" className={`${row} scroll-mt-20`}>
         <span className="font-semibold">{t.settings.account}</span>
         <Account />
       </div>
