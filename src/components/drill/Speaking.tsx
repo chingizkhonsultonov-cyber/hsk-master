@@ -213,7 +213,7 @@ export function Speaking({ level, slug }: { level: number; slug: string }) {
               })}
             </p>
             {(level <= 3 || revealed) && <Pinyin p={sentencePinyin(s)} className="text-base font-normal text-muted" />}
-            {revealed && <span lang="en" className="text-sm">{s.e}</span>}
+            {revealed && <span lang={s.r && locale === "ru" ? "ru" : "en"} className="text-sm">{s.e}</span>}
           </div>
         ) : (
           <button type="button" onClick={() => setRevealed(true)} className="self-start text-sm font-semibold text-accent hover:underline">{t.speaking.showText}</button>

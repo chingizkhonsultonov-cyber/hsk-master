@@ -34,10 +34,14 @@ export function SentenceCard({ s, className = "" }: { s: Sentence; className?: s
         <SpeakButton text={sentenceText(s)} compact />
       </span>
       <Pinyin p={sentencePinyin(s)} className="text-sm font-normal text-muted" />
-      <span lang="en" className="text-sm" title={locale === "ru" ? t.common.translationPending : undefined}>
-        {s.e}
-        {locale === "ru" && <span className="ml-1 align-super text-[0.65em] font-semibold text-muted">EN</span>}
-      </span>
+      {locale === "ru" && s.r ? (
+        <span lang="ru" className="text-sm">{s.e}</span>
+      ) : (
+        <span lang="en" className="text-sm" title={locale === "ru" ? t.common.translationPending : undefined}>
+          {s.e}
+          {locale === "ru" && <span className="ml-1 align-super text-[0.65em] font-semibold text-muted">EN</span>}
+        </span>
+      )}
     </div>
   );
 }
