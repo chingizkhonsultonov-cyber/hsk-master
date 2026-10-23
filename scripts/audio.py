@@ -3,6 +3,7 @@
 
     python scripts/audio.py OUT_DIR            # records what is missing, writes OUT_DIR/index.json
     python scripts/audio.py OUT_DIR --list     # only prints how many clips there are
+    python scripts/audio.py OUT_DIR --index    # only rewrites OUT_DIR/index.json from the clips present
 
 Each clip is OUT_DIR/<key>.mp3, where <key> is the same cyrb53 hash that src/lib/speech.ts computes
 (audioKey). A single character is keyed with its pinyin, and when it has more than one
@@ -142,6 +143,12 @@ async def record(out_dir, items):
     return failed
 
 
+def write_index(out_dir, all_clips):
+    keys = sorted(k for k in all_clips if (out_dir / f"{k}.mp3").exists())
+    (out_dir / "index.json").write_text(json.dumps(keys, separators=(",", ":")))
+    return keys
+
+
 def main():
     out_dir = Path(sys.argv[1])
     all_clips = clips()
@@ -149,14 +156,16 @@ def main():
         print(len(all_clips), "clips")
         return
     out_dir.mkdir(parents=True, exist_ok=True)
+    if "--index" in sys.argv:
+        write_index(out_dir, all_clips)
+        return
     table = homophones()
     todo = [(k, spoken(t, py, table), v) for k, (t, v, py) in all_clips.items() if not (out_dir / f"{k}.mp3").exists()]
     print(f"{len(all_clips)} clips, {len(todo)} to record", flush=True)
     failed = asyncio.run(record(out_dir, todo)) if todo else []
     for text, err in failed[:20]:
         print("failed:", text, err)
-    keys = sorted(k for k in all_clips if (out_dir / f"{k}.mp3").exists())
-    (out_dir / "index.json").write_text(json.dumps(keys, separators=(",", ":")))
+    keys = write_index(out_dir, all_clips)
     print(f"{len(keys)} recorded, {len(failed)} failed")
     if len(failed) > len(all_clips) // 20:
         sys.exit(1)
