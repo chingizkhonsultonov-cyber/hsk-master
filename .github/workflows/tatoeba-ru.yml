@@ -1,0 +1,34 @@
+# Collects Russian translations from Tatoeba for the app's sentences and saves them to the data-ru branch.
+name: Tatoeba Russian
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/tatoeba-ru.py", ".github/workflows/tatoeba-ru.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Tatoeba exports
+        run: |
+          mkdir dl && cd dl
+          base=https://downloads.tatoeba.org/exports/per_language
+          for f in cmn/cmn-rus_links eng/eng-rus_links cmn/cmn-eng_links rus/rus_sentences; do
+            curl -fsSL "$base/$f.tsv.bz2" | bunzip2 > "$(basename $f).tsv"
+          done
+          wc -l *.tsv
+      - name: Match translations
+        run: python3 scripts/tatoeba-ru.py dl ru.json
+      - name: Save to the data-ru branch
+        run: |
+          mkdir out && mv ru.json out/ && cd out
+          git init -q -b data-ru
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Tatoeba Russian translations"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data-ru

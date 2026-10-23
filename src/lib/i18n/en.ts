@@ -233,7 +233,7 @@ const en = {
     start: "Start",
     loading: "Loading sentences…",
     loadError: "The sentences couldn't be loaded. Check your connection and try again.",
-    source: "Sentences come from Tatoeba (tatoeba.org, CC BY 2.0 FR) and use only words from this level and below. Audio uses your device's Mandarin voice.",
+    source: "Sentences come from Tatoeba (tatoeba.org, CC BY 2.0 FR) and use only words from this level and below. Audio uses a neural Mandarin voice.",
     best: "Best: {n}%",
   },
   exam: {
