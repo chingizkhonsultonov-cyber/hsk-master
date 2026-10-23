@@ -11,6 +11,7 @@ const en = {
     lesson: "Lesson {n}",
     back: "Back",
     listen: "Listen",
+    slow: "Slowly",
     next: "Next",
     start: "Start",
     open: "Open",

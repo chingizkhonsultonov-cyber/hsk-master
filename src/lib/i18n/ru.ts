@@ -13,6 +13,7 @@ const ru: Dictionary = {
     lesson: "Урок {n}",
     back: "Назад",
     listen: "Слушать",
+    slow: "Медленно",
     next: "Далее",
     start: "Начать",
     open: "Открыть",

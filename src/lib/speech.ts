@@ -116,6 +116,7 @@ export function speak(text: string, rate = 0.8, onEnd?: () => void, opts?: Speak
   stopSpeech();
   const a = new Audio(`${BASE}/audio/${key}.mp3`);
   a.playbackRate = rate;
+  a.preservesPitch = true;
   let done = false;
   const fallback = () => {
     if (done || current !== a) return;
