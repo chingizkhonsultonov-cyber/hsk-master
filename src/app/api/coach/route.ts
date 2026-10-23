@@ -47,7 +47,7 @@ Write "summary" and every "tip" in the explanation language you are given. Keep 
 type Body = { level: number; locale: "en" | "ru"; mode: "read" | "repeat" | "answer"; target: string; heard: string };
 
 const hits = new Map<string, number[]>();
-/** Best-effort limit for deployments without sign-in: 40 requests per hour per address. */
+/** Best-effort limit: 40 requests per hour per signed-in user, or per address when sign-in is off. */
 function limited(ip: string) {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < 3_600_000);
@@ -67,6 +67,7 @@ export async function POST(req: Request) {
     const token = req.headers.get("authorization")?.replace(/^Bearer /, "");
     const { data } = token ? await createClient(SUPABASE_URL, SUPABASE_ANON).auth.getUser(token) : { data: { user: null } };
     if (!data.user) return Response.json({ error: "sign-in" }, { status: 401 });
+    if (limited(`user:${data.user.id}`)) return Response.json({ error: "rate-limited" }, { status: 429 });
   } else if (limited(req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local")) {
     return Response.json({ error: "rate-limited" }, { status: 429 });
   }

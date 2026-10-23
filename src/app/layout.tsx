@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, Noto_Serif_SC } from "next/font/google";
 import { THEME_BOOT_SCRIPT } from "@/lib/settings";
+import { contentSecurityPolicy } from "@/lib/security";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans({
@@ -38,6 +39,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${plex.variable} ${notoSerifSC.variable}`}>
       <head>
+        {/* GitHub Pages can't send headers, so the static build carries its policy in the page. */}
+        {process.env.STATIC_EXPORT && <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy()} />}
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>
       <body className="min-h-dvh antialiased">{children}</body>

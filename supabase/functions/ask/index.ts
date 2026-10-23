@@ -9,10 +9,19 @@ const DAILY_LIMIT = Number(Deno.env.get("ASK_DAILY_LIMIT") || 20);
 const MAX_TURNS = 20;
 const MAX_CHARS = 2000;
 
-const cors = {
-  "access-control-allow-origin": "*",
-  "access-control-allow-headers": "authorization, content-type, apikey, x-client-info",
-  "access-control-allow-methods": "POST, OPTIONS",
+const MAX_BODY = 60_000;
+// Only the site itself may call the function from a browser (ALLOWED_ORIGINS, comma-separated, overrides).
+const ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") || "https://chingizkhonsultonov-cyber.github.io,http://localhost:3000").split(",").map((s) => s.trim());
+
+let cors: Record<string, string> = {};
+const corsFor = (req: Request) => {
+  const origin = req.headers.get("origin") || "";
+  return {
+    "access-control-allow-origin": ORIGINS.includes(origin) ? origin : ORIGINS[0],
+    "access-control-allow-headers": "authorization, content-type, apikey, x-client-info",
+    "access-control-allow-methods": "POST, OPTIONS",
+    vary: "origin",
+  };
 };
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...cors, "content-type": "application/json" } });
 
@@ -26,6 +35,7 @@ Be clear and concise: short paragraphs or a short list, a few good examples rath
 type Turn = { role: "user" | "assistant"; content: unknown };
 
 Deno.serve(async (req) => {
+  cors = corsFor(req);
   if (req.method === "OPTIONS") return new Response(null, { headers: cors });
   if (req.method !== "POST") return json({ error: "method" }, 405);
 
@@ -39,11 +49,14 @@ Deno.serve(async (req) => {
 
   let body: { messages?: Turn[]; locale?: string; level?: number | null; page?: string };
   try {
-    body = await req.json();
+    const raw = await req.text();
+    if (raw.length > MAX_BODY) return json({ error: "too_large" }, 413);
+    body = JSON.parse(raw);
   } catch {
     return json({ error: "bad_request" }, 400);
   }
-  const messages = (body.messages ?? []).slice(-MAX_TURNS);
+  if (!Array.isArray(body.messages) || body.messages.some((m) => !m || (m.role !== "user" && m.role !== "assistant"))) return json({ error: "bad_request" }, 400);
+  const messages = body.messages.slice(-MAX_TURNS);
   const last = messages[messages.length - 1];
   if (!last || last.role !== "user" || typeof last.content !== "string" || !last.content.trim() || last.content.length > MAX_CHARS) {
     return json({ error: "bad_request" }, 400);

@@ -9,6 +9,10 @@ create table if not exists public.progress (
 
 alter table public.progress enable row level security;
 
+-- One user's progress is well under 2 MB even with every word studied; the cap stops anyone using the table as free storage.
+alter table public.progress drop constraint if exists progress_size;
+alter table public.progress add constraint progress_size check (octet_length(data::text) < 4000000);
+
 -- Each user can read and write only their own row.
 create policy "own progress: select" on public.progress for select using (auth.uid() = user_id);
 create policy "own progress: insert" on public.progress for insert with check (auth.uid() = user_id);

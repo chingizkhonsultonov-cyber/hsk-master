@@ -305,7 +305,7 @@ const en = {
   account: {
     intro: "Sign in to keep your progress in sync across your phone, tablet and computer.",
     email: "Email",
-    password: "Password (at least 6 characters)",
+    password: "Password (at least 8 characters)",
     signIn: "Sign in",
     signUp: "Create account",
     signOut: "Sign out",

@@ -61,13 +61,13 @@ export function Account() {
       </label>
       <label className="flex flex-col gap-1 text-sm font-semibold">
         {t.account.password}
-        <input type="password" required minLength={6} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-11 rounded-lg border border-line bg-paper px-3 font-normal" />
+        <input type="password" required autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-11 rounded-lg border border-line bg-paper px-3 font-normal" />
       </label>
       <div className="flex flex-wrap gap-2">
         <button type="submit" disabled={busy} className="min-h-11 rounded-lg bg-accent px-5 font-semibold text-paper disabled:opacity-60">{t.account.signIn}</button>
         <button
           type="button"
-          disabled={busy || !mail || password.length < 6}
+          disabled={busy || !mail || password.length < 8}
           onClick={() =>
             run(async () => {
               // The confirmation link (when the project requires one) brings the learner back to this page.
