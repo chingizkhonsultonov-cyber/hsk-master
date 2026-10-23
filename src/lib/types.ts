@@ -28,3 +28,12 @@ export function meaning(w: Word, locale: Locale): string[] {
 export function hasNativeMeaning(w: Word, locale: Locale): boolean {
   return locale === "en" || w.ru.length > 0;
 }
+
+/** An example sentence for a word: tokens, pinyin per token, word id per token, English and Russian. */
+export interface Example {
+  s: string[];
+  p: string[];
+  k: (string | null)[];
+  e: string;
+  r?: string;
+}

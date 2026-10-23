@@ -65,7 +65,7 @@ test("level hub links to the modules, mock exam and practice, with a readiness o
 
 test("lesson word list shows hanzi, pinyin and Russian meanings", async ({ page }) => {
   await page.goto("/ru/hsk/1/lessons/1");
-  const rows = page.locator('[role="tabpanel"] li');
+  const rows = page.locator('[role="tabpanel"] > ul > li');
   await expect(rows).toHaveCount(15);
   await expect(page.getByText("притяжательная частица")).toBeVisible();
   await noOverflow(page);
@@ -427,4 +427,82 @@ test("dialogues section: topics, pinyin and translation toggles", async ({ page 
   await expect(page.getByText("Nǐ hǎo! Nǐ jiào shénme míngzi?")).toBeVisible();
   await page.getByRole("button", { name: /Pinyin/ }).click();
   await expect(page.getByText("Nǐ hǎo! Nǐ jiào shénme míngzi?")).toBeHidden();
+});
+
+test("level hub lists every lesson and lessons can jump to any other", async ({ page }) => {
+  await page.goto("/en/hsk/1");
+  const grid = page.locator("section[aria-labelledby=hub-lessons] li");
+  await expect(grid).toHaveCount(20);
+  await page.getByRole("link", { name: /^Lesson 7/ }).click();
+  await expect(page).toHaveURL(/\/en\/hsk\/1\/lessons\/7$/);
+  await page.getByRole("navigation", { name: "All lessons" }).getByRole("link", { name: "15", exact: true }).click();
+  await expect(page).toHaveURL(/\/lessons\/15$/);
+  await noOverflow(page);
+});
+
+test("lesson words have example sentences, and the test asks some words in a sentence", async ({ page }) => {
+  await page.goto("/ru/hsk/1/lessons/1");
+  const examples = page.getByRole("list", { name: "Примеры" });
+  expect(await examples.count()).toBeGreaterThan(10);
+  await expect(examples.first().locator("mark").first()).toBeVisible();
+  await expect(examples.first().getByRole("button", { name: /^Медленно/ }).first()).toBeVisible();
+  await page.getByRole("tab", { name: "Тест" }).click();
+  let gaps = 0;
+  for (let i = 0; i < 15; i++) {
+    if (await page.getByText("Выберите слово, которое подходит в пропуск").count()) gaps++;
+    await page.locator('[data-option="0"]').click();
+    await page.getByRole("button", { name: i === 14 ? /результат/i : /Далее/ }).click();
+  }
+  expect(gaps).toBeGreaterThan(0);
+  await axe(page);
+});
+
+test("flashcards: type the pinyin or the characters and get it checked", async ({ page }) => {
+  await page.goto("/en/hsk/1/lessons/2");
+  await page.getByRole("tab", { name: "Flashcards" }).click();
+  await page.getByLabel("Type the pinyin").check();
+  const input = page.getByRole("textbox", { name: "Type the pinyin for this word." });
+  await input.fill("xyz");
+  await input.press("Enter");
+  await expect(page.getByTestId("card-verdict")).toContainText("Not quite");
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("remaining")).toHaveText("15 left");
+  const words: { h: string; p: string }[] = await (await page.request.get("/data/words/1")).json();
+  const shown = (await page.locator("article span.han").first().textContent())!.trim();
+  const p = words.find((w) => w.h === shown)!.p;
+  await input.fill(p);
+  await input.press("Enter");
+  await expect(page.getByTestId("card-verdict")).toHaveText(/Correct!/);
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("remaining")).toHaveText("14 left");
+  await page.getByLabel("Type the characters").check();
+  const zh = page.getByRole("textbox", { name: "Type this word in characters." });
+  await zh.fill("不对");
+  await zh.press("Enter");
+  await expect(page.getByTestId("card-verdict")).toContainText("Not quite");
+  await axe(page);
+});
+
+test("writing works with a finger or stylus (touch events)", async ({ page, hasTouch }) => {
+  test.skip(!hasTouch, "touch devices only");
+  await page.goto("/en/hsk/1/writing");
+  for (let l = 1; l <= 20; l++) {
+    await page.selectOption("#lesson-select", String(l));
+    if (await page.locator('[data-char="人"]').count()) break;
+  }
+  await page.locator('[data-char="人"]').click();
+  await page.getByRole("button", { name: /Write it/ }).click();
+  const box = (await page.getByTestId("writer").boundingBox())!;
+  const { medians } = await (await page.request.get("/hanzi/4eba.json")).json();
+  const pad = Math.round(box.width * 0.06);
+  const scale = (box.width - 2 * pad) / 1024;
+  const pt = ([x, y]: number[]) => ({ x: box.x + pad + x * scale, y: box.y + pad + (900 - y) * scale });
+  const cdp = await page.context().newCDPSession(page);
+  for (const median of medians as number[][][]) {
+    await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [pt(median[0])] });
+    for (const p of median.slice(1)) await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [pt(p)] });
+    await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+    await page.waitForTimeout(300);
+  }
+  await expect(page.getByTestId("writer-status")).toHaveText("Perfect: every stroke correct the first time.", { timeout: 5_000 });
 });

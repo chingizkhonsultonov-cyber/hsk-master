@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n/client";
-import type { Word } from "@/lib/types";
+import type { Example, Word } from "@/lib/types";
 import { ToneScope } from "../ToneScope";
 import { WordList } from "./WordList";
 import { Flashcards } from "./Flashcards";
@@ -11,7 +11,7 @@ import { LessonTest, type PoolWord } from "./LessonTest";
 const TABS = ["words", "cards", "test"] as const;
 type Tab = (typeof TABS)[number];
 
-export function LessonClient({ words, pool, testKey }: { words: Word[]; pool: PoolWord[]; testKey: string }) {
+export function LessonClient({ words, pool, examples, testKey }: { words: Word[]; pool: PoolWord[]; examples: Record<string, Example[]>; testKey: string }) {
   const { t } = useI18n();
   const [tab, setTab] = useState<Tab>("words");
   return (
@@ -41,9 +41,9 @@ export function LessonClient({ words, pool, testKey }: { words: Word[]; pool: Po
         ))}
       </div>
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
-        {tab === "words" && <WordList words={words} />}
+        {tab === "words" && <WordList words={words} examples={examples} />}
         {tab === "cards" && <Flashcards words={words} />}
-        {tab === "test" && <LessonTest words={words} pool={pool} testKey={testKey} />}
+        {tab === "test" && <LessonTest words={words} pool={pool} examples={examples} testKey={testKey} />}
       </div>
     </ToneScope>
   );

@@ -9,10 +9,12 @@ export interface Settings {
   theme: ThemePref;
   toneColours: boolean;
   pinyinFront: boolean;
+  /** Flashcards: flip and self-rate, or type the pinyin or the characters. */
+  cardMode: "flip" | "pinyin" | "hanzi";
 }
 
 export const SETTINGS_KEY = "hsk-master:settings:v1";
-const DEFAULTS: Settings = { locale: null, theme: "system", toneColours: true, pinyinFront: false };
+const DEFAULTS: Settings = { locale: null, theme: "system", toneColours: true, pinyinFront: false, cardMode: "flip" };
 
 let state: Settings = DEFAULTS;
 let loaded = false;

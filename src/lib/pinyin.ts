@@ -40,3 +40,23 @@ export function alignHanzi(hanzi: string, pinyin: string): { ch: string; syl?: s
 
 /** Contour on the five-level pitch scale used for Mandarin. */
 export const CONTOURS: Record<1 | 2 | 3 | 4, number[]> = { 1: [5, 5], 2: [3, 5], 3: [2, 1, 4], 4: [5, 1] };
+
+/** Typed pinyin in a comparable form: "Ni3 hao3", "nǐhǎo" and "ni3hao3" all become "nǐhǎo"; v and u: become ü. */
+export function normalizePinyin(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFC")
+    .replace(/u:|v/g, "ü")
+    .replace(/([a-zü]+)([1-5])/g, (_, bare: string, n: string) => markSyllable(bare, Number(n) as Tone))
+    .replace(/[\s'’·-]/g, "")
+    .normalize("NFC");
+}
+
+/** "right", "tones" when only the tone marks differ (or were left out), otherwise "wrong". */
+export function checkPinyin(typed: string, answer: string): "right" | "tones" | "wrong" {
+  const a = normalizePinyin(typed);
+  const b = normalizePinyin(answer);
+  if (!a) return "wrong";
+  if (a === b) return "right";
+  return stripTones(a) === stripTones(b) ? "tones" : "wrong";
+}

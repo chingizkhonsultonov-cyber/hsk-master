@@ -7,14 +7,14 @@ import { recordAnswer, recordTest } from "@/lib/progress";
 import { markSyllable, stripTones, syllables, type Tone } from "@/lib/pinyin";
 import { hasChineseVoice, speak } from "@/lib/speech";
 import { shuffle } from "@/lib/random";
-import type { Word } from "@/lib/types";
+import type { Example, Word } from "@/lib/types";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { meaningText } from "../Meaning";
 
 export type PoolWord = Pick<Word, "id" | "h" | "p" | "en" | "ru">;
-type Kind = "meaning" | "hanzi" | "pinyin" | "fromPinyin" | "listen";
+type Kind = "meaning" | "hanzi" | "pinyin" | "fromPinyin" | "listen" | "sentence";
 interface Option { label: string; right: boolean }
-interface Question { w: PoolWord; kind: Kind; options: Option[]; pick: number | null }
+interface Question { w: PoolWord; kind: Kind; options: Option[]; pick: number | null; ex?: Example }
 
 /** Wrong pinyin options keep the syllables and change tones, the way the exam tests tone knowledge. */
 function pinyinOptions(p: string, others: PoolWord[]): string[] {
@@ -31,21 +31,25 @@ function pinyinOptions(p: string, others: PoolWord[]): string[] {
 }
 
 /** Question types are dealt at random, so the same words come back in a different form each time. */
-function dealKinds(n: number): Kind[] {
+function dealKinds(n: number, sentences: boolean): Kind[] {
   const kinds: Kind[] = ["meaning", "hanzi", "pinyin", "fromPinyin"];
+  // Gap-fill sentences count twice, so about a third of a lesson test is words in context.
+  if (sentences) kinds.push("sentence", "sentence");
   if (hasChineseVoice()) kinds.push("listen");
   const out: Kind[] = [];
   while (out.length < n) out.push(...shuffle(kinds));
   return out.slice(0, n);
 }
 
-function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] {
+function build(words: PoolWord[], pool: PoolWord[], locale: string, examples: Record<string, Example[]>): Question[] {
   const all = [...words, ...pool];
-  const kinds = dealKinds(words.length);
+  const kinds = dealKinds(words.length, Object.keys(examples).length > 0);
   return shuffle(words).map((w, i) => {
-    const kind = kinds[i];
+    const ex = examples[w.id] ? shuffle(examples[w.id])[0] : undefined;
+    const kind = kinds[i] === "sentence" && !ex ? "meaning" : kinds[i];
     if (kind === "pinyin") return { w, kind, pick: null, options: pinyinOptions(w.p, all.filter((o) => o.id !== w.id)).map((label) => ({ label, right: label === w.p })) };
     const right = kind === "meaning" ? meaningText(w, locale) : w.h;
+    const inSentence = new Set(kind === "sentence" ? ex!.s : []);
     const seen = new Set([right]);
     const wrong: string[] = [];
     for (const o of shuffle(all)) {
@@ -53,18 +57,20 @@ function build(words: PoolWord[], pool: PoolWord[], locale: string): Question[] 
       const label = kind === "meaning" ? meaningText(o, locale) : o.h;
       // When the prompt is a sound, a homophone would also be a correct answer.
       const homophone = (kind === "fromPinyin" || kind === "listen") && stripTones(o.p) === stripTones(w.p);
-      if (o.id === w.id || seen.has(label) || homophone) continue;
+      if (o.id === w.id || seen.has(label) || homophone || inSentence.has(label)) continue;
       seen.add(label);
       wrong.push(label);
     }
-    return { w, kind, pick: null, options: shuffle([right, ...wrong]).map((label) => ({ label, right: label === right })) };
+    return { w, kind, pick: null, ex: kind === "sentence" ? ex : undefined, options: shuffle([right, ...wrong]).map((label) => ({ label, right: label === right })) };
   });
 }
 
-const CHAR_OPTIONS: Kind[] = ["hanzi", "fromPinyin", "listen"];
+const CHAR_OPTIONS: Kind[] = ["hanzi", "fromPinyin", "listen", "sentence"];
 
 /** `onNewSet` replaces "New test" with a fresh random set (used by random practice). */
-export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord[]; pool: PoolWord[]; testKey: string; onNewSet?: () => void }) {
+const NO_EXAMPLES: Record<string, Example[]> = {};
+
+export function LessonTest({ words, pool, examples = NO_EXAMPLES, testKey, onNewSet }: { words: PoolWord[]; pool: PoolWord[]; examples?: Record<string, Example[]>; testKey: string; onNewSet?: () => void }) {
   const { t, locale } = useI18n();
   const [qs, setQs] = useState<Question[] | null>(null);
   const [i, setI] = useState(0);
@@ -74,8 +80,8 @@ export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord
   // Build on the client only, so the random order never mismatches server HTML.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setQs(build(words, pool, locale));
-  }, [words, pool, locale]);
+    setQs(build(words, pool, locale, examples));
+  }, [words, pool, locale, examples]);
 
   const q = qs?.[i];
   const answered = q?.pick != null;
@@ -140,20 +146,33 @@ export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord
             );
           })}
         </ul>
-        <button type="button" onClick={() => { if (onNewSet) onNewSet(); else { setQs(build(words, pool, locale)); setI(0); } }} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
+        <button type="button" onClick={() => { if (onNewSet) onNewSet(); else { setQs(build(words, pool, locale, examples)); setI(0); } }} className="min-h-11 self-start rounded-lg bg-accent px-5 font-semibold text-paper">
           {onNewSet ? t.practice.newSet : t.test.retry}
         </button>
       </div>
     );
   }
 
-  const ask = { meaning: t.test.askMeaning, hanzi: t.test.askHanzi, pinyin: t.test.askPinyin, fromPinyin: t.test.askFromPinyin, listen: t.test.askListen }[q.kind];
+  const ask = { meaning: t.test.askMeaning, hanzi: t.test.askHanzi, pinyin: t.test.askPinyin, fromPinyin: t.test.askFromPinyin, listen: t.test.askListen, sentence: t.test.askSentence }[q.kind];
   return (
     <div className="flex max-w-2xl flex-col gap-5">
       {dots}
       <div key={i} className="enter flex flex-col items-center gap-2 rounded-xl border border-line bg-surface px-4 py-8 text-center">
         <span className="eyebrow">{fmt(t.test.question, { i: i + 1, n: qs.length })} · {ask}</span>
-        {q.kind === "hanzi" ? (
+        {q.kind === "sentence" && q.ex ? (
+          <span className="flex flex-col items-center gap-2">
+            <span lang="zh-CN" className="han text-2xl leading-relaxed sm:text-3xl">
+              {q.ex.s.map((tok, j) =>
+                q.ex!.k[j] === q.w.id ? (
+                  answered ? <span key={j} className="text-accent">{tok}</span> : <span key={j} aria-label="___" className="mx-1 inline-block w-[2.5em] border-b-2 border-ink align-baseline">&nbsp;</span>
+                ) : (
+                  tok
+                ),
+              )}
+            </span>
+            <span className="text-sm text-muted">{locale === "ru" && q.ex.r ? q.ex.r : q.ex.e}</span>
+          </span>
+        ) : q.kind === "hanzi" ? (
           <span className="text-2xl font-semibold">{meaningText(q.w, locale)}</span>
         ) : q.kind === "fromPinyin" ? (
           <Pinyin p={q.w.p} className="text-4xl" />

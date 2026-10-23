@@ -5,6 +5,7 @@ import { getDictionary, fmt } from "@/lib/i18n";
 import { getLesson, getLevel, lessonCount } from "@/lib/data";
 import { Crumbs } from "@/components/Crumbs";
 import { LessonClient } from "@/components/lesson/LessonClient";
+import { lessonExamples } from "@/lib/examples";
 import type { Locale } from "@/lib/types";
 import { LEVEL_NUMBERS, levelName, levelSlug, parseLevel } from "@/lib/levels";
 
@@ -36,6 +37,7 @@ export default async function LessonPage({ params }: P) {
     .filter((w) => w.lesson !== lesson && Math.abs(w.lesson - lesson) <= 3)
     .slice(0, 80)
     .map(({ id, h, p, en, ru }) => ({ id, h, p, en, ru }));
+  const examples = lessonExamples(level, words);
   const base = `/${locale}/hsk/${slug}/lessons`;
   return (
     <div className="flex flex-col gap-6">
@@ -52,7 +54,25 @@ export default async function LessonPage({ params }: P) {
           {levelName(level)} · {fmt(t.common.lesson, { n: lesson })}
         </h1>
       </div>
-      <LessonClient words={words} pool={pool} testKey={`3-${level}-L${lesson}`} />
+      <nav aria-label={t.lesson.jump}>
+        <details open={total <= 30} className="group">
+        <summary className="eyebrow cursor-pointer select-none">{t.lesson.jump} · {total}</summary>
+        <ol className="mt-2 flex flex-wrap gap-1.5">
+          {Array.from({ length: total }, (_, i) => i + 1).map((n) => (
+            <li key={n}>
+              <Link
+                href={`${base}/${n}`}
+                aria-current={n === lesson ? "page" : undefined}
+                className={`grid h-9 min-w-9 place-items-center rounded-lg border px-2 text-sm font-semibold tabular-nums ${n === lesson ? "border-ink bg-ink text-paper" : "border-line bg-surface hover:border-accent"}`}
+              >
+                {n}
+              </Link>
+            </li>
+          ))}
+        </ol>
+        </details>
+      </nav>
+      <LessonClient words={words} pool={pool} examples={examples} testKey={`3-${level}-L${lesson}`} />
       <nav className="flex flex-wrap justify-between gap-3 border-t border-line pt-5 text-sm font-semibold" aria-label={t.hub.modules.lessons.title}>
         {lesson > 1 ? <Link className="text-accent hover:underline" href={`${base}/${lesson - 1}`}>← {t.lesson.prev}</Link> : <span />}
         {lesson < total && <Link className="text-accent hover:underline" href={`${base}/${lesson + 1}`}>{t.lesson.next} →</Link>}

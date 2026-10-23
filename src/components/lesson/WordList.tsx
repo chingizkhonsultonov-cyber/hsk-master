@@ -2,13 +2,13 @@
 
 import { useI18n } from "@/lib/i18n/client";
 import { fmt } from "@/lib/i18n";
-import type { Word } from "@/lib/types";
+import type { Example, Word } from "@/lib/types";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { Meaning } from "../Meaning";
 import { SpeakButton } from "../SpeakButton";
 
-export function WordList({ words }: { words: Word[] }) {
-  const { t } = useI18n();
+export function WordList({ words, examples = {} }: { words: Word[]; examples?: Record<string, Example[]> }) {
+  const { t, locale } = useI18n();
   return (
     <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line bg-surface">
       {words.map((w) => (
@@ -32,6 +32,22 @@ export function WordList({ words }: { words: Word[] }) {
           <span className="col-start-2 sm:col-start-auto">
             <SpeakButton text={w.h} py={w.p} compact />
           </span>
+          {examples[w.id] && (
+            <ul aria-label={t.lesson.examples} className="col-span-full mt-2 flex flex-col gap-2 border-l-2 border-line pl-3">
+              {examples[w.id].map((x) => (
+                <li key={x.s.join("")} className="flex items-start gap-3">
+                  <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                    <span lang="zh-CN" className="han text-lg leading-snug">
+                      {x.s.map((tok, j) => (x.k[j] === w.id ? <mark key={j} className="bg-transparent font-semibold text-accent">{tok}</mark> : tok))}
+                    </span>
+                    <span className="text-xs text-muted">{x.p.filter(Boolean).join(" ")}</span>
+                    <span lang={locale === "ru" && x.r ? "ru" : "en"} className="text-sm">{locale === "ru" && x.r ? x.r : x.e}</span>
+                  </span>
+                  <SpeakButton text={x.s.join("")} compact />
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>
