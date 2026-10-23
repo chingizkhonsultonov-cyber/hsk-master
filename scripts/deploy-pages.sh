@@ -9,7 +9,7 @@ remote=$(git remote get-url origin)
 audio=${AUDIO_DIR:-.audio-cache}
 mkdir -p "$(dirname "$audio")" && audio=$(cd "$(dirname "$audio")" && pwd)/$(basename "$audio")
 if [ -d "$audio/.git" ]; then
-  git -C "$audio" pull -q --depth=1 origin audio || true
+  git -C "$audio" fetch -q --depth=1 origin audio && git -C "$audio" reset -q --hard FETCH_HEAD || true
 elif git ls-remote --exit-code "$remote" audio >/dev/null 2>&1; then
   git clone -q --depth=1 --branch audio "$remote" "$audio"
 fi
