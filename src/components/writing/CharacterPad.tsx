@@ -133,7 +133,7 @@ export function CharacterPad({ entry }: { entry: CharEntry }) {
           <span>· {entry.m}</span>
         </p>
         <div>
-          <SpeakButton text={entry.w} />
+          <SpeakButton text={entry.w} py={entry.wp} />
         </div>
         {best && (
           <p className="text-sm text-muted">{best.best === 0 ? t.writing.bestPerfect : fmt(t.writing.best, { n: best.best })}</p>

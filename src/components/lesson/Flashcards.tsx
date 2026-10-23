@@ -124,7 +124,7 @@ export function Flashcards({ words, order = "smart", front = "hanzi", onNewSet }
           {revealed ? (
             <>
               <Meaning w={w} className="max-w-md text-lg" />
-              <SpeakButton text={w.h} />
+              <SpeakButton text={w.h} py={w.p} />
             </>
           ) : (
             <p className="text-sm text-muted">{meaningFirst ? t.cards.promptMeaning : t.cards.prompt}</p>

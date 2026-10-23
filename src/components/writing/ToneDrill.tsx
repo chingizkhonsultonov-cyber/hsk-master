@@ -67,7 +67,7 @@ export function ToneDrill({ chars }: { chars: CharEntry[] }) {
         <span className="eyebrow">{fmt(t.writing.toneQ, { ch: item.c })}</span>
         {pick == null ? <span lang="zh-CN" className="han text-7xl leading-none">{item.c}</span> : <Hanzi h={item.c} p={item.s} className="text-7xl leading-none" />}
         <span className="text-xl font-semibold">{pick == null ? bare : <span className={`tone-${tone}`}>{item.s}</span>}</span>
-        <SpeakButton text={item.c} />
+        <SpeakButton text={item.c} py={item.s} />
         <div role="group" aria-label={t.writing.tonesTitle} className="grid w-full grid-cols-4 gap-2">
           {([1, 2, 3, 4] as const).map((k) => (
             <button

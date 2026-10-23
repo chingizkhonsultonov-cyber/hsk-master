@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { speak } from "@/lib/speech";
+import { speak, type SpeakOptions } from "@/lib/speech";
 import { useI18n } from "@/lib/i18n/client";
 
-export function SpeakButton({ text, label, compact = false }: { text: string; label?: string; compact?: boolean }) {
+export function SpeakButton({ text, label, compact = false, py, voice }: { text: string; label?: string; compact?: boolean } & SpeakOptions) {
   const { t } = useI18n();
   const [note, setNote] = useState<string | null>(null);
   return (
@@ -12,7 +12,7 @@ export function SpeakButton({ text, label, compact = false }: { text: string; la
       <button
         type="button"
         onClick={() => {
-          const r = speak(text);
+          const r = speak(text, 0.8, undefined, { py, voice });
           setNote(r === "no-voice" ? t.common.noVoice : r === "unsupported" ? t.common.noSpeech : null);
         }}
         className={`inline-flex items-center gap-1.5 rounded-full border border-line font-medium hover:border-muted ${compact ? "h-9 w-9 justify-center" : "min-h-9 px-3.5 text-sm"}`}

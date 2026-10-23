@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/client";
-import { speak } from "@/lib/speech";
+import { speak, stopSpeech } from "@/lib/speech";
 import { SpeakButton } from "../SpeakButton";
 import type { Dialogue, Topic } from "@/data/dialogues";
 
@@ -68,12 +68,12 @@ function DialogueCard({ id, n, d, pinyin, trans }: { id: string; n: number; d: D
   const playFrom = (i: number) => {
     if (stopped.current || i >= d.l.length) return setPlaying(null);
     setPlaying(i);
-    const r = speak(d.l[i][1], 0.8, () => setTimeout(() => playFrom(i + 1), 500));
+    const r = speak(d.l[i][1], 0.8, () => setTimeout(() => playFrom(i + 1), 500), { voice: d.l[i][0] % 2 ? "m" : undefined });
     if (r === "unsupported") setPlaying(null);
   };
   const stop = () => {
     stopped.current = true;
-    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    stopSpeech();
     setPlaying(null);
   };
 
@@ -110,7 +110,7 @@ function DialogueCard({ id, n, d, pinyin, trans }: { id: string; n: number; d: D
                 {trans && <span className="text-[15px]">{line[L]}</span>}
               </div>
               <span className="mt-1 shrink-0">
-                <SpeakButton text={line[1]} compact />
+                <SpeakButton text={line[1]} voice={line[0] % 2 ? "m" : undefined} compact />
               </span>
             </li>
           );

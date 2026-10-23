@@ -1,0 +1,68 @@
+# Records natural Mandarin audio for every word, sentence and dialogue line (scripts/audio.py),
+# keeps the clips on the audio branch and republishes the site with them.
+name: Record audio
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["src/data/**", "scripts/audio.py", ".github/workflows/audio.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audio
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate git
+        run: |
+          git config --global url."https://x-access-token:${{ github.token }}@github.com/".insteadOf "https://github.com/"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check out the audio branch
+        run: |
+          url="https://github.com/${{ github.repository }}.git"
+          if git ls-remote --exit-code "$url" audio >/dev/null; then
+            git clone -q --depth=1 --branch audio "$url" audio-out
+          else
+            git init -q -b audio audio-out && git -C audio-out remote add origin "$url"
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Record missing clips
+        timeout-minutes: 300
+        run: |
+          pip install -q edge-tts==7.3.1 pypinyin==0.55.0
+          python scripts/audio.py audio-out
+
+      - name: Save clips to the audio branch
+        if: always()
+        run: |
+          cd audio-out
+          git add -A
+          if git diff --cached --quiet; then echo "No new clips"; exit 0; fi
+          git commit -q -m "Record audio clips"
+          git push -q origin audio
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Publish the site with the audio
+        run: |
+          npm ci
+          git remote set-url origin "https://github.com/${{ github.repository }}.git"
+          AUDIO_DIR=audio-out bash scripts/deploy-pages.sh

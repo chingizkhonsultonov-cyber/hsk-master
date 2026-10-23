@@ -81,8 +81,8 @@ export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord
   const answered = q?.pick != null;
 
   useEffect(() => {
-    if (q?.kind === "listen") speak(q.w.h);
-  }, [q?.kind, q?.w.h, i]);
+    if (q?.kind === "listen") speak(q.w.h, 0.8, undefined, { py: q.w.p });
+  }, [q?.kind, q?.w.h, q?.w.p, i]);
 
   const pick = (k: number) => {
     if (!qs || !q || answered) return;
@@ -158,7 +158,7 @@ export function LessonTest({ words, pool, testKey, onNewSet }: { words: PoolWord
         ) : q.kind === "fromPinyin" ? (
           <Pinyin p={q.w.p} className="text-4xl" />
         ) : q.kind === "listen" ? (
-          <button type="button" onClick={() => speak(q.w.h)} className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-full border border-line px-5 font-semibold hover:border-muted">
+          <button type="button" onClick={() => speak(q.w.h, 0.8, undefined, { py: q.w.p })} className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-full border border-line px-5 font-semibold hover:border-muted">
             <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
               <path d="M3 6h2.5L9 3v10L5.5 10H3z" />
               <path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6 6 0 0 1 0 9" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />

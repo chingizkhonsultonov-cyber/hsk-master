@@ -30,7 +30,7 @@ export function WordList({ words }: { words: Word[] }) {
             )}
           </span>
           <span className="col-start-2 sm:col-start-auto">
-            <SpeakButton text={w.h} compact />
+            <SpeakButton text={w.h} py={w.p} compact />
           </span>
         </li>
       ))}
