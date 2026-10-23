@@ -7,6 +7,7 @@ import { Crumbs } from "@/components/Crumbs";
 import { LevelProgress } from "@/components/LevelProgress";
 import { WritingCount } from "@/components/WritingCount";
 import { Readiness } from "@/components/Readiness";
+import { LessonLinks } from "@/components/LessonLinks";
 import type { Locale } from "@/lib/types";
 import { levelName, levelNumber, levelSlug, parseLevel } from "@/lib/levels";
 
@@ -46,37 +47,7 @@ export default async function LevelHub({ params }: P) {
       </div>
       <section aria-labelledby="hub-lessons" className="flex flex-col gap-3">
         <h2 id="hub-lessons" className="text-xl font-semibold">{t.lesson.jump}</h2>
-        {/* Levels with many lessons get compact numbered squares instead of tiles with a word preview. */}
-        {lessons.length > 30 ? (
-          <ol className="flex flex-wrap gap-1.5">
-            {lessons.map((preview, i) => (
-              <li key={i}>
-                <Link
-                  href={`/${locale}/hsk/${slug}/lessons/${i + 1}`}
-                  title={preview}
-                  aria-label={fmt(t.common.lesson, { n: i + 1 })}
-                  className="grid h-9 min-w-9 place-items-center rounded-lg border border-line bg-surface px-2 text-sm font-semibold tabular-nums hover:border-accent"
-                >
-                  {i + 1}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        ) : (
-        <ol className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5">
-          {lessons.map((preview, i) => (
-            <li key={i}>
-              <Link
-                href={`/${locale}/hsk/${slug}/lessons/${i + 1}`}
-                className="flex h-full flex-col gap-0.5 rounded-lg border border-line bg-surface px-3 py-2 hover:border-accent"
-              >
-                <span className="text-sm font-semibold">{fmt(t.common.lesson, { n: i + 1 })}</span>
-                <span lang="zh-CN" className="han truncate text-sm text-muted">{preview}</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
-        )}
+        <LessonLinks base={`/${locale}/hsk/${slug}/lessons`} level={level} previews={lessons} compact={lessons.length > 30} />
       </section>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-2 rounded-xl border border-line bg-surface p-4">

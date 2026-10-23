@@ -62,6 +62,9 @@ const en = {
     intro: "Lessons are ordered by how often words appear in real Chinese, so you learn the most useful words first.",
     grammar: "Grammar points",
     test: "Best test: {n}/{total}",
+    completed: "Completed",
+    doneCount: "Completed: {n} of {total}",
+    passNote: "a lesson is completed when you score 80% or more on its test",
   },
   lesson: {
     tabs: { words: "Words", cards: "Flashcards", test: "Test" },
@@ -115,6 +118,7 @@ const en = {
     askPinyin: "Choose the correct pinyin",
     askFromPinyin: "Choose the characters for this pinyin",
     askListen: "Listen and choose the characters",
+    already: "You have taken this test before. Best result: {n}/{total}.",
     askSentence: "Choose the word that fills the gap",
     play: "Play again",
     right: "Correct.",

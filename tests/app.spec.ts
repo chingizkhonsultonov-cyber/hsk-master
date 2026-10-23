@@ -435,7 +435,7 @@ test("level hub lists every lesson and lessons can jump to any other", async ({ 
   await expect(grid).toHaveCount(20);
   await page.getByRole("link", { name: /^Lesson 7/ }).click();
   await expect(page).toHaveURL(/\/en\/hsk\/1\/lessons\/7$/);
-  await page.getByRole("navigation", { name: "All lessons" }).getByRole("link", { name: "15", exact: true }).click();
+  await page.getByRole("navigation", { name: "All lessons" }).getByRole("link", { name: "Lesson 15", exact: true }).click();
   await expect(page).toHaveURL(/\/lessons\/15$/);
   await noOverflow(page);
 });
@@ -505,4 +505,24 @@ test("writing works with a finger or stylus (touch events)", async ({ page, hasT
     await page.waitForTimeout(300);
   }
   await expect(page.getByTestId("writer-status")).toHaveText("Perfect: every stroke correct the first time.", { timeout: 5_000 });
+});
+
+test("passed lesson tests are marked as completed on the level page, lesson list and test", async ({ page }) => {
+  await page.goto("/en/hsk/1");
+  await page.evaluate(() => {
+    const now = Date.now();
+    localStorage.setItem("hsk-master:progress:v1", JSON.stringify({ version: 1, words: {}, writing: {}, tests: { "3-1-L2": { best: 14, total: 15, updatedAt: now }, "3-1-L3": { best: 5, total: 15, updatedAt: now } } }));
+  });
+  await page.reload();
+  await expect(page.getByTestId("lessons-done")).toContainText("Completed: 1 of 20");
+  await expect(page.locator('section[aria-labelledby=hub-lessons] a[data-status="done"]')).toHaveCount(1);
+  await expect(page.locator('section[aria-labelledby=hub-lessons] a[data-status="tried"]')).toContainText("5/15");
+  await page.goto("/en/hsk/1/lessons");
+  await expect(page.locator('a[data-status="done"]')).toContainText("Completed");
+  await page.goto("/en/hsk/1/lessons/2");
+  await expect(page.getByRole("link", { name: "Lesson 2 · Completed" })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("link", { name: "Lesson 1", exact: true })).toBeVisible();
+  await page.getByRole("tab", { name: "Test" }).click();
+  await expect(page.getByTestId("test-already")).toContainText("Best result: 14/15");
+  await axe(page);
 });

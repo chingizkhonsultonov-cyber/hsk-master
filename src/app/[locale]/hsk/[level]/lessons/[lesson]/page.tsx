@@ -6,6 +6,7 @@ import { getLesson, getLevel, lessonCount } from "@/lib/data";
 import { Crumbs } from "@/components/Crumbs";
 import { LessonClient } from "@/components/lesson/LessonClient";
 import { lessonExamples } from "@/lib/examples";
+import { LessonLinks } from "@/components/LessonLinks";
 import type { Locale } from "@/lib/types";
 import { LEVEL_NUMBERS, levelName, levelSlug, parseLevel } from "@/lib/levels";
 
@@ -38,6 +39,8 @@ export default async function LessonPage({ params }: P) {
     .slice(0, 80)
     .map(({ id, h, p, en, ru }) => ({ id, h, p, en, ru }));
   const examples = lessonExamples(level, words);
+  const all = getLevel(level);
+  const previews = Array.from({ length: total }, (_, i) => all.filter((w) => w.lesson === i + 1).slice(0, 3).map((w) => w.h).join("、"));
   const base = `/${locale}/hsk/${slug}/lessons`;
   return (
     <div className="flex flex-col gap-6">
@@ -57,19 +60,9 @@ export default async function LessonPage({ params }: P) {
       <nav aria-label={t.lesson.jump}>
         <details open={total <= 30} className="group">
         <summary className="eyebrow cursor-pointer select-none">{t.lesson.jump} · {total}</summary>
-        <ol className="mt-2 flex flex-wrap gap-1.5">
-          {Array.from({ length: total }, (_, i) => i + 1).map((n) => (
-            <li key={n}>
-              <Link
-                href={`${base}/${n}`}
-                aria-current={n === lesson ? "page" : undefined}
-                className={`grid h-9 min-w-9 place-items-center rounded-lg border px-2 text-sm font-semibold tabular-nums ${n === lesson ? "border-ink bg-ink text-paper" : "border-line bg-surface hover:border-accent"}`}
-              >
-                {n}
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-2">
+          <LessonLinks base={base} level={level} previews={previews} compact current={lesson} />
+        </div>
         </details>
       </nav>
       <LessonClient words={words} pool={pool} examples={examples} testKey={`3-${level}-L${lesson}`} />

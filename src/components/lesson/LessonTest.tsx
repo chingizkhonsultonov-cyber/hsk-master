@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/client";
 import { fmt } from "@/lib/i18n";
-import { recordAnswer, recordTest } from "@/lib/progress";
+import { recordAnswer, recordTest, useProgress } from "@/lib/progress";
 import { markSyllable, stripTones, syllables, type Tone } from "@/lib/pinyin";
 import { hasChineseVoice, speak } from "@/lib/speech";
 import { shuffle } from "@/lib/random";
 import type { Example, Word } from "@/lib/types";
 import { Hanzi, Pinyin } from "../Hanzi";
 import { meaningText } from "../Meaning";
+import { PASS } from "../LessonLinks";
 
 export type PoolWord = Pick<Word, "id" | "h" | "p" | "en" | "ru">;
 type Kind = "meaning" | "hanzi" | "pinyin" | "fromPinyin" | "listen" | "sentence";
@@ -72,6 +73,7 @@ const NO_EXAMPLES: Record<string, Example[]> = {};
 
 export function LessonTest({ words, pool, examples = NO_EXAMPLES, testKey, onNewSet }: { words: PoolWord[]; pool: PoolWord[]; examples?: Record<string, Example[]>; testKey: string; onNewSet?: () => void }) {
   const { t, locale } = useI18n();
+  const prior = useProgress().tests[testKey];
   const [qs, setQs] = useState<Question[] | null>(null);
   const [i, setI] = useState(0);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -153,9 +155,16 @@ export function LessonTest({ words, pool, examples = NO_EXAMPLES, testKey, onNew
     );
   }
 
+  const already = prior && i === 0 && !answered && !onNewSet && (
+    <p data-testid="test-already" className={`rounded-lg border px-4 py-2 text-sm ${prior.best / prior.total >= PASS ? "border-ok bg-ok/10 text-ok" : "border-line text-muted"}`}>
+      {prior.best / prior.total >= PASS && "✓ "}
+      {fmt(t.test.already, { n: prior.best, total: prior.total })}
+    </p>
+  );
   const ask = { meaning: t.test.askMeaning, hanzi: t.test.askHanzi, pinyin: t.test.askPinyin, fromPinyin: t.test.askFromPinyin, listen: t.test.askListen, sentence: t.test.askSentence }[q.kind];
   return (
     <div className="flex max-w-2xl flex-col gap-5">
+      {already}
       {dots}
       <div key={i} className="enter flex flex-col items-center gap-2 rounded-xl border border-line bg-surface px-4 py-8 text-center">
         <span className="eyebrow">{fmt(t.test.question, { i: i + 1, n: qs.length })} · {ask}</span>
